@@ -1828,6 +1828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 644469008}
   - component: {fileID: 644469009}
+  - component: {fileID: 644469010}
   m_Layer: 0
   m_Name: GlobalGameManager
   m_TagString: Untagged
@@ -1864,6 +1865,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorText: {fileID: 2800000, guid: 946d73f0f4d48f544bb96477c2693ff2, type: 3}
   cursorBias: {x: 15, y: 15}
+--- !u!114 &644469010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644469007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1cea35d4617f094495ff4e89e284e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &719865837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3127,6 +3140,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clock
       objectReference: {fileID: 0}
+    - target: {fileID: 6514335277548776967, guid: 500443a6d41245343b1b8e6dfb25f65e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8429602205177196161, guid: 6e76ba64abe88074eabc23ebd027ffbd,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500443a6d41245343b1b8e6dfb25f65e, type: 3}
 --- !u!4 &1239327738 stripped
