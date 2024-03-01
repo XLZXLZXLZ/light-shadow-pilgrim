@@ -2,20 +2,28 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MapRotateController : Singleton<MapRotateController>
 {
-    private bool isRotating;
-    public bool interrupted;
+    public bool IsRotating { get; private set; }
+    public bool Interrupted { get; private set; }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        EventManager.Instance.OnMapUpdateStart += () => Interrupted = false;
+        EventManager.Instance.OnMapUpdateFinished += () => Interrupted = true;
+    }
 
     public void Rotate(float angle)
     {
-        if (isRotating || interrupted)
+        if (IsRotating || Interrupted)
             return;
 
-        isRotating = true;
+        IsRotating = true;
         transform.DORotate(transform.eulerAngles + Vector3.up * angle, 0.33f)
             .SetEase(Ease.OutQuart)
-            .OnComplete(() => isRotating = false);
+            .OnComplete(() => IsRotating = false);
     }
 }

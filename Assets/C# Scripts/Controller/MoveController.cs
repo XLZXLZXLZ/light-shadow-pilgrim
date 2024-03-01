@@ -26,13 +26,11 @@ public class MoveController : Singleton<MoveController>
     {
         base.Awake();
         EventManager.Instance.OnClickNode += UpdateStrategy;
-        EventManager.Instance.OnMapUpdate += () => strategy.Clear();
+        EventManager.Instance.OnMapUpdateStart += () => strategy.Clear();
+        EventManager.Instance.OnMapUpdateFinished += TriggerNode; //开始时先触发一下脚下的扳机
+        
         player = GetComponent<Player>();
-    }
 
-    private void Start()
-    {
-        EventManager.Instance.OnMapGenerated += TriggerNode; //开始时先触发一下脚下的扳机
     }
 
     private void FixedUpdate()
@@ -60,6 +58,10 @@ public class MoveController : Singleton<MoveController>
 
         currentNode = strategy[0];
         strategy.RemoveAt(0);
+        
+        // 结束更新完节点后，如果没有策略，那么就说明移动完成
+        if(strategy.Count == 0)
+            EventManager.Instance.OnPlayerMoveFinished.Invoke();
 
         TriggerNode();
 
@@ -75,6 +77,7 @@ public class MoveController : Singleton<MoveController>
             strategy = path;
         else
             strategy.Clear();
+        Debug.Log(path.Count);
     }
 
     private void TriggerNode()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,17 +10,22 @@ public class GlobalLight : Singleton<GlobalLight>
 
     [SerializeField]
     private int defaultLevel = 2; //默认光线高度等级(45度)
-    private int currentLevel = 2; //当前高度等级
+    private int currentLevel = 2; //当前高度等级（逻辑上）
 
-    public Vector3 LightDir => transform.rotation * Vector3.forward; //光线方向
+    private Vector3 lightAngleInLogic;
+    public Vector3 LightDirInLogic => Quaternion.Euler(lightAngleInLogic) * Vector3.forward;//逻辑光线方向
+    public Vector3 LightDirInView =>  transform.rotation * Vector3.forward; //表现光线方向
 
     private bool canChange = true; //标记当前整体光线是否可旋转
 
     private void Start()
     {
+        // 初始化时，当前高度等级和光照方向按照设置好的值
         currentLevel = defaultLevel;
+        lightAngleInLogic = transform.eulerAngles;
+        //LightDirInLogic = LightDirInView;
     }
-
+    
     /// <summary>
     /// 请求旋转全局光线,顺时针为正
     /// </summary>
@@ -30,14 +36,25 @@ public class GlobalLight : Singleton<GlobalLight>
         if (!canChange)
             return false;
         canChange = false;
+        
+        // 此时光照逻辑更新刚开始，
+        EventManager.Instance.OnMapUpdateStart.Invoke();
+
+        // 先更新光照方向实际值
+        lightAngleInLogic += Vector3.up * rotateAngle;
+        
+        // 再更新光照方向表现
         transform.DOLocalRotate(transform.eulerAngles + new Vector3(0, rotateAngle, 0), 0.6f)
             .SetEase(Ease.OutQuad)//旋转地图，并在旋转完毕后通知更新
             .OnComplete(() =>
             {
                 canChange = true;
-                EventManager.Instance.OnMapUpdate?.Invoke(); //更新地图
+                EventManager.Instance.OnMapUpdateFinished.Invoke(); //更新地图
             });
-        Player.Instance.InterruptMovement(0.5f);
+        
+        // 限制玩家移动
+        // Player.Instance.InterruptMovement(0.5f);
+        
         return true;
     }
 
@@ -53,17 +70,22 @@ public class GlobalLight : Singleton<GlobalLight>
 
         if (currentLevel + dir < 0 || currentLevel + dir >= heightMap.Length)
             return false;
-
+        
+        EventManager.Instance.OnMapUpdateStart.Invoke();
+        
         currentLevel += dir;
         canChange = false;
+        
+        lightAngleInLogic.x = heightMap[currentLevel];
         transform.DOLocalRotate(new Vector3(heightMap[currentLevel], transform.eulerAngles.y, 0), 0.6f)
             .SetEase(Ease.OutQuad)
             .OnComplete(() =>
             {
                 canChange = true;
-                EventManager.Instance.OnMapUpdate?.Invoke(); //更新地图
+                EventManager.Instance.OnMapUpdateFinished.Invoke(); //更新地图
             });
-        Player.Instance.InterruptMovement(0.5f);
+        
+        // Player.Instance.InterruptMovement(0.5f);
         return true;
 
     }

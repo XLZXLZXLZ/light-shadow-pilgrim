@@ -7,4 +7,9 @@ public class GameManager : Singleton<GameManager>
 {
     public LightState currentPlayerState = LightState.Light;
     public int currentLevel;
+    
+    private void Start()
+    {
+        EventManager.Instance.OnGameStart.Invoke();
+    }
 }

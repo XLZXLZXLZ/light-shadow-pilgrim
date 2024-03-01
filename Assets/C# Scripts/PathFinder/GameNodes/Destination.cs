@@ -13,8 +13,9 @@ public class Destination : MonoBehaviour, ITriggerable
 
     private void Complete() //通关动画(因为已经懒得做了所以极度面向结果编程的危险程序) *惊恐*
     {
-        Player.Instance.InterruptMovement(100);//终止玩家操作
-        MapRotateController.Instance.interrupted = true; //禁止旋转地图
+        // Player.Instance.InterruptMovement(100);//终止玩家操作
+        
+        EventManager.Instance.OnGameOver.Invoke();
 
         var player = Player.Instance;
         var cam = Camera.main;

@@ -32,13 +32,20 @@ public class Elevator : MonoBehaviour
         if (isWorking || !isReady)
             return false;
 
-        EventManager.Instance.OnMapUpdate?.Invoke();
-
-        transform.DOMove(isReverse ? origin : transform.position + target, duration).SetEase(Ease.Linear).OnComplete(() => isWorking = false);
+        EventManager.Instance.OnMapUpdateStart.Invoke();
+        
+        transform
+            .DOMove(isReverse ? origin : transform.position + target, duration).SetEase(Ease.Linear)
+            .onComplete += () =>
+        {
+            isWorking = false;
+            EventManager.Instance.OnMapUpdateFinished.Invoke();
+        };
+        
         isReverse = !isReverse;
         isWorking = true;
         isReady = false;
-
+        
         return true;
     }
 

@@ -28,19 +28,19 @@ public class StartEffect : MonoBehaviour
     private int counter;
     private int Counter
     {
-        get { return counter; }
+        get => counter;
         set 
         { 
             counter = value; 
             if(counter == 0) 
-            {
-                EventManager.Instance.OnMapGenerated();
-            }
+                EventManager.Instance.OnGenerateMapFinished.Invoke();
         }
     }
 
     protected virtual void Effect() //游戏开始时的效果，为所有节点播放自下而上的动画(由机关移动的方块除外)
     {
+        EventManager.Instance.OnGenerateMapStart.Invoke();
+        
         for(int i = 0; i < transform.childCount; i++) 
         { 
             var child = transform.GetChild(i);
@@ -73,13 +73,11 @@ public class StartEffect : MonoBehaviour
                     Vector3 origin = t.position;
                     t.position += Vector3.down * 30;
 
-                    EventManager.Instance.OnMapGenerated +=
-                    (() =>
-                    {
+                    EventManager.Instance.OnGenerateMapFinished += () => {
                         DOTween.Sequence()
                             .Append(t.DOMove(origin, 2).SetEase(Ease.OutQuart))
                             .OnComplete(() => Counter--);
-                    });
+                    };
                 }
             }
         }

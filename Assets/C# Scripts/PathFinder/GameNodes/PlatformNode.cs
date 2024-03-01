@@ -22,7 +22,7 @@ public class PlatformNode : PathNode, IInteractable
         lightComponent = GetComponent<LightExtension>();
         UpdateNeighbors();
 
-        EventManager.Instance.OnMapUpdate += UpdateNeighbors;
+        EventManager.Instance.OnMapUpdateFinished += UpdateNeighbors;
     }
 
     private void Update()
@@ -137,6 +137,7 @@ public class PlatformNode : PathNode, IInteractable
             return; //暂停时不执行
 
         OnInteract();
+        EventManager.Instance.OnPlayerMoveStart.Invoke();
     }
 
     private void OnDrawGizmos()

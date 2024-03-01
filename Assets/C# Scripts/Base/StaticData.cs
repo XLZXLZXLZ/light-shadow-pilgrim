@@ -17,6 +17,11 @@ public class LevelRecord
         LoadResult();
     }
 
+    public bool IsLevelCompleted(int index)
+    {
+        return PlayerPrefs.GetInt("LevelCompleted" + index) == 1;
+    }
+
     public void SaveResult()
     {
         for (int i = 0; i < levelCompleted.Length; i++)
@@ -40,8 +45,12 @@ public static class StaticData
 
     public static void CompleteLevel(int index)
     {
-        index -= 1;
         levelRecord.LevelCompleted[index] = true;
         levelRecord.SaveResult();
+    }
+
+    public static bool IsLevelCompleted(int index)
+    {
+        return levelRecord.IsLevelCompleted(index);
     }
 }

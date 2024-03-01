@@ -29,27 +29,25 @@ public class MoveBlock : Gear
     {
         base.SwitchOn();
 
-        EventManager.Instance.OnMapUpdate?.Invoke();
+        EventManager.Instance.OnMapUpdateStart.Invoke();
+        
         DOTween.Sequence()
             .AppendInterval(delay)
             .Append(transform.DOMove(target, duration).SetEase(ease))
             .Join(Camera.main.DOShakePosition(duration,shakeLevel,100))
-            .OnComplete(() => EventManager.Instance.OnMapUpdate?.Invoke());
-        
-        Player.Instance.InterruptMovement(duration);
+            .OnComplete(() => EventManager.Instance.OnMapUpdateFinished.Invoke());
     }
 
     protected override void SwitchOff()
     {
         base.SwitchOff();
 
-        EventManager.Instance.OnMapUpdate?.Invoke();
+        EventManager.Instance.OnMapUpdateStart.Invoke();
         DOTween.Sequence()
             .AppendInterval(delay)
             .Append(transform.DOMove(origin, duration).SetEase(ease))
             .Join(Camera.main.DOShakePosition(duration * 1.2f, shakeLevel, 100))
-            .OnComplete(() => EventManager.Instance.OnMapUpdate?.Invoke());
-        Player.Instance.InterruptMovement(duration);
+            .OnComplete(() => EventManager.Instance.OnMapUpdateFinished.Invoke());
     }
 
     protected override void OnDrawGizmos()
