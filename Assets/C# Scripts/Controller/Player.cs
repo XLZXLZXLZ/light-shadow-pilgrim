@@ -20,8 +20,8 @@ public class Player : Singleton<Player>
     {
         base.Awake();
         particle = GetComponentInChildren<ParticleSystem>();
-        EventManager.Instance.OnMapUpdateStart += () => SetPlayerCanMove(false);
-        EventManager.Instance.OnMapUpdateFinished += () => SetPlayerCanMove(true);
+        EventManager.Instance.MapUpdate.OnStart += () => CanMove = false;
+        EventManager.Instance.MapUpdate.OnFinished += () => CanMove = true;
     }
 
     // private void Update()
@@ -54,9 +54,5 @@ public class Player : Singleton<Player>
         Instantiate(destroyParticle, transform.position, Quaternion.identity);
         transform.position += Vector3.up * 10000;
     }
-
-    public void SetPlayerCanMove(bool isCanMove)
-    {
-        CanMove = isCanMove;
-    }
+    
 }

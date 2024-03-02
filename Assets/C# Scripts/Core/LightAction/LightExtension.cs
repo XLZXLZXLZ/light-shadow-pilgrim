@@ -30,7 +30,7 @@ public class LightExtension : MonoBehaviour
 
     private void Awake()
     {
-        EventManager.Instance.OnMapUpdateFinished += OnStateUpdate;
+        EventManager.Instance.MapUpdate.OnFinished += OnStateUpdate;
     }
 
     // private void Update()

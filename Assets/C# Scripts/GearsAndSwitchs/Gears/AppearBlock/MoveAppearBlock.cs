@@ -38,26 +38,23 @@ public class MoveAppearBlock : AppearBlock
     {
         base.SwitchOn();
 
-        EventManager.Instance.OnMapUpdateStart.Invoke();
         
         DOTween.Sequence()
             .AppendInterval(delay)
             .Append(transform.DOMove(appearPos, duration))
             .Join(transform.DORotate(appearAngle, 2f))
-            .onComplete += () => EventManager.Instance.OnMapUpdateFinished.Invoke();
+            .PushToTweenPool();
 
     }
 
     protected override void SwitchOff()
     {
         base.SwitchOff();
-
-        EventManager.Instance.OnMapUpdateStart.Invoke();
         
         DOTween.Sequence()
             .AppendInterval(delay)
             .Append(transform.DOMove(hidePos, duration))
             .Join(transform.DORotate(hideAngle * rotateAngle, 2f))
-            .onComplete += () => EventManager.Instance.OnMapUpdateFinished.Invoke();
+            .PushToTweenPool();
     }
 }

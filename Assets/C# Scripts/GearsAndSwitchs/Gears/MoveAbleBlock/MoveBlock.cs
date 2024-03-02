@@ -28,26 +28,23 @@ public class MoveBlock : Gear
     protected override void SwitchOn() //更新地图，冲断移动信号
     {
         base.SwitchOn();
-
-        EventManager.Instance.OnMapUpdateStart.Invoke();
         
         DOTween.Sequence()
             .AppendInterval(delay)
             .Append(transform.DOMove(target, duration).SetEase(ease))
             .Join(Camera.main.DOShakePosition(duration,shakeLevel,100))
-            .OnComplete(() => EventManager.Instance.OnMapUpdateFinished.Invoke());
+            .PushToTweenPool();
     }
 
     protected override void SwitchOff()
     {
         base.SwitchOff();
-
-        EventManager.Instance.OnMapUpdateStart.Invoke();
+        
         DOTween.Sequence()
             .AppendInterval(delay)
             .Append(transform.DOMove(origin, duration).SetEase(ease))
             .Join(Camera.main.DOShakePosition(duration * 1.2f, shakeLevel, 100))
-            .OnComplete(() => EventManager.Instance.OnMapUpdateFinished.Invoke());
+            .PushToTweenPool();
     }
 
     protected override void OnDrawGizmos()

@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class StageEvent
 {
-    public event Action OnEarlyEnter;
-    public event Action OnEnter;
-    public event Action OnLateEnter;
+    public event Action OnEarlyStart;
+    public event Action OnStart;
+    public event Action OnLateStart;
     
-    public event Action OnEarlyExit;
-    public event Action OnExit;
-    public event Action OnLateExit;
+    public event Action OnEarlyFinished;
+    public event Action OnFinished;
+    public event Action OnLateFinished;
 
-    public void EnterStageEvent()
+    public void StartStageEvent()
     {
-        OnEarlyEnter?.Invoke();
-        OnEnter?.Invoke();
-        OnLateEnter?.Invoke();
+        OnEarlyStart?.Invoke();
+        OnStart?.Invoke();
+        OnLateStart?.Invoke();
     }
 
-    public void ExitStageEvent()
+    public void FinishStageEvent()
     {
-        OnEarlyExit?.Invoke();
-        OnExit?.Invoke();
-        OnLateExit?.Invoke();
+        OnEarlyFinished?.Invoke();
+        OnFinished?.Invoke();
+        OnLateFinished?.Invoke();
     }
 }
 

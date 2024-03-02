@@ -35,7 +35,7 @@ public class VolumeManager : MonoBehaviour
     //     }
     // }
 
-    private void UpdateVolumeState(LightState lightState)
+    public void UpdateVolumeState(LightState lightState)
     {
         if (lightState == LightState.Light)
         {

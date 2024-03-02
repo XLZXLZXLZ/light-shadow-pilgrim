@@ -22,13 +22,13 @@ public class PlatformNode : PathNode, IInteractable
         lightComponent = GetComponent<LightExtension>();
         UpdateNeighbors();
 
-        EventManager.Instance.OnMapUpdateFinished += UpdateNeighbors;
+        EventManager.Instance.MapUpdate.OnFinished += UpdateNeighbors;
     }
 
-    // private void Update()
-    // {
-    //     UpdateNeighbors();
-    // }
+    private void Update()
+    {
+        UpdateNeighbors();
+    }
 
     //交互时以该点为目标路径唤起事件
     public void OnInteract()

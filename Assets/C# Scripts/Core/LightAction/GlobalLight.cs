@@ -37,20 +37,15 @@ public class GlobalLight : Singleton<GlobalLight>
             return false;
         canChange = false;
         
-        // 此时光照逻辑更新刚开始，
-        EventManager.Instance.OnMapUpdateStart.Invoke();
 
         // 先更新光照方向实际值
         lightAngleInLogic += Vector3.up * rotateAngle;
         
         // 再更新光照方向表现
         transform.DOLocalRotate(transform.eulerAngles + new Vector3(0, rotateAngle, 0), 0.6f)
-            .SetEase(Ease.OutQuad)//旋转地图，并在旋转完毕后通知更新
-            .OnComplete(() =>
-            {
-                canChange = true;
-                EventManager.Instance.OnMapUpdateFinished.Invoke(); //更新地图
-            });
+            .SetEase(Ease.OutQuad) //旋转地图，并在旋转完毕后通知更新
+            .OnComplete(() => canChange = true)
+            .PushToTweenPool();
         
         // 限制玩家移动
         // Player.Instance.InterruptMovement(0.5f);
@@ -71,19 +66,14 @@ public class GlobalLight : Singleton<GlobalLight>
         if (currentLevel + dir < 0 || currentLevel + dir >= heightMap.Length)
             return false;
         
-        EventManager.Instance.OnMapUpdateStart.Invoke();
-        
         currentLevel += dir;
         canChange = false;
         
         lightAngleInLogic.x = heightMap[currentLevel];
         transform.DOLocalRotate(new Vector3(heightMap[currentLevel], transform.eulerAngles.y, 0), 0.6f)
             .SetEase(Ease.OutQuad)
-            .OnComplete(() =>
-            {
-                canChange = true;
-                EventManager.Instance.OnMapUpdateFinished.Invoke(); //更新地图
-            });
+            .OnComplete(() => canChange = true)
+            .PushToTweenPool();
         
         // Player.Instance.InterruptMovement(0.5f);
         return true;

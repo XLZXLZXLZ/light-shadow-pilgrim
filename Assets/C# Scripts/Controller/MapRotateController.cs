@@ -12,8 +12,8 @@ public class MapRotateController : Singleton<MapRotateController>
     protected override void Awake()
     {
         base.Awake();
-        EventManager.Instance.OnMapUpdateStart += () => Interrupted = false;
-        EventManager.Instance.OnMapUpdateFinished += () => Interrupted = true;
+        EventManager.Instance.MapUpdate.OnStart += () => Interrupted = false;
+        EventManager.Instance.MapUpdate.OnFinished += () => Interrupted = true;
     }
 
     public void Rotate(float angle)

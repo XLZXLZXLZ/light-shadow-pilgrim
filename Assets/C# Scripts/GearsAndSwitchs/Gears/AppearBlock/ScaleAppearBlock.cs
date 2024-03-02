@@ -17,11 +17,10 @@ public class ScaleAppearBlock : AppearBlock
     {
         base.SwitchOn();
         
-        EventManager.Instance.OnMapUpdateStart.Invoke();
         DOTween.Sequence()
             .AppendInterval(delay)
             .Append(transform.DOScale(startScale, duration))
-            .onComplete += () => EventManager.Instance.OnMapUpdateFinished.Invoke();
+            .PushToTweenPool();
     }
 
     protected override void SwitchOff()
@@ -30,6 +29,6 @@ public class ScaleAppearBlock : AppearBlock
         DOTween.Sequence()
             .AppendInterval(delay)
             .Append(transform.DOScale(Vector3.zero, duration))
-            .onComplete += () => EventManager.Instance.OnMapUpdateFinished.Invoke();
+            .PushToTweenPool();
     }
 }

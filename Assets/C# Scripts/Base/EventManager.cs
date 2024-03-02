@@ -20,9 +20,7 @@ public class EventManager : Singleton<EventManager>
 
     public InvokableAction OnPlayerMoveFinished = new();
 
-    public InvokableAction OnMapUpdateStart = new();
-
-    public InvokableAction OnMapUpdateFinished = new();
+    public StageEvent MapUpdate = new();
 
     public InvokableAction<LightState> OnPlayerLightStateChangedStart = new();
     public InvokableAction<LightState> OnPlayerLightStateChangedFinished = new();

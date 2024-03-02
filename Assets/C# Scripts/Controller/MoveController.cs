@@ -25,8 +25,8 @@ public class MoveController : Singleton<MoveController>
     {
         base.Awake();
         EventManager.Instance.OnClickNode += UpdateStrategy;
-        EventManager.Instance.OnMapUpdateStart += OnMapUpdateStart;
-        EventManager.Instance.OnMapUpdateFinished += OnMapUpdateFinished; //开始时先触发一下脚下的扳机
+        EventManager.Instance.MapUpdate.OnStart += OnMapUpdateStart;
+        EventManager.Instance.MapUpdate.OnFinished += OnMapUpdateFinished; //开始时先触发一下脚下的扳机
         
         player = GetComponent<Player>();
 

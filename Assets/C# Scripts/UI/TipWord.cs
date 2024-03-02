@@ -16,7 +16,7 @@ public class TipWord : Singleton<TipWord>
         base.Awake();
         tmp = GetComponent<TextMeshProUGUI>();
         tmp.color = Color.white.GetTransparent();
-        EventManager.Instance.OnMapUpdateFinished += () => UpdateTip(defaultWord);
+        EventManager.Instance.MapUpdate.OnFinished += () => UpdateTip(defaultWord);
     }
 
     public void UpdateTip(string word)
