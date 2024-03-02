@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        EventManager.Instance.OnPlayerLightStateChangedStart += OnPlayerLightStateChanged;
+        EventManager.Instance.OnPlayerLightStateChanged += OnPlayerLightStateChanged;
     }
 
     private void Start()
@@ -22,5 +22,6 @@ public class GameManager : Singleton<GameManager>
     private void OnPlayerLightStateChanged(LightState lightState)
     {
         CurrentPlayerState = lightState;
+        
     }
 }

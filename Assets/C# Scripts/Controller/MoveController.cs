@@ -102,7 +102,7 @@ public class MoveController : Singleton<MoveController>
     private void OnMapUpdateFinished()
     {
         TriggerNode();
-        if(currentNode.LightState != GameManager.Instance.CurrentPlayerState)
-            EventManager.Instance.OnPlayerLightStateChangedStart.Invoke(currentNode.LightState);
+        // if(currentNode.LightState != GameManager.Instance.CurrentPlayerState)
+        //     EventManager.Instance.OnPlayerLightStateChangedStart.Invoke(currentNode.LightState);
     }
 }

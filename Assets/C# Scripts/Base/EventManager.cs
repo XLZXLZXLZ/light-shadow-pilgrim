@@ -22,9 +22,7 @@ public class EventManager : Singleton<EventManager>
 
     public StageEvent MapUpdate = new();
 
-    public InvokableAction<LightState> OnPlayerLightStateChangedStart = new();
-    public InvokableAction<LightState> OnPlayerLightStateChangedFinished = new();
-    
+    public InvokableAction<LightState> OnPlayerLightStateChanged = new();
     
     public UnityAction<PathNode> OnClickNode; //选定某一结点时
     

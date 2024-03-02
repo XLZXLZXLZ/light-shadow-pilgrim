@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 受光照影响的开关
+/// </summary>
 [RequireComponent(typeof(LightExtension))]
 public class LightSwitch : Switch
 {

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 玩家踩上去触发的开关
+/// </summary>
 public class StepSwitch : Switch, ITriggerable
 {
     [SerializeField]
