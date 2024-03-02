@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SliderType
+public enum GearType
 {
     Loop, //用于循环旋转光线的图腾
     PingPong //用于乒乓旋转光线的图腾
@@ -13,7 +13,7 @@ public class Totem : Gear,IInteractable
     [SerializeField]
     protected Vector3[] sliderPos;
     [SerializeField]
-    protected SliderType sliderType;
+    protected GearType sliderType;
     [SerializeField]
     protected Transform sliderTransform;
     [SerializeField]
@@ -80,14 +80,14 @@ public class Totem : Gear,IInteractable
     {
         int maxIndex = sliderPos.Length - 1;
 
-        if (sliderType == SliderType.Loop)
+        if (sliderType == GearType.Loop)
         {
             if (currentIndex == maxIndex)
                 currentIndex = 0;
             else
                 currentIndex++;
         }
-        else if (sliderType == SliderType.PingPong)
+        else if (sliderType == GearType.PingPong)
         {
             currentIndex += pingPongModify;
             if (currentIndex == maxIndex || currentIndex == 0)
