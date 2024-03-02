@@ -13,17 +13,8 @@ public class Player : Singleton<Player>
 
     private float shieldMovementTime; //记录屏蔽移动信息的时间
     private ParticleSystem particle;
-    public bool SetCanMove { get; private set; } = true;
-    public LightState PlayerLightState { get; private set; } = LightState.Light;
-    public bool CanMove => SetCanMove && PlayerLightState == LightState.Light; //判断此时是否可以移动
+    public bool CanMove { get; private set; } = true; //判断此时是否可以移动
     public float Speed => speed;    
-
-    // public void InterruptMovement(float shieldTime) //外界输入冲断移动信号
-    // {
-    //     var t = Time.time + shieldTime;
-    //     if (t > shieldMovementTime)
-    //         shieldMovementTime = t;
-    // }
 
     protected override void Awake()
     {
@@ -33,10 +24,10 @@ public class Player : Singleton<Player>
         EventManager.Instance.OnMapUpdateFinished += () => SetPlayerCanMove(true);
     }
 
-    private void Update()
-    {
-        // Debug.Log(CanMove);
-    }
+    // private void Update()
+    // {
+    //     Debug.Log(CanMove);
+    // }
 
     private void Start() //出现动画
     {
@@ -66,6 +57,6 @@ public class Player : Singleton<Player>
 
     public void SetPlayerCanMove(bool isCanMove)
     {
-        SetCanMove = isCanMove;
+        CanMove = isCanMove;
     }
 }

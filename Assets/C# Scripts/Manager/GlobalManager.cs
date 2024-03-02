@@ -14,3 +14,4 @@ public class GlobalManager : MonoBehaviour
         Cursor.SetCursor(cursorText, cursorBias, CursorMode.Auto);
     }
 }
+

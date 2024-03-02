@@ -16,6 +16,8 @@ public class PathNode : MonoBehaviour
     public PathNode Up => up;
     public PathNode Down => down;
     public PathNode[] neighbors => new PathNode[4] { left, right, up, down };
+    public LightState LightState => GetComponent<LightExtension>().LightState;
+    
     #endregion
 
     public virtual bool ReachAble(LightState inputState)

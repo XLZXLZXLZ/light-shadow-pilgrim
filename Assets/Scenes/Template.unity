@@ -229,7 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d89c0827cb0a9a4da9ce86849b2e5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interrupted: 0
 --- !u!4 &307325807
 Transform:
   m_ObjectHideFlags: 0
@@ -774,6 +773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 832575519}
+  - component: {fileID: 832575520}
   - component: {fileID: 832575518}
   m_Layer: 0
   m_Name: Global Volume
@@ -814,6 +814,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &832575520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832575517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 918045aace3f91c4e947fb6d56a25e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: {fileID: 832575518}
 --- !u!1 &922180331
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce55dc1070ec9a4dace7114a80d9c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayerState: 0
+  gameSceneConfig: {fileID: 11400000, guid: c37146b3a6259534eb291a2ed59ff3d9, type: 2}
   currentLevel: 1
 --- !u!4 &922180333
 Transform:

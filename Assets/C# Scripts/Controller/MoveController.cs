@@ -18,7 +18,6 @@ public class MoveController : Singleton<MoveController>
     private PathNode currentNode; //当前处在的结点
     public PathNode CurrentNode => currentNode; //外界只读
     private PathNode nextNode => strategy[0]; //下一访问结点
-
     private bool CanMove => player.CanMove;
     private float Speed => player.Speed;
 
@@ -26,8 +25,8 @@ public class MoveController : Singleton<MoveController>
     {
         base.Awake();
         EventManager.Instance.OnClickNode += UpdateStrategy;
-        EventManager.Instance.OnMapUpdateStart += () => strategy.Clear();
-        EventManager.Instance.OnMapUpdateFinished += TriggerNode; //开始时先触发一下脚下的扳机
+        EventManager.Instance.OnMapUpdateStart += OnMapUpdateStart;
+        EventManager.Instance.OnMapUpdateFinished += OnMapUpdateFinished; //开始时先触发一下脚下的扳机
         
         player = GetComponent<Player>();
 
@@ -77,7 +76,6 @@ public class MoveController : Singleton<MoveController>
             strategy = path;
         else
             strategy.Clear();
-        Debug.Log(path.Count);
     }
 
     private void TriggerNode()
@@ -94,5 +92,17 @@ public class MoveController : Singleton<MoveController>
         if (triggers.Length > 0)
             foreach (var t in triggers)
                 t.OnTriggerOver();
+    }
+
+    private void OnMapUpdateStart()
+    {
+        strategy.Clear();
+    }
+
+    private void OnMapUpdateFinished()
+    {
+        TriggerNode();
+        if(currentNode.LightState != GameManager.Instance.CurrentPlayerState)
+            EventManager.Instance.OnPlayerLightStateChangedStart.Invoke(currentNode.LightState);
     }
 }

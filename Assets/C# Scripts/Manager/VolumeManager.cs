@@ -19,8 +19,7 @@ public class VolumeManager : MonoBehaviour
         set => vignette.intensity.value = value;
     }
     private void Awake()
-    {
-        EventManager.Instance.PlayerLightStateChanged += UpdateVolumeState;
+    { 
         volume.profile.TryGet(out vignette);
     }
 
@@ -36,11 +35,11 @@ public class VolumeManager : MonoBehaviour
     //     }
     // }
 
-    private void UpdateVolumeState(bool b)
+    private void UpdateVolumeState(LightState lightState)
     {
-        if (b)
+        if (lightState == LightState.Light)
         {
-            darkenTween.Kill();
+            darkenTween?.Kill();
             SetVolumeIntensity(Consts.LightStateIntensity);
         }
         else

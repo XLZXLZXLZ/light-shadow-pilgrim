@@ -24,7 +24,8 @@ public class EventManager : Singleton<EventManager>
 
     public InvokableAction OnMapUpdateFinished = new();
 
-    public InvokableAction<bool> PlayerLightStateChanged = new();
+    public InvokableAction<LightState> OnPlayerLightStateChangedStart = new();
+    public InvokableAction<LightState> OnPlayerLightStateChangedFinished = new();
     
     
     public UnityAction<PathNode> OnClickNode; //选定某一结点时

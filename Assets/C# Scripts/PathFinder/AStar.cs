@@ -43,7 +43,7 @@ public class AStar : Singleton<AStar>
 
         int count = 0;
 
-        if (!start.ReachAble(GameManager.Instance.currentPlayerState))
+        if (!start.ReachAble(GameManager.Instance.CurrentPlayerState))
             return false; //若自身本身就处于一个禁用地块，直接返回失败
 
         while(openNodes.Count > 0 && !success && count ++ < 1000) 
@@ -55,7 +55,7 @@ public class AStar : Singleton<AStar>
 
             foreach (var n in node.neighbors)
             {
-                if (n == null || !n.ReachAble(GameManager.Instance.currentPlayerState)) //目标结点不可达时，返回
+                if (n == null || !n.ReachAble(GameManager.Instance.CurrentPlayerState)) //目标结点不可达时，返回
                     continue;
 
                 var newNode = new Node(n, node.current, node.reachPrice + 1, target);
