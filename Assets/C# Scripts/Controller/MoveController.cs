@@ -33,6 +33,7 @@ public class MoveController : Singleton<MoveController>
         EventManager.Instance.MapUpdate.OnFinished += OnMapUpdateFinished; //开始时先触发一下脚下的扳机
         EventManager.Instance.Transmit.OnStart += OnTransmitStart;
         EventManager.Instance.Transmit.OnFinished += OnTransmitFinished;
+        EventManager.Instance.MapUpdate.OnLateFinished += OnMapUpdateLateFinished;
         EventManager.Instance.OnForceToSetNodeByTransmit += OnForceToSetNodeByTransmit;
         
         
@@ -118,7 +119,10 @@ public class MoveController : Singleton<MoveController>
     private void OnMapUpdateFinished()
     {
         TriggerNode();
-        print(nameof(OnMapUpdateFinished));
+    }
+
+    private void OnMapUpdateLateFinished()
+    {
         VolumeManager.Instance.UpdateVolumeState(
             currentNode.LightState == GameManager.Instance.CurrentPlayerState);
     }

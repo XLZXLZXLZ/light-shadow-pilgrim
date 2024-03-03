@@ -46,6 +46,7 @@ public class VolumeManager : Singleton<VolumeManager>
             SetVolumeIntensity(Consts.DarkStateIntensity)
                 .onComplete += () =>
             {
+                darkenTween?.Kill();
                 darkenTween = SetVolumeIntensity(Consts.DarkStateIntensity + 0.01f)
                     .SetEase(Ease.Flash, 2f)
                     .SetLoops(-1);
