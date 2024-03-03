@@ -43,7 +43,7 @@ public class MoveAppearBlock : AppearBlock
             .AppendInterval(delay)
             .Append(transform.DOMove(appearPos, duration))
             .Join(transform.DORotate(appearAngle, 2f))
-            .PushToTweenPool();
+            .PushToTweenPool(EventManager.Instance.MapUpdate);
 
     }
 
@@ -55,6 +55,6 @@ public class MoveAppearBlock : AppearBlock
             .AppendInterval(delay)
             .Append(transform.DOMove(hidePos, duration))
             .Join(transform.DORotate(hideAngle * rotateAngle, 2f))
-            .PushToTweenPool();
+            .PushToTweenPool(EventManager.Instance.MapUpdate);
     }
 }

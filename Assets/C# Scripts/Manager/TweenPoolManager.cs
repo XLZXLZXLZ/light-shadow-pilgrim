@@ -11,42 +11,45 @@ using UnityEngine;
 /// </summary>
 public class TweenPoolManager : Singleton<TweenPoolManager>
 {
-    #region 原生部分
+    private Dictionary<StageEvent, List<Tween>> CurrentTweenDic { get; set; } = new();
 
-    private List<Tween> CurrentTweens { get; set; } = new();
-    // public event Action CurrentFinishedCallback;
-    public bool IsEmpty => CurrentTweens.Count == 0;
-
-    public void PushTween(Tween tween)
+    public Tween PushTween(StageEvent stageEvent, Tween tween)
     {
-        if (tween == null || tween.IsComplete() || CurrentTweens.Contains(tween)) return;
-        print(nameof(PushTween));
+        if (tween == null ||
+            tween.IsComplete() ||
+            stageEvent == null) return tween;
+
+        if (CurrentTweenDic.TryGetValue(stageEvent, out List<Tween> tweens))
+        {
+            tweens.Add(tween);
+        }
+        else
+        {
+            CurrentTweenDic.Add(stageEvent, new List<Tween>(){tween});
+            stageEvent.StartStageEvent();
+        }
         
-        if(IsEmpty)
-            EventManager.Instance.MapUpdate.StartStageEvent();
-        CurrentTweens.Add(tween);
-        tween.onComplete += () => OnTweenCompleted(tween);
+        tween.onComplete += () => OnTweenCompleted(stageEvent, tween);
+
+        return tween;
     }
 
-    private void OnTweenCompleted(Tween tween)
+    private void OnTweenCompleted(StageEvent stageEvent, Tween tween)
     {
-        
-        CurrentTweens.Remove(tween);
-        if (IsEmpty)
+        CurrentTweenDic[stageEvent].Remove(tween);
+        if (CurrentTweenDic[stageEvent].Count == 0)
         {
-            print("OnTweenCompleted");
-            EventManager.Instance.MapUpdate.FinishStageEvent();
+            stageEvent.FinishStageEvent();
+            CurrentTweenDic.Remove(stageEvent);
         }
     }
-
-    #endregion
 }
 
 public static class TweenPoolExtension
 {
-    public static void PushToTweenPool(this Tween tween)
+    public static Tween PushToTweenPool(this Tween tween, StageEvent stageEvent)
     {
-        TweenPoolManager.Instance.PushTween(tween);
+        return TweenPoolManager.Instance.PushTween(stageEvent,tween);
     }
 }
 

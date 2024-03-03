@@ -20,7 +20,7 @@ public class ScaleAppearBlock : AppearBlock
         DOTween.Sequence()
             .AppendInterval(delay)
             .Append(transform.DOScale(startScale, duration))
-            .PushToTweenPool();
+            .PushToTweenPool(EventManager.Instance.MapUpdate);
     }
 
     protected override void SwitchOff()
@@ -29,6 +29,6 @@ public class ScaleAppearBlock : AppearBlock
         DOTween.Sequence()
             .AppendInterval(delay)
             .Append(transform.DOScale(Vector3.zero, duration))
-            .PushToTweenPool();
+            .PushToTweenPool(EventManager.Instance.MapUpdate);
     }
 }

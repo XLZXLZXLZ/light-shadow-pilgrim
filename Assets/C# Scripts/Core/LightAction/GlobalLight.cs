@@ -45,7 +45,7 @@ public class GlobalLight : Singleton<GlobalLight>
         transform.DOLocalRotate(transform.eulerAngles + new Vector3(0, rotateAngle, 0), 0.6f)
             .SetEase(Ease.OutQuad) //旋转地图，并在旋转完毕后通知更新
             .OnComplete(() => canChange = true)
-            .PushToTweenPool();
+            .PushToTweenPool(EventManager.Instance.MapUpdate);
         
         // 限制玩家移动
         // Player.Instance.InterruptMovement(0.5f);
@@ -73,7 +73,7 @@ public class GlobalLight : Singleton<GlobalLight>
         transform.DOLocalRotate(new Vector3(heightMap[currentLevel], transform.eulerAngles.y, 0), 0.6f)
             .SetEase(Ease.OutQuad)
             .OnComplete(() => canChange = true)
-            .PushToTweenPool();
+            .PushToTweenPool(EventManager.Instance.MapUpdate);
         
         // Player.Instance.InterruptMovement(0.5f);
         return true;

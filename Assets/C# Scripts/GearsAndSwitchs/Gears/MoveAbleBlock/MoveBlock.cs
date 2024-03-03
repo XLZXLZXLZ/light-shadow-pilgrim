@@ -33,7 +33,7 @@ public class MoveBlock : Gear
             .AppendInterval(delay)
             .Append(transform.DOMove(target, duration).SetEase(ease))
             .Join(Camera.main.DOShakePosition(duration,shakeLevel,100))
-            .PushToTweenPool();
+            .PushToTweenPool(EventManager.Instance.MapUpdate);
     }
 
     protected override void SwitchOff()
@@ -44,7 +44,7 @@ public class MoveBlock : Gear
             .AppendInterval(delay)
             .Append(transform.DOMove(origin, duration).SetEase(ease))
             .Join(Camera.main.DOShakePosition(duration * 1.2f, shakeLevel, 100))
-            .PushToTweenPool();
+            .PushToTweenPool(EventManager.Instance.MapUpdate);
     }
 
     protected override void OnDrawGizmos()

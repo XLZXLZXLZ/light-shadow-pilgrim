@@ -22,6 +22,5 @@ public class GameManager : Singleton<GameManager>
     private void OnPlayerLightStateChanged(LightState lightState)
     {
         CurrentPlayerState = lightState;
-        
     }
 }

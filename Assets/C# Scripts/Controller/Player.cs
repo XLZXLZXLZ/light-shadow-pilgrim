@@ -13,15 +13,21 @@ public class Player : Singleton<Player>
 
     private float shieldMovementTime; //记录屏蔽移动信息的时间
     private ParticleSystem particle;
+    private Vector3 startScale;
     public bool CanMove { get; private set; } = true; //判断此时是否可以移动
-    public float Speed => speed;    
+    public float Speed => speed;
+
+    #region Runtime
 
     protected override void Awake()
     {
         base.Awake();
         particle = GetComponentInChildren<ParticleSystem>();
-        EventManager.Instance.MapUpdate.OnStart += () => CanMove = false;
-        EventManager.Instance.MapUpdate.OnFinished += () => CanMove = true;
+        startScale = transform.localScale;
+        EventManager.Instance.MapUpdate.OnStart += OnMapUpdateStart;
+        EventManager.Instance.MapUpdate.OnFinished += OnMapUpdateFinished;
+        EventManager.Instance.Transmit.OnStart += OnTransmitStart;
+        EventManager.Instance.Transmit.OnFinished += OnTransmitFinished;
     }
 
     // private void Update()
@@ -49,10 +55,51 @@ public class Player : Singleton<Player>
         };
     }
 
+    #endregion
+
+    #region Public
+
     public void EndAnim()
     {
         Instantiate(destroyParticle, transform.position, Quaternion.identity);
         transform.position += Vector3.up * 10000;
     }
+
+    public Tween OnSmaller()
+    {
+        return transform.DOScale(Vector3.zero, Consts.PlayerScaleTransformDuration);
+    }
+
+    public Tween OnBigger()
+    {
+        return transform.DOScale(startScale, Consts.PlayerScaleTransformDuration);
+    }
+
+    #endregion
+
+    #region Events
+
+    private void OnMapUpdateStart()
+    {
+        CanMove = false;
+    }
+
+    private void OnMapUpdateFinished()
+    {
+        CanMove = true;
+    }
+
+    private void OnTransmitStart()
+    {
+        CanMove = false;
+    }
+
+    private void OnTransmitFinished()
+    {
+        CanMove = true;
+    }
+
+    #endregion
+
     
 }

@@ -31,7 +31,7 @@ public class TransformSwitch : Switch, ITriggerable
 
     public void OnTriggerOver()
     {
-        SwitchOn();
+        SwitchOff();
         anim.Play("SwitchOff");
     }
 }

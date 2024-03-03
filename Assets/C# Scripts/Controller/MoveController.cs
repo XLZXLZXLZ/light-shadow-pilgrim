@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -21,12 +22,19 @@ public class MoveController : Singleton<MoveController>
     private bool CanMove => player.CanMove;
     private float Speed => player.Speed;
 
+    #region Runtime
+
     protected override void Awake()
     {
         base.Awake();
+        
         EventManager.Instance.OnClickNode += UpdateStrategy;
         EventManager.Instance.MapUpdate.OnStart += OnMapUpdateStart;
         EventManager.Instance.MapUpdate.OnFinished += OnMapUpdateFinished; //开始时先触发一下脚下的扳机
+        EventManager.Instance.Transmit.OnStart += OnTransmitStart;
+        EventManager.Instance.Transmit.OnFinished += OnTransmitFinished;
+        EventManager.Instance.OnForceToSetNodeByTransmit += OnForceToSetNodeByTransmit;
+        
         
         player = GetComponent<Player>();
 
@@ -45,6 +53,10 @@ public class MoveController : Singleton<MoveController>
             MoveTo(transform.position, currentNode.pos, Speed);
         }
     }
+
+    #endregion
+
+    #region FindFath
 
     private void MoveTo(Vector3 origin,Vector3 target,float speed)
     {
@@ -85,7 +97,7 @@ public class MoveController : Singleton<MoveController>
             foreach (var t in triggers)
                 t.OnTrigger();
     }
-
+    
     private void TriggerNodeOver()
     {
         var triggers = currentNode.GetComponents<ITriggerable>();
@@ -93,6 +105,10 @@ public class MoveController : Singleton<MoveController>
             foreach (var t in triggers)
                 t.OnTriggerOver();
     }
+
+    #endregion
+    
+    #region Events
 
     private void OnMapUpdateStart()
     {
@@ -102,7 +118,45 @@ public class MoveController : Singleton<MoveController>
     private void OnMapUpdateFinished()
     {
         TriggerNode();
-        // if(currentNode.LightState != GameManager.Instance.CurrentPlayerState)
-        //     EventManager.Instance.OnPlayerLightStateChangedStart.Invoke(currentNode.LightState);
+        print(nameof(OnMapUpdateFinished));
+        VolumeManager.Instance.UpdateVolumeState(
+            currentNode.LightState == GameManager.Instance.CurrentPlayerState);
     }
+
+    private void OnTransmitStart()
+    {
+        strategy.Clear();
+        
+        Tween smaller = player.OnSmaller()
+            .PushToTweenPool(EventManager.Instance.Transmit);
+        smaller.onComplete += () =>
+        {
+            transform.position = currentNode.transform.position;
+            transform.parent = currentNode.transform;
+        };
+        
+        Tween bigger = player.OnBigger()
+            .PushToTweenPool(EventManager.Instance.Transmit);
+
+        DOTween.Sequence()
+            .Append(smaller)
+            .Append(bigger);
+        
+        Debug.Log("TransmitStart");
+    }
+
+    private void OnTransmitFinished()
+    {
+        EventManager.Instance.OnMoveToNewNode?.Invoke(currentNode);
+    }
+
+    private void OnForceToSetNodeByTransmit(TransmitSwitch transmitSwitch)
+    {
+        currentNode = transmitSwitch.PlatformNode;
+    }
+
+    #endregion
+    
+
+    
 }

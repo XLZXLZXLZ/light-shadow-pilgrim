@@ -19,10 +19,15 @@ public class EventManager : Singleton<EventManager>
     public InvokableAction OnPlayerMoveStart = new();
 
     public InvokableAction OnPlayerMoveFinished = new();
+    
+    public InvokableAction<LightState> OnPlayerLightStateChanged = new();
 
     public StageEvent MapUpdate = new();
 
-    public InvokableAction<LightState> OnPlayerLightStateChanged = new();
+    public StageEvent Transmit = new();
+
+    public InvokableAction<TransmitSwitch> OnForceToSetNodeByTransmit = new();  // 哥们不想暴露CurrentNode的接口，只能这样干了
+
     
     public UnityAction<PathNode> OnClickNode; //选定某一结点时
     

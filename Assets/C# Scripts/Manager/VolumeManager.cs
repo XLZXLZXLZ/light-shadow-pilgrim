@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 
-public class VolumeManager : MonoBehaviour
+public class VolumeManager : Singleton<VolumeManager>
 {
     [SerializeField] private Volume volume;
     private Vignette vignette;
@@ -35,9 +35,9 @@ public class VolumeManager : MonoBehaviour
     //     }
     // }
 
-    public void UpdateVolumeState(LightState lightState)
+    public void UpdateVolumeState(bool isMatch)
     {
-        if (lightState == LightState.Light)
+        if (isMatch)
         {
             darkenTween?.Kill();
             SetVolumeIntensity(Consts.LightStateIntensity);
