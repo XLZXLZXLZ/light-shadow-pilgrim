@@ -18,9 +18,10 @@ public class VolumeManager : Singleton<VolumeManager>
         get => vignette.intensity.value;
         set => vignette.intensity.value = value;
     }
-    private void Awake()
+    protected override void Awake()
     { 
-        volume.profile.TryGet(out vignette);
+        base.Awake();
+        volume?.profile.TryGet(out vignette);
     }
 
     // private void Update()
@@ -37,6 +38,8 @@ public class VolumeManager : Singleton<VolumeManager>
 
     public void UpdateVolumeState(bool isMatch)
     {
+        if (volume == null)
+            return;
         if (isMatch)
         {
             darkenTween?.Kill();

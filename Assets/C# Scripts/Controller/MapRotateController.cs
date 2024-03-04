@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class MapRotateController : Singleton<MapRotateController>
+public class MapRotateController : MonoBehaviour
 {
     public bool IsRotating { get; private set; }
     public bool Interrupted { get; private set; }
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         EventManager.Instance.MapUpdate.OnStart += () => Interrupted = false;
         EventManager.Instance.MapUpdate.OnFinished += () => Interrupted = true;
     }
@@ -25,5 +24,17 @@ public class MapRotateController : Singleton<MapRotateController>
         transform.DORotate(transform.eulerAngles + Vector3.up * angle, 0.33f)
             .SetEase(Ease.OutQuart)
             .OnComplete(() => IsRotating = false);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Rotate(-90);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Rotate(90);
+        }
     }
 }

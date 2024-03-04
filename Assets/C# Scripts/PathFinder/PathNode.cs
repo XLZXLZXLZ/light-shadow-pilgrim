@@ -16,7 +16,19 @@ public class PathNode : MonoBehaviour
     public PathNode Up => up;
     public PathNode Down => down;
     public PathNode[] neighbors => new PathNode[4] { left, right, up, down };
-    public LightState LightState => GetComponent<LightExtension>().LightState;
+    public LightState LightState
+    {
+        get
+        {
+            if (lightExtension == null)
+            {
+                lightExtension = GetComponent<LightExtension>();
+            }
+            return lightExtension.LightState;
+        }
+    }
+
+    private LightExtension lightExtension;
     
     #endregion
 

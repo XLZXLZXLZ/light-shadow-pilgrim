@@ -179,6 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bfad96f6d4f9f4f9b798d750999f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IsAutoDetectLight>k__BackingField: 1
+  lightState: 0
 --- !u!114 &1178714795267915007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +318,11 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6fedd992bac258b4396f3f349b16c99b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 6fedd992bac258b4396f3f349b16c99b,
+        type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: 6fedd992bac258b4396f3f349b16c99b,

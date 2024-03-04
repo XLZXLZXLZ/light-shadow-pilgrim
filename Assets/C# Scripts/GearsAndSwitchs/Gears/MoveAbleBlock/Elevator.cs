@@ -34,7 +34,8 @@ public class Elevator : MonoBehaviour
 
         transform
             .DOMove(isReverse ? origin : transform.position + target, duration).SetEase(Ease.Linear)
-            .onComplete += () => isWorking = false;
+            .OnComplete(() => isWorking = false)
+            .PushToTweenPool(EventManager.Instance.MapUpdate);
         
         isReverse = !isReverse;
         isWorking = true;
