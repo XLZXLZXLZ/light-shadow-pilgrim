@@ -21,6 +21,8 @@ public class VolumeManager : Singleton<VolumeManager>
     protected override void Awake()
     { 
         base.Awake();
+        if(volume == null)
+            volume = FindObjectOfType<Volume>();
         volume?.profile.TryGet(out vignette);
     }
 

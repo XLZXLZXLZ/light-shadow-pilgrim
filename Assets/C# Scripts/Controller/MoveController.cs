@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent (typeof (Player))]
@@ -34,6 +33,7 @@ public class MoveController : Singleton<MoveController>
         EventManager.Instance.Transmit.OnStart += OnTransmitStart;
         EventManager.Instance.Transmit.OnFinished += OnTransmitFinished;
         EventManager.Instance.MapUpdate.OnLateFinished += OnMapUpdateLateFinished;
+        EventManager.Instance.OnGenerateMapFinished += OnMapGenerated;
         EventManager.Instance.OnForceToSetNodeByTransmit += OnForceToSetNodeByTransmit;
         
         
@@ -117,6 +117,11 @@ public class MoveController : Singleton<MoveController>
     }
 
     private void OnMapUpdateFinished()
+    {
+        
+    }
+
+    private void OnMapGenerated()
     {
         TriggerNode();
     }

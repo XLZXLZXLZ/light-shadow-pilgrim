@@ -22,7 +22,7 @@ public class TransmitSwitch : Switch,ITriggerable
         // 在这里没有什么表现画面，仅仅是想触发这个事件且保证不会多次触发Start
         DOTween.Sequence().PushToTweenPool(EventManager.Instance.Transmit);
         EventManager.Instance.OnForceToSetNodeByTransmit.Invoke(target);
-        
+
         // anim.Play("SwitchOn");
     }
 
