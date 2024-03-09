@@ -52,6 +52,8 @@ public class Gear : MonoBehaviour
         Gizmos.color = Color.red;
         foreach (Switch sw in targetSwitch)
         {
+            if (sw == null)
+                continue;
             Gizmos.DrawLine(transform.position, sw.transform.position);
             Gizmos.DrawWireSphere(sw.transform.position, 0.5f);
         }

@@ -63,5 +63,10 @@ public class LightExtension : MonoBehaviour
     {
         Gizmos.color = LightState == LightState.Dark ? Color.red : Color.green;
         Gizmos.DrawLine(transform.position, transform.position - GlobalLight.Instance.LightDirInLogic * 10);
+
+        Ray ray = new Ray(transform.position, -GlobalLight.Instance.LightDirInLogic);
+        bool b = Physics.Raycast(ray, out var rayCast, 100, LayerMask.GetMask("Ground"));
+        if (!b) return;
+        print(rayCast.collider.gameObject);
     }
 }
