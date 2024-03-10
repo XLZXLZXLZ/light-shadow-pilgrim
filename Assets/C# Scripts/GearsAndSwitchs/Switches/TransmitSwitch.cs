@@ -17,6 +17,8 @@ public class TransmitSwitch : Switch,ITriggerable
 
     public void OnTrigger()
     {
+        if (!target.PlatformNode.ReachAble(GameManager.Instance.CurrentPlayerState)) return;
+        
         SwitchOn();
         
         // 在这里没有什么表现画面，仅仅是想触发这个事件且保证不会多次触发Start
