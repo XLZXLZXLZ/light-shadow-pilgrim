@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Gear : MonoBehaviour
@@ -16,8 +13,8 @@ public class Gear : MonoBehaviour
             return;
         foreach (Switch sw in targetSwitch)
         {
-            sw.switchOn += SingleSwitchOn;
-            sw.switchOff += SingleSwitchOff;
+            sw.RegisterSwitchOn(SingleSwitchOn);
+            sw.RegisterSwitchOff(SingleSwitchOff);
         }
     }
 
@@ -36,7 +33,7 @@ public class Gear : MonoBehaviour
 
     protected virtual void SwitchOn()
     {
-
+        
     }
 
     protected virtual void SwitchOff()

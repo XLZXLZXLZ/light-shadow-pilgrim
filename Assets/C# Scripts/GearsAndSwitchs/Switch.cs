@@ -17,14 +17,24 @@ public class Switch : MonoBehaviour
                 if(value)
                     switchOn?.Invoke();
                 else
-                    switchOff?.Invoke();    
+                    switchOff?.Invoke();
                 isOn = value;
             }
         }
     }
 
-    public UnityAction switchOn;
-    public UnityAction switchOff;
+    protected UnityAction switchOn;
+    protected UnityAction switchOff;
+
+    public virtual void RegisterSwitchOn(UnityAction action)
+    {
+        switchOn += action;
+    }
+    
+    public virtual void RegisterSwitchOff(UnityAction action)
+    {
+        switchOff += action;
+    }
 
     protected virtual void SwitchOn()
     {
