@@ -32,8 +32,11 @@ public class LightExtension : MonoBehaviour
 
     private void Awake()
     {
-        if(IsAutoDetectLight)
+        if (IsAutoDetectLight)
+        {
             EventManager.Instance.MapUpdate.OnFinished += OnStateUpdate;
+            EventManager.Instance.OnGenerateMapFinished += OnStateUpdate;
+        }
     }
 
     // private void Update()
@@ -56,7 +59,7 @@ public class LightExtension : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        OnStateUpdate();
+        //OnStateUpdate();
     }
 
     private void OnDrawGizmosSelected()

@@ -14,7 +14,7 @@ public class MoveAppearBlock : AppearBlock
     private Ease ease; 
     [SerializeField]
     [Tooltip("至少下降多少能到雾里")]
-    private float hideHeight = 30;
+    private float hideHeight = 40;
 
     #region 自动计算DOTWEEN所需数值，是托屎山
     private Vector3 appearPos; //出现时，应当处于哪个位置

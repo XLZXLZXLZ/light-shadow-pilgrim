@@ -51,7 +51,7 @@ public class ControllerableMoveBlock : Gear
         currentIndex += offset;
 
         transform
-            .DOBlendableMoveBy(moveAxis * offset, 0.25f)
+            .DOBlendableLocalMoveBy(moveAxis * offset, 0.25f)
             .SetEase(Ease.OutSine)
             .PushToTweenPool(EventManager.Instance.MapUpdate);
     }
