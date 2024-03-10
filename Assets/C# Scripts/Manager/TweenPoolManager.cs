@@ -39,8 +39,8 @@ public class TweenPoolManager : Singleton<TweenPoolManager>
         CurrentTweenDic[stageEvent].Remove(tween);
         if (CurrentTweenDic[stageEvent].Count == 0)
         {
-            stageEvent.FinishStageEvent();
             CurrentTweenDic.Remove(stageEvent);
+            stageEvent.FinishStageEvent();
         }
     }
 }

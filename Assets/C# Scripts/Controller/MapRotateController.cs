@@ -11,8 +11,8 @@ public class MapRotateController : MonoBehaviour
 
     private void Awake()
     {
-        EventManager.Instance.MapUpdate.OnStart += () => Interrupted = false;
-        EventManager.Instance.MapUpdate.OnFinished += () => Interrupted = true;
+        EventManager.Instance.MapUpdate.OnStart += () => Interrupted = true;
+        EventManager.Instance.MapUpdate.OnFinished += () => Interrupted = false;
     }
 
     public void Rotate(float angle)
