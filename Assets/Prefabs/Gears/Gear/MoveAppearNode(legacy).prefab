@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 7479265968509691720}
   - component: {fileID: 1511443651841256168}
   m_Layer: 0
-  m_Name: MoveAppearNode
+  m_Name: MoveAppearNode(legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

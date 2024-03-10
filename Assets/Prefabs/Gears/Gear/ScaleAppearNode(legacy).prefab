@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 7479265968509691720}
   - component: {fileID: 9150307965828308431}
   m_Layer: 0
-  m_Name: ScaleAppearNode
+  m_Name: ScaleAppearNode(legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

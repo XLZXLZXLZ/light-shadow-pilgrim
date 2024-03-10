@@ -10280,7 +10280,7 @@ GameObject:
   - component: {fileID: 7479265969619992257}
   - component: {fileID: 7479265969619992258}
   m_Layer: 0
-  m_Name: MoveAppearProNode
+  m_Name: MoveAppearNode(Pro)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
