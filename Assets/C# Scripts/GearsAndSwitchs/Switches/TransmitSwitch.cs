@@ -6,6 +6,7 @@ using UnityEngine;
 public class TransmitSwitch : Switch,ITriggerable
 {
     [SerializeField] private TransmitSwitch target;
+    [SerializeField] private GameObject transmitParticle;
     // private Animator anim;
     public PlatformNode PlatformNode { get; private set; }
 
@@ -25,6 +26,9 @@ public class TransmitSwitch : Switch,ITriggerable
         DOTween.Sequence().PushToTweenPool(EventManager.Instance.Transmit);
         EventManager.Instance.OnForceToSetNodeByTransmit.Invoke(target);
 
+        target.Effect();
+        Effect();
+
         // anim.Play("SwitchOn");
     }
 
@@ -32,6 +36,11 @@ public class TransmitSwitch : Switch,ITriggerable
     {
         SwitchOff();
         // anim.Play("SwitchOff");
+    }
+
+    public void Effect()
+    {
+        Instantiate(transmitParticle, transform.position, Quaternion.identity);
     }
 }
 

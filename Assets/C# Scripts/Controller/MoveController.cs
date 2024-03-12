@@ -136,6 +136,7 @@ public class MoveController : Singleton<MoveController>
     {
         strategy.Clear();
         
+        /*
         Tween smaller = player.OnSmaller()
             .PushToTweenPool(EventManager.Instance.Transmit);
         smaller.onComplete += () =>
@@ -152,6 +153,7 @@ public class MoveController : Singleton<MoveController>
             .Append(bigger);
         
         Debug.Log("TransmitStart");
+        */
     }
 
     private void OnTransmitFinished()
@@ -162,6 +164,8 @@ public class MoveController : Singleton<MoveController>
     private void OnForceToSetNodeByTransmit(TransmitSwitch transmitSwitch)
     {
         currentNode = transmitSwitch.PlatformNode;
+        transform.position = currentNode.transform.position;
+        transform.parent = currentNode.transform;
     }
 
     #endregion

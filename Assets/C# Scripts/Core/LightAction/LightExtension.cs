@@ -70,6 +70,5 @@ public class LightExtension : MonoBehaviour
         Ray ray = new Ray(transform.position, -GlobalLight.Instance.LightDirInLogic);
         bool b = Physics.Raycast(ray, out var rayCast, 100, LayerMask.GetMask("Ground"));
         if (!b) return;
-        print(rayCast.collider.gameObject);
     }
 }

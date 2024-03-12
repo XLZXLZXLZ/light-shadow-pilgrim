@@ -17,6 +17,8 @@ public class ControllerableMoveBlock : Gear
     [SerializeField]
     private int stepLength = 1;
     [SerializeField]
+    private float duration = 0.25f;
+    [SerializeField]
     protected Renderer tipColor;
     [SerializeField]
     protected Color onColor, offColor;
@@ -53,8 +55,8 @@ public class ControllerableMoveBlock : Gear
         currentIndex += offset;
 
         transform
-            .DOBlendableLocalMoveBy(moveAxis * offset * stepLength, 0.25f)
-            .SetEase(Ease.OutSine)
+            .DOBlendableLocalMoveBy(moveAxis * offset * stepLength, duration)
+            .SetEase(Ease.OutQuad)
             .PushToTweenPool(EventManager.Instance.MapUpdate);
     }
     

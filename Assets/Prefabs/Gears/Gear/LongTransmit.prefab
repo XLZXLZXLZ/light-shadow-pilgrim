@@ -5076,6 +5076,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  transmitParticle: {fileID: 9106548567048655804, guid: 6c5a82505fd907949ab2b79c47913571,
+    type: 3}
 --- !u!114 &7928702474338480703
 MonoBehaviour:
   m_ObjectHideFlags: 0
