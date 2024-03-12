@@ -381,6 +381,11 @@ PrefabInstance:
       propertyPath: targetSwitch.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7018817982938982208, guid: 3811c55162cd3ab458b27c031bcb8cf6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3811c55162cd3ab458b27c031bcb8cf6, type: 3}
 --- !u!1001 &129543501
@@ -8059,10 +8064,10 @@ Transform:
   - {fileID: 1478304709}
   - {fileID: 1415667494}
   - {fileID: 355198331}
-  - {fileID: 890724753}
   - {fileID: 302239356}
   - {fileID: 1783987146}
   - {fileID: 1366179399}
+  - {fileID: 890724753}
   - {fileID: 302429878}
   - {fileID: 387835503}
   - {fileID: 1648047998}

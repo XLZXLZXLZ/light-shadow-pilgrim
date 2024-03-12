@@ -30,11 +30,11 @@ public class MapRotateController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            Rotate(-90);
+            Rotate(90);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Rotate(90);
+            Rotate(-90);
         }
     }
 }
