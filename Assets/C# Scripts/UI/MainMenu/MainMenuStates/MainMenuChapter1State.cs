@@ -6,13 +6,15 @@ using DG.Tweening;
 
 public class MainMenuChapter1State : MainMenuStateBase
 {
+    [Header("Chapter1")]
     [OdinSerialize] private Light areaLight;
     [OdinSerialize] private float areaLightIntensity;
     [OdinSerialize] private Transform clockRoot;
     public override void Enter()
     {
         base.Enter();
-        areaLight.transform.position = clockRoot.transform.position;
+        Vector3 endValue = new Vector3(clockRoot.transform.position.x, areaLight.transform.position.y,clockRoot.transform.position.z);
+        areaLight.transform.position = endValue;
         areaLight.intensity = 0;
         DOTween.To(
             () => areaLight.intensity,
@@ -47,7 +49,7 @@ public class MainMenuChapter1State : MainMenuStateBase
     protected override void OnSelectLevelItem(LevelItem levelItem)
     {
         base.OnSelectLevelItem(levelItem);
-        MainMenuManager.Instance.SetLightIntensity(Consts.MainMenuCommonLightIntensity);
+        MainMenuManager.Instance.SetGlobalLightIntensity(Consts.MainMenuCommonLightIntensity, Consts.MainMenuTransformDuration);
     }
 }
 

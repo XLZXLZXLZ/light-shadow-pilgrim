@@ -7,7 +7,7 @@ public class MainMenuChapter0State : MainMenuStateBase
 {
     protected override void OnMouseEnterLevelItem(LevelItem levelItem)
     {
-        MainMenuManager.Instance.RotateLight(levelItem.LevelIndex * levelItemGroup.RotateAngle);
+        MainMenuManager.Instance.RotateLight(levelItem.LevelIndex * levelItemGroup.RotateAngle, Consts.MainMenuTransformDuration);
     }
 
     protected override void OnMouseExitLevelItem(LevelItem levelItem)
