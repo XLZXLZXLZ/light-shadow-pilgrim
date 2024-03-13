@@ -6478,7 +6478,7 @@ MonoBehaviour:
       Data: 
     - Name: startGlobalLightIntensity
       Entry: 4
-      Data: 0
+      Data: 2
     - Name: startEnvironmentLightColor
       Entry: 7
       Data: UnityEngine.Color32, UnityEngine.CoreModule
