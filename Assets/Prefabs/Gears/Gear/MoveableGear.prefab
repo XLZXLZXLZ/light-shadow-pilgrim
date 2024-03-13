@@ -268,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 5099495201342559339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 50, z: 0.15}
+  m_LocalScale: {x: 0.15, y: 80, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1702856025564022051}
@@ -603,6 +603,8 @@ MonoBehaviour:
   moveAxis: {x: 0, y: 1, z: 0}
   top: 2
   bottom: -2
+  stepLength: 1
+  duration: 0.25
   tipColor: {fileID: 1165161221246384200}
   onColor: {r: 0.21568628, g: 0.7294118, b: 1, a: 0}
   offColor: {r: 1, g: 0.31764707, b: 0.31764707, a: 0}

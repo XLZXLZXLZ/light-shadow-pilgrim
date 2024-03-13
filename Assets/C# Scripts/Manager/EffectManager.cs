@@ -45,20 +45,20 @@ public class EffectManager : MonoBehaviour
            x => RenderSettings.fogColor = x,
            color,
            0.3f
-           );
+           ).PushToTweenPool(EventManager.Instance.MapUpdate);
 
         DOTween.To(
            () => Camera.main.backgroundColor,
            x => Camera.main.backgroundColor = x,
            color,
            0.3f
-           );
+           ).PushToTweenPool(EventManager.Instance.MapUpdate);
 
         DOTween.To(
            () => LightIntensity,
            x => LightIntensity = x,
            lightIntensity,
            0.3f
-           );
+           ).PushToTweenPool(EventManager.Instance.MapUpdate);
     }
 }

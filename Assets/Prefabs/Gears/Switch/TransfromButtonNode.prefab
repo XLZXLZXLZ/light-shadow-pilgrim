@@ -150,6 +150,7 @@ MonoBehaviour:
   right: {fileID: 0}
   up: {fileID: 0}
   down: {fileID: 0}
+  alwaysReachable: 1
 --- !u!114 &7048632608100875804
 MonoBehaviour:
   m_ObjectHideFlags: 0

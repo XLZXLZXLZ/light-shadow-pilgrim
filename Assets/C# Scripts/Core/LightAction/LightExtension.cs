@@ -65,7 +65,7 @@ public class LightExtension : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = LightState == LightState.Dark ? Color.red : Color.green;
-        Gizmos.DrawLine(transform.position, transform.position - GlobalLight.Instance.LightDirInLogic * 10);
+        Gizmos.DrawLine(transform.position, transform.position - GlobalLight.Instance.LightDirInLogic * 100);
 
         Ray ray = new Ray(transform.position, -GlobalLight.Instance.LightDirInLogic);
         bool b = Physics.Raycast(ray, out var rayCast, 100, LayerMask.GetMask("Ground"));

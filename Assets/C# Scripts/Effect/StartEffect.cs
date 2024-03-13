@@ -55,7 +55,7 @@ public class StartEffect : MonoBehaviour
                     Counter++;
 
                     Vector3 origin = t.position;
-                    t.position += Vector3.down * 30;
+                    t.position += Vector3.down * 45;
                     float delay = (t.position.z - t.position.x + 10) * 0.2f;
                     delay = Mathf.Max(0, delay);
 
@@ -71,7 +71,7 @@ public class StartEffect : MonoBehaviour
                 {
                     var t = child.GetChild(j);
                     Vector3 origin = t.position;
-                    t.position += Vector3.down * 30;
+                    t.position += Vector3.down * 45;
 
                     EventManager.Instance.OnGenerateMapFinished += () => {
                         DOTween.Sequence()

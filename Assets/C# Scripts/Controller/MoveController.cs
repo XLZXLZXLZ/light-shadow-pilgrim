@@ -85,8 +85,16 @@ public class MoveController : Singleton<MoveController>
     {
         if (!CanMove) //不可移动时直接退出
             return;
-        if(AStar.Instance.FindPath(currentNode,node,out var path))
-            strategy = path;
+        if (AStar.Instance.FindPath(currentNode, node, out var path, out var isOrigin))
+        {
+            if(isOrigin) //若玩家仅点击了脚下的结点，那么我们尝试重复触发脚下的机关
+            {
+                if(path[0].TryGetComponent<IRepeatTriggerable>(out var t))
+                    t.RepeatTrigger();
+            }
+            else //正常移动
+                strategy = path;
+        }
         else
             strategy.Clear();
     }

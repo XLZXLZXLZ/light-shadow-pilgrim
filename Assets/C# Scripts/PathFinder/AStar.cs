@@ -30,8 +30,17 @@ public class AStar : Singleton<AStar>
     #endregion
 
 #region A*寻路
-    public bool FindPath(PathNode start,PathNode target,out List<PathNode> path)
+    public bool FindPath(PathNode start,PathNode target,out List<PathNode> path, out bool isOrigin)
     {
+        if (start == target) //特殊情况: 选定点刚好为终点时，返回该结点，通知这是起点
+        {
+            path = new List<PathNode>();
+            path.Add(start);
+            isOrigin = true;
+            return true;
+        }
+
+        isOrigin = false;
         path = new List<PathNode>(); //结点
 
         List<Node> openNodes = new List<Node>(); //可访问的结点表

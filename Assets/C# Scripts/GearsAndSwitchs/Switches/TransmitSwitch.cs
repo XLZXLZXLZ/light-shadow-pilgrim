@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class TransmitSwitch : Switch,ITriggerable
+public class TransmitSwitch : Switch,ITriggerable,IRepeatTriggerable
 {
     [SerializeField] private TransmitSwitch target;
     [SerializeField] private GameObject transmitParticle;
@@ -41,6 +41,11 @@ public class TransmitSwitch : Switch,ITriggerable
     public void Effect()
     {
         Instantiate(transmitParticle, transform.position, Quaternion.identity);
+    }
+
+    public void RepeatTrigger()
+    {
+        OnTrigger();
     }
 }
 
