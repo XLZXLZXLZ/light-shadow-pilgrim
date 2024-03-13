@@ -12,7 +12,7 @@ using UnityEngine;
 public class StateMachine: SerializedMonoBehaviour
 {
     //状态字典，获取状态用，它将由子类的数组赋值
-    protected Dictionary<System.Type, IState> stateDic;
+    protected Dictionary<System.Type, IState> stateDic = new();
     //当前状态
     private IState currentState;
     private IState lastState;

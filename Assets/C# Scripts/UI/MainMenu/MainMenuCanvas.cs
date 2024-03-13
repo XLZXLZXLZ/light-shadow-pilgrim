@@ -35,7 +35,7 @@ public class MainMenuCanvas : MonoBehaviour
     private void EnterChooseLevel()
     {
         isReady = false;
-        MainMenuManager.Instance.StartWork(firstEnter);
+        MainMenuManager.Instance.StartWork();
         anim.Play("DisappearAnim");
         firstEnter = false;
     }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Consts
 {
+    public const float MainMenuChapterDuration = 1.5f;
+    public const float MainMenuTransformDuration = 0.3f;
+    public const float MainMenuCommonLightIntensity = 2f;
+    
     public const float VolumeFadeDuration = 0.3f;
     public const float LightStateIntensity = 0f;
     public const float DarkStateIntensity = 0.4f;

@@ -1,11 +1,15 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.Serialization;
 using UnityEngine;
 
 [Serializable]
 public abstract class MainMenuStateBase : IState
 {
-    [SerializeField] protected LevelItemGroup levelItemGroup;
+    [OdinSerialize] protected LevelItemGroup levelItemGroup;
+    [OdinSerialize] protected Vector3 startCameraPos;
+    [OdinSerialize] protected Vector3 startLightDirection;
+    [OdinSerialize] protected float startLightIntensity;
     
     public virtual void Init()
     {
@@ -14,14 +18,19 @@ public abstract class MainMenuStateBase : IState
         levelItemGroup.onMouseExitLevelItem += OnMouseExitLevelItem;
         levelItemGroup.onSelectedLevelItem += OnSelectLevelItem;
     }
+
+    public virtual void Enter()
+    {
+        MainMenuManager.Instance.SetCameraPos(startCameraPos);
+        MainMenuManager.Instance.SetLightDirection(startLightDirection);
+        MainMenuManager.Instance.SetLightIntensity(startLightIntensity);
+    }
     
-    public abstract void Enter();
+    public virtual void PhysicsUpdate(){}
     
-    public abstract void PhysicsUpdate();
+    public virtual void LogicUpdate(){}
     
-    public abstract void LogicUpdate();
-    
-    public abstract void Exit();
+    public virtual void Exit(){}
 
     protected abstract void OnMouseEnterLevelItem(LevelItem levelItem);
 
