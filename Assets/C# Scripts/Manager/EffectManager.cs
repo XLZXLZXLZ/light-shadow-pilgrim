@@ -13,14 +13,18 @@ public class EffectInfo
 [Serializable]
 public class BackGroundInfo
 {
+    public float lightIntensity;
+    public float darkIntensity;
     public Color lightColor;
     public Color darkColor;
+    public Color lightAmbientColor;
+    public Color darkAmbientColor;
 }
 
 public class EffectManager : MonoBehaviour
 {
     [SerializeField]
-    private BackGroundInfo backGround;
+    private BackGroundInfo backGroundInfo;
 
     private Light gameLight;
     private float LightIntensity
@@ -37,9 +41,11 @@ public class EffectManager : MonoBehaviour
 
     private void BackGroundChange(LightState state)
     {
-        var color = state == LightState.Light ? Consts.LightSceneColor : Consts.DarkSceneColor;
-        var lightIntensity = state == LightState.Light ? Consts.LightSceneIntensity : Consts.DarkSceneIntensity;
+        var color = state == LightState.Light ? backGroundInfo.lightColor : backGroundInfo.darkColor;
+        var ambientColor = state == LightState.Light ? backGroundInfo.lightAmbientColor :backGroundInfo.darkAmbientColor;
+        var lightIntensity = state == LightState.Light ? backGroundInfo.lightIntensity : backGroundInfo.darkIntensity;
 
+        //修改雾颜色
         DOTween.To(
            () => RenderSettings.fogColor,
            x => RenderSettings.fogColor = x,
@@ -47,6 +53,15 @@ public class EffectManager : MonoBehaviour
            0.3f
            ).PushToTweenPool(EventManager.Instance.MapUpdate);
 
+        //修改环境色
+        DOTween.To(
+           () => RenderSettings.ambientSkyColor,
+           x => RenderSettings.ambientSkyColor = x,
+           ambientColor,
+           0.3f
+           ).PushToTweenPool(EventManager.Instance.MapUpdate);
+
+        //修改背景色
         DOTween.To(
            () => Camera.main.backgroundColor,
            x => Camera.main.backgroundColor = x,
@@ -54,6 +69,7 @@ public class EffectManager : MonoBehaviour
            0.3f
            ).PushToTweenPool(EventManager.Instance.MapUpdate);
 
+        //修改光强度
         DOTween.To(
            () => LightIntensity,
            x => LightIntensity = x,
