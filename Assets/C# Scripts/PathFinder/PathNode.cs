@@ -38,7 +38,7 @@ public class PathNode : MonoBehaviour
 
     private LightExtension lightExtension;
 
-    public void Awake()
+    public virtual void Awake()
     {
         lightExtension = GetComponent<LightExtension>();
         EventManager.Instance.MapUpdate.OnEarlyStart +=   ClearLightRoad;
@@ -59,12 +59,10 @@ public class PathNode : MonoBehaviour
     public void UpdateLightRoad(GameObject road)
     {
         //更新光照信息
-
         lightExtension.isLightCasted = true;
         Vector3 newPos = new Vector3(transform.position.x, Mathf.Ceil(transform.position.y)-0.5f, transform.position.z);
         lightRoads.Add(Instantiate(road, newPos, Quaternion.identity)) ;
     }
-
 
     
     public void ClearLightRoad()

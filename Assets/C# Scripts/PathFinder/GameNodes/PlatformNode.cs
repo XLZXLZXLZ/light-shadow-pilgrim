@@ -18,7 +18,7 @@ public class PlatformNode : PathNode, IInteractable
     }
 
     //初始更新邻居结点状态
-    private void Awake()
+    public override void Awake()
     {
         base.Awake();
         lightComponent = GetComponent<LightExtension>();
