@@ -14,8 +14,9 @@ public class MoveAppearBlockPro : AppearBlockPro
     private Vector3 appearAngle; //出现时，最终应当旋转的角度
     private Vector3 hideAngle; //消失时，最终应当旋转的角度
     
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         appearPos = transform.position;
         appearAngle = transform.eulerAngles + Vector3.up * rotateAngle;
         hidePos = transform.position + Vector3.down * hideHeight;
