@@ -19,10 +19,10 @@ public class LightExtension : MonoBehaviour
             {
                 lightState = value; //新光照信息不统一时，更新光照信息
 
-                if (value == LightState.Light)
-                    OnLighted?.Invoke();
-                else
+                if (value == LightState.Dark)
                     OnDarken?.Invoke();
+                else
+                    OnLighted?.Invoke();
             }
         }
     }
@@ -32,8 +32,13 @@ public class LightExtension : MonoBehaviour
 
     private void Awake()
     {
-        if(IsAutoDetectLight)
+        if (IsAutoDetectLight)
+        {
+            EventManager.Instance.MapUpdate.OnEarlyStart += OnStateEarlyUpdate;
             EventManager.Instance.MapUpdate.OnFinished += OnStateUpdate;
+        }
+
+
     }
 
     // private void Update()
@@ -42,16 +47,26 @@ public class LightExtension : MonoBehaviour
     // }
 
     //向光线方向投射射线，若未与地形碰撞则代表该地块为亮
+
+    public void OnStateEarlyUpdate()
+    {
+        if (lightState == LightState.LightCasted)
+            lightState = LightState.Light;
+    }
+    
     public void OnStateUpdate()
     {
         if (!IsAutoDetectLight) return;
         Ray ray = new Ray(transform.position,-GlobalLight.Instance.LightDirInLogic);
         bool isCovered = Physics.Raycast(ray, 100, LayerMask.GetMask("Ground"));
+        if (lightState != LightState.LightCasted)
+        {
+            if (isCovered)
+                LightState = LightState.Dark;
+            else
+                LightState = LightState.Light;
+        }
 
-        if (isCovered)
-            LightState = LightState.Dark;
-        else
-            LightState = LightState.Light;
     }
 
     private void OnDrawGizmos()

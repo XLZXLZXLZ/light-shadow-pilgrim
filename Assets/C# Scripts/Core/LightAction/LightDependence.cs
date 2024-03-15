@@ -5,5 +5,6 @@ using UnityEngine;
 public enum LightState
 {
     Light,
-    Dark
+    Dark,
+    LightCasted
 }
