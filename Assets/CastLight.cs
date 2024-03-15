@@ -110,29 +110,29 @@ public class CastLight : MonoBehaviour
         }
     }
     
-    public void CastDir(Vector3 lightDir)
-    {
-        //检索周围点
-        var nodes = Physics.OverlapSphere(transform.position+offset, 1, LayerMask.GetMask("Node"));
-        
-        foreach (var node in nodes)
-        {
-            Debug.Log("开始建立光路"); 
-            var lightNode = node.GetComponent<LightExtension>();
-            if (lightNode == this || lightNode == null) continue;
-
-            var dir = transform.position+offset - node.transform.position;
-            dir.Normalize();
-
-            if (Vector3.Dot(dir, lightDir) >= 0.98f)
-            {
-                Vector3 newPos = new Vector3(node.transform.position.x, Mathf.Ceil(node.transform.position.y)-0.5f, node.transform.position.z);
-                lightRoads.Add(Instantiate(lightRoad,newPos,Quaternion.identity));
-                lightNode.LightState = LightState.LightCasted;
-            }
-        }
-    }
-    
+    // public void CastDir(Vector3 lightDir)
+    // {
+    //     //检索周围点
+    //     var nodes = Physics.OverlapSphere(transform.position+offset, 1, LayerMask.GetMask("Node"));
+    //     
+    //     foreach (var node in nodes)
+    //     {
+    //         Debug.Log("开始建立光路"); 
+    //         var lightNode = node.GetComponent<LightExtension>();
+    //         if (lightNode == this || lightNode == null) continue;
+    //
+    //         var dir = transform.position+offset - node.transform.position;
+    //         dir.Normalize();
+    //
+    //         if (Vector3.Dot(dir, lightDir) >= 0.98f)
+    //         {
+    //             Vector3 newPos = new Vector3(node.transform.position.x, Mathf.Ceil(node.transform.position.y)-0.5f, node.transform.position.z);
+    //             lightRoads.Add(Instantiate(lightRoad,newPos,Quaternion.identity));
+    //             lightNode.LightState = LightState.LightCasted;
+    //         }
+    //     }
+    // }
+    //
     public void Cast()
     {
         //检索周围点

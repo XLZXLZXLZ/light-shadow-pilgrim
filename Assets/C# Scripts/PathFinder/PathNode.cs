@@ -60,7 +60,7 @@ public class PathNode : MonoBehaviour
     {
         //更新光照信息
 
-        lightExtension.LightState = LightState.LightCasted;
+        lightExtension.isLightCasted = true;
         Vector3 newPos = new Vector3(transform.position.x, Mathf.Ceil(transform.position.y)-0.5f, transform.position.z);
         lightRoads.Add(Instantiate(road, newPos, Quaternion.identity)) ;
     }
@@ -70,7 +70,7 @@ public class PathNode : MonoBehaviour
     public void ClearLightRoad()
     {
         Debug.Log("加载地图更新方法");
-        lightExtension.LightState  = LightState.Light;
+        lightExtension.isLightCasted = false;
         //if(lightRoads)
         foreach (var lightRoad in lightRoads)
         {

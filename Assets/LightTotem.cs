@@ -26,6 +26,7 @@ public class LightTotem : Totem
             lightRenderer.material = lightMaterial;
             castLight.AddCastEvent();
             EventManager.Instance.MapUpdate.StartStageEvent();
+            EventManager.Instance.MapUpdate.FinishStageEvent();
         }
         else
         {
@@ -33,6 +34,7 @@ public class LightTotem : Totem
             lightRenderer.material = normalMaterial;
             castLight.DeleteCastEvent();
             EventManager.Instance.MapUpdate.StartStageEvent();
+            EventManager.Instance.MapUpdate.FinishStageEvent();
         }
         var target = GetNextIndex();
         

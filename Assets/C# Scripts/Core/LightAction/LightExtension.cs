@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ public class LightExtension : MonoBehaviour
     // 看这个LightExtension会不会在地图更新结束后自动检测当前状态（方便需要强制修改LightState）
     [field: SerializeField] public bool IsAutoDetectLight { get; private set; } = true;
     [SerializeField] private LightState lightState;
+    public bool isLightCasted;
     public LightState LightState
     {
         get {  return lightState; } 
@@ -46,26 +48,34 @@ public class LightExtension : MonoBehaviour
     //     OnStateUpdate();
     // }
 
-    //向光线方向投射射线，若未与地形碰撞则代表该地块为亮
 
     public void OnStateEarlyUpdate()
     {
-        if (lightState == LightState.LightCasted)
-            lightState = LightState.Light;
+        isLightCasted = false;
     }
     
+    /// <summary>
+    ///向光线方向投射射线，若未与地形碰撞则代表该地块为亮
+    /// </summary>
     public void OnStateUpdate()
     {
         if (!IsAutoDetectLight) return;
         Ray ray = new Ray(transform.position,-GlobalLight.Instance.LightDirInLogic);
         bool isCovered = Physics.Raycast(ray, 100, LayerMask.GetMask("Ground"));
-        if (lightState != LightState.LightCasted)
+        if (isLightCasted)
         {
-            if (isCovered)
-                LightState = LightState.Dark;
-            else
-                LightState = LightState.Light;
+            LightState = LightState.Light;
         }
+        else if (isCovered)
+        {
+            LightState = LightState.Dark;
+        }
+        else
+        {
+            LightState = LightState.Light;
+        }
+
+        
 
     }
 
