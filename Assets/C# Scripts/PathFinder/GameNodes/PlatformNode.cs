@@ -12,6 +12,7 @@ public class PlatformNode : PathNode, IInteractable
     private LightExtension lightComponent;
     private LightState lightState => lightComponent.LightState;
 
+
     //可达性判定，当玩家尝试寻路时在此判断是否可达，尝试获取实现了额外接口的脚本，若存在则还要执行它的规则判定
     public override bool ReachAble(LightState inputState)
     {
@@ -19,8 +20,9 @@ public class PlatformNode : PathNode, IInteractable
     }
 
     //初始更新邻居结点状态
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         lightComponent = GetComponent<LightExtension>();
         UpdateNeighbors();
 

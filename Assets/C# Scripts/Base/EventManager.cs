@@ -29,6 +29,7 @@ public class EventManager : Singleton<EventManager>
     public InvokableAction<TransmitSwitch> OnForceToSetNodeByTransmit = new();  // 哥们不想暴露CurrentNode的接口，只能这样干了
 
     
+    
     public UnityAction<PathNode> OnClickNode; //选定某一结点时
     
     public UnityAction<PathNode> OnMoveToNewNode; //当玩家移动到一个新结点时

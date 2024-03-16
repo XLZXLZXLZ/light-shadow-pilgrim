@@ -35,8 +35,6 @@ public class MoveController : Singleton<MoveController>
         EventManager.Instance.MapUpdate.OnLateFinished += OnMapUpdateLateFinished;
         EventManager.Instance.OnGenerateMapFinished += OnMapGenerated;
         EventManager.Instance.OnForceToSetNodeByTransmit += OnForceToSetNodeByTransmit;
-        
-        
         player = GetComponent<Player>();
 
     }
