@@ -15,7 +15,7 @@ public class StartEffect : MonoBehaviour
 
     private void Awake()
     {
-        EventManager.Instance.OnClickNode += UseClickEffect;
+        //EventManager.Instance.OnClickNode += UseClickEffect;
         if (backGround == null)
             backGround = transform.Find("BackGround");
     }
@@ -84,8 +84,10 @@ public class StartEffect : MonoBehaviour
 
     }
 
+    /*
     private void UseClickEffect(PathNode node)
     {
         var go = Instantiate(clickEffect,node.transform.position,clickEffect.transform.rotation);
     }
+    */
 }

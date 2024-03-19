@@ -4993,6 +4993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsAutoDetectLight>k__BackingField: 1
   lightState: 0
+  isLightCasted: 0
 --- !u!114 &152876807522723687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5009,6 +5010,8 @@ MonoBehaviour:
   right: {fileID: 0}
   up: {fileID: 0}
   down: {fileID: 0}
+  price: 1.1
+  alwaysReachable: 0
 --- !u!65 &2002114476360907562
 BoxCollider:
   m_ObjectHideFlags: 0

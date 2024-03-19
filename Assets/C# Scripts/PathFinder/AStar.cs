@@ -67,13 +67,14 @@ public class AStar : Singleton<AStar>
                 if (n == null || !n.ReachAble(GameManager.Instance.CurrentPlayerState)) //目标结点不可达时，返回
                     continue;
 
-                var newNode = new Node(n, node.current, node.reachPrice + 1, target);
+                float newPrice = node.reachPrice + n.Price;
+                var newNode = new Node(n, node.current, newPrice, target);
 
                 if (visitedNodes.ContainsKey(n)) //当该结点已被存储时，检查新值与该值的到位代价，更小时替换
                 {
-                    if (visitedNodes[n].reachPrice > node.reachPrice + 1)
+                    if (visitedNodes[n].reachPrice > newPrice)
                     {
-                        visitedNodes[n].reachPrice = node.reachPrice + 1;
+                        visitedNodes[n].reachPrice = newPrice;
                         visitedNodes[n].last = node.current;
                         openNodes.Add(newNode);
                     }

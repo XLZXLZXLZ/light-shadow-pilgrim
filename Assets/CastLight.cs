@@ -13,7 +13,8 @@ public class CastLight : MonoBehaviour
     [Header("光强")]
     public int lightStrength;
     [Header("光路")]
-    public GameObject lightRoad;
+    public GameObject lightRoadEnd;
+    public GameObject lightRoadMid;
     private List<GameObject> lightRoads = new();
     //检测是否撞到物体
     private void Awake()
@@ -152,14 +153,23 @@ public class CastLight : MonoBehaviour
                 {
                     Debug.Log("搜索到左结点");
                     int i = 0;
-                    while (i < lightStrength)
+                    while (i < lightStrength && pathNode != null)
                     {
-                        if(pathNode==null)
-                            break;
-                        pathNode.UpdateLightRoad(lightRoad);
-                        pathNode = pathNode.Left;
-
                         i++;
+                        if (pathNode == null)
+                            break;
+
+                        if (i == lightStrength || pathNode.Left == null)
+                        {
+                            pathNode.UpdateLightRoad(lightRoadEnd, Quaternion.identity);
+                        }
+                        else
+                        {
+                            pathNode.UpdateLightRoad(lightRoadMid, Quaternion.identity);
+                        }
+                        
+                        
+                        pathNode = pathNode.Left;
                     }
                     //Vector3 newPos = new Vector3(node.transform.position.x, Mathf.Ceil(node.transform.position.y)-0.5f, node.transform.position.z);
                     //     lightRoads.Add(Instantiate(lightRoad,newPos,Quaternion.identity));
@@ -169,14 +179,24 @@ public class CastLight : MonoBehaviour
                 {
                     Debug.Log("搜索到右结点");
                     int i = 0;
-                    while (i < lightStrength)
+                    while (i < lightStrength && pathNode != null)
                     {
-                        if(pathNode==null)
+                        i++;
+                        if (pathNode == null)
                             break;
-                        pathNode.UpdateLightRoad(lightRoad);
+
+                        if (i == lightStrength || pathNode.Right == null)
+                        {
+                            pathNode.UpdateLightRoad(lightRoadEnd, Quaternion.Euler(0, 180, 0));
+                        }
+                        else
+                        {
+                            pathNode.UpdateLightRoad(lightRoadMid, Quaternion.Euler(0, 180, 0));
+                        }
+
+
                         pathNode = pathNode.Right;
 
-                        i++;
                     }
                 }
                 if (Vector3.Dot(dir, Vector3.forward) >= 0.98f)
@@ -185,10 +205,20 @@ public class CastLight : MonoBehaviour
                     int i = 0;
                     while (i < lightStrength&&pathNode!=null)
                     {
-                        Debug.Log(pathNode.pos);
-                        pathNode.UpdateLightRoad(lightRoad);
-                        pathNode = pathNode.Up;
                         i++;
+                        if (pathNode == null)
+                            break;
+
+                        if (i == lightStrength || pathNode.Up == null)
+                        {
+                            pathNode.UpdateLightRoad(lightRoadEnd, Quaternion.Euler(0, 90, 0));
+                        }
+                        else
+                        {
+                            pathNode.UpdateLightRoad(lightRoadMid, Quaternion.Euler(0, 90, 0));
+                        }
+
+                        pathNode = pathNode.Up;
                     }
                 }
                 if (Vector3.Dot(dir, Vector3.back) >= 0.98f)
@@ -197,11 +227,21 @@ public class CastLight : MonoBehaviour
                     int i = 0;
                     while (i < lightStrength&&pathNode!=null)
                     {
-                        pathNode.UpdateLightRoad(lightRoad);
-                        Debug.Log(pathNode);
-                        pathNode = pathNode.Down;
-
                         i++;
+                        if (pathNode == null)
+                            break;
+
+                        if (i == lightStrength || pathNode.Down == null)
+                        {
+                            pathNode.UpdateLightRoad(lightRoadEnd, Quaternion.Euler(0, 270, 0));
+                        }
+                        else
+                        {
+                            pathNode.UpdateLightRoad(lightRoadMid, Quaternion.Euler(0, 270, 0));
+                        }
+
+
+                        pathNode = pathNode.Down;
                     }
                 }
             }

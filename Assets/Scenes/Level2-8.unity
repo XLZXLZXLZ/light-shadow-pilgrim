@@ -8782,6 +8782,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de4a590f89239cb4881639894e46bc60, type: 3}
+--- !u!1001 &1325123204
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9152069430392955470, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152069430392955470, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.904381
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152069430392955470, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.43407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152069430392955470, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.395134
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152069430392955470, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152069430392955470, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152069430392955470, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152069430392955470, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152069430392955470, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152069430392955470, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152069430392955470, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152069430392955472, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e,
+        type: 3}
+      propertyPath: m_Name
+      value: EffectManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd5ff42dc8a6e13498aa0d4fa68f5e8e, type: 3}
 --- !u!4 &1328040493 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 545637941173965063, guid: 7dccfebe49621234fb0ae9833300d9b4,
@@ -17948,6 +18017,7 @@ MonoBehaviour:
   right: {fileID: 0}
   up: {fileID: 0}
   down: {fileID: 0}
+  alwaysReachable: 0
 --- !u!114 &1933821020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17962,6 +18032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsAutoDetectLight>k__BackingField: 1
   lightState: 0
+  isLightCasted: 0
 --- !u!4 &1933821021
 Transform:
   m_ObjectHideFlags: 0

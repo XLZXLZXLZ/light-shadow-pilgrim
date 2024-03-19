@@ -26,6 +26,10 @@ public class EffectManager : MonoBehaviour
     [SerializeField]
     private BackGroundInfo backGroundInfo;
 
+    [SerializeField]
+    private GameObject clickEffect;
+    private Color currentClickEffectColor = Color.white * 32;
+
     private Light gameLight;
     private float LightIntensity
     {
@@ -35,11 +39,12 @@ public class EffectManager : MonoBehaviour
 
     private void Awake()
     {
-        EventManager.Instance.OnPlayerLightStateChanged += BackGroundChange;
+        EventManager.Instance.OnPlayerLightStateChanged += LightStateChange;
+        EventManager.Instance.OnClickNode += UseClickEffect;
         gameLight = GlobalLight.Instance.GetComponent<Light>();
     }
 
-    private void BackGroundChange(LightState state)
+    private void LightStateChange(LightState state)
     {
         var color = state == LightState.Light ? backGroundInfo.lightColor : backGroundInfo.darkColor;
         var ambientColor = state == LightState.Light ? backGroundInfo.lightAmbientColor :backGroundInfo.darkAmbientColor;
@@ -76,5 +81,31 @@ public class EffectManager : MonoBehaviour
            lightIntensity,
            0.3f
            ).PushToTweenPool(EventManager.Instance.MapUpdate);
+
+        var player = Player.Instance;
+        var renderer = player.GetComponent<Renderer>();
+        var particle = player.GetComponentInChildren<ParticleSystem>().GetComponent<Renderer>();
+        
+
+        if (state == LightState.Light)
+        {
+            renderer.material.DOColor(Color.white * 32, "_EmissionColor", 0.3f).SetEase(Ease.InQuart);
+            particle.material.DOColor(Color.white * 32, "_EmissionColor", 0.3f).SetEase(Ease.InQuart);
+            currentClickEffectColor = Color.white * 32;
+        }
+        else
+        {
+            renderer.material.DOColor(Color.black, "_EmissionColor", 0.3f).SetEase(Ease.OutQuart);
+            particle.material.DOColor(Color.black, "_EmissionColor", 0.3f).SetEase(Ease.OutQuart);
+            currentClickEffectColor = Color.black;
+        }
+
+    }
+
+    private void UseClickEffect(PathNode node)
+    {
+        var go = Instantiate(clickEffect, node.transform.position, clickEffect.transform.rotation);
+        var click = go.GetComponentInChildren<ParticleSystem>().GetComponent<Renderer>();
+        click.material.SetColor("_EmissionColor", currentClickEffectColor);
     }
 }

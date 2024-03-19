@@ -10,6 +10,11 @@ public class PathNode : MonoBehaviour
     [SerializeField]
     protected PathNode left, right, up, down;
 
+    //寻路时到达该点的代价，默认为1，若在同等代价的路径上，希望优先选择该路径，可以将其略微降低，同理若希望尽量不选择该点，略微提高此值
+    [SerializeField]
+    private float price = 1;
+    public float Price => price;    
+
     #region 属性
     public Vector3 pos => transform.position;
     public PathNode Left => left;
@@ -56,18 +61,18 @@ public class PathNode : MonoBehaviour
         return true;
     }
     
-    public void UpdateLightRoad(GameObject road)
+    public void UpdateLightRoad(GameObject road, Quaternion rot)
     {
         //更新光照信息
         lightExtension.isLightCasted = true;
         Vector3 newPos = new Vector3(transform.position.x, Mathf.Ceil(transform.position.y)-0.5f, transform.position.z);
-        lightRoads.Add(Instantiate(road, newPos, Quaternion.identity)) ;
+        lightRoads.Add(Instantiate(road, newPos, rot)) ;
     }
 
     
     public void ClearLightRoad()
     {
-        Debug.Log("加载地图更新方法");
+        //Debug.Log("加载地图更新方法");
         lightExtension.isLightCasted = false;
         //if(lightRoads)
         foreach (var lightRoad in lightRoads)

@@ -226,7 +226,8 @@ MonoBehaviour:
   back: 1
   offset: {x: 0, y: 0, z: 0}
   lightStrength: 3
-  lightRoad: {fileID: 0}
+  lightRoad: {fileID: 4983460815053627344, guid: 9b136346bc5152e4db14a35b673473af,
+    type: 3}
 --- !u!1 &6536687900766126077
 GameObject:
   m_ObjectHideFlags: 0
