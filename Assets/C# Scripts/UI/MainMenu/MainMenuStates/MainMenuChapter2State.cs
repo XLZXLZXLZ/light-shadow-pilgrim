@@ -24,12 +24,12 @@ public class MainMenuChapter2State : MainMenuStateBase
         throw new NotImplementedException();
     }
 
-    protected override void OnMouseEnterLevelItem(LevelItem levelItem)
+    protected override void MouseEnterLevelItem(LevelItem levelItem)
     {
         throw new NotImplementedException();
     }
 
-    protected override void OnMouseExitLevelItem(LevelItem levelItem)
+    protected override void MouseExitLevelItem(LevelItem levelItem)
     {
         throw new NotImplementedException();
     }

@@ -12,8 +12,10 @@ public class MainMenuManager : Singleton<MainMenuManager>
     [SerializeField] private Transform globalLightTransform;
     [SerializeField] private Light globalLight;
     [SerializeField] private MainMenuStateMachine stateMachine;
-    private Dictionary<int, Type> stateDic = new();
+
+    public StageEvent anim = new();
     
+    private Dictionary<int, Type> stateDic = new();
     private bool isWorking;
     private Vector3 globalLightStartRotation;
     private void Start()
@@ -47,21 +49,32 @@ public class MainMenuManager : Singleton<MainMenuManager>
     /// 设置光照方向
     /// </summary>
     /// <param name="direction"></param>
-    public void SetLightDirection(Vector3 direction, float duration)
+    public Tween SetLightDirection(Vector3 direction, float duration)
     {
-        globalLightTransform.DOLocalRotate(direction, duration);
+        return globalLightTransform.DOLocalRotate(direction, duration);
     }
 
     /// <summary>
     /// 设置光照强度
     /// </summary>
     /// <param name="intensity"></param>
-    public void SetGlobalLightIntensity(float intensity, float duration)
+    public Tween SetGlobalLightIntensity(float intensity, float duration)
     {
-        DOTween.To(
+        return DOTween.To(
             () => globalLight.intensity,
             intensity => globalLight.intensity = intensity,
             intensity,
+            duration);
+    }
+    
+    /// <summary>
+    /// 旋转光照角度（仅旋转y轴）
+    /// </summary>
+    /// <param name="angle"></param>
+    public Tween RotateLight(float angle, float duration)
+    {
+        return globalLightTransform.DOLocalRotate(
+            new Vector3(globalLightStartRotation.x, angle, 0), 
             duration);
     }
 
@@ -69,33 +82,22 @@ public class MainMenuManager : Singleton<MainMenuManager>
     /// 设置环境光照颜色
     /// </summary>
     /// <param name="lightColor"></param>
-    public void SetEnvironmentLightColor(Color32 lightColor, float duration)
+    public Tween SetEnvironmentLightColor(Color32 lightColor, float duration)
     {
-        DOTween.To(
+        return  DOTween.To(
             () => RenderSettings.ambientSkyColor,
             color => RenderSettings.ambientSkyColor = color,
             lightColor,
             duration);
     }
-
-    /// <summary>
-    /// 旋转光照角度
-    /// </summary>
-    /// <param name="angle"></param>
-    public void RotateLight(float angle, float duration)
-    {
-        globalLightTransform.DOLocalRotate(
-            new Vector3(globalLightStartRotation.x, angle, 0), 
-            duration);
-    }
-
+    
     /// <summary>
     /// 设置相机位置
     /// </summary>
     /// <param name="pos"></param>
-    public void SetCameraPos(Vector3 pos, float duration)
+    public Tween SetCameraPos(Vector3 pos, float duration)
     {
-        cameraTransform.DOLocalMove(pos, duration);
+        return cameraTransform.DOLocalMove(pos, duration);
     }
 
     public void StartWork()

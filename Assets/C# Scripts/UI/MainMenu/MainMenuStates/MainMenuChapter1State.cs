@@ -26,7 +26,6 @@ public class MainMenuChapter1State : MainMenuStateBase
     public override void Exit()
     {
         base.Exit();
-        // areaLight.transform.DOLocalMove(clockRoot.transform.position, Consts.MainMenuChapterDuration);
         DOTween.To(
             () => areaLight.intensity,
             intensity => areaLight.intensity = intensity,
@@ -34,13 +33,13 @@ public class MainMenuChapter1State : MainMenuStateBase
             Consts.MainMenuChapterDuration);
     }
 
-    protected override void OnMouseEnterLevelItem(LevelItem levelItem)
+    protected override void MouseEnterLevelItem(LevelItem levelItem)
     {
         Vector3 endValue = new Vector3(levelItem.transform.position.x, areaLight.transform.position.y,levelItem.transform.position.z);
         areaLight.transform.DOLocalMove(endValue, Consts.MainMenuTransformDuration);
     }
 
-    protected override void OnMouseExitLevelItem(LevelItem levelItem)
+    protected override void MouseExitLevelItem(LevelItem levelItem)
     {
         // Vector3 endValue = new Vector3(clockRoot.transform.position.x, areaLight.transform.position.y,clockRoot.transform.position.z);
         // areaLight.transform.DOLocalMove(endValue, Consts.MainMenuTransformDuration);
