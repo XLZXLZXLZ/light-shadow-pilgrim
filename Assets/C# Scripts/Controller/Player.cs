@@ -24,10 +24,23 @@ public class Player : Singleton<Player>
         base.Awake();
         particle = GetComponentInChildren<ParticleSystem>();
         startScale = transform.localScale;
+
+        EventManager.Instance.OnGameStart += OnGameStart;
+        EventManager.Instance.OnGameOver += OnGameOver;
         EventManager.Instance.MapUpdate.OnStart += OnMapUpdateStart;
         EventManager.Instance.MapUpdate.OnFinished += OnMapUpdateFinished;
         EventManager.Instance.Transmit.OnStart += OnTransmitStart;
         EventManager.Instance.Transmit.OnFinished += OnTransmitFinished;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.OnGameStart -= OnGameStart;
+        EventManager.Instance.OnGameOver -= OnGameOver;
+        EventManager.Instance.MapUpdate.OnStart -= OnMapUpdateStart;
+        EventManager.Instance.MapUpdate.OnFinished -= OnMapUpdateFinished;
+        EventManager.Instance.Transmit.OnStart -= OnTransmitStart;
+        EventManager.Instance.Transmit.OnFinished -= OnTransmitFinished;
     }
 
     // private void Update()
@@ -78,6 +91,16 @@ public class Player : Singleton<Player>
     #endregion
 
     #region Events
+
+    private void OnGameStart()
+    {
+        CanMove = true;
+    }
+
+    private void OnGameOver()
+    {
+        CanMove = false;
+    }
 
     private void OnMapUpdateStart()
     {

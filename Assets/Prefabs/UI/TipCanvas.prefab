@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc731ad5a2d1e924dbbaee1b8958e20e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWord: "\u70B9\u51FB\u4EFB\u4F55\u4F4D\u7F6E\u4EE5\u79FB\u52A8"
 --- !u!1 &510493529187867648
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,4 +249,4 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247

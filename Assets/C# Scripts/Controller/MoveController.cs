@@ -35,8 +35,8 @@ public class MoveController : Singleton<MoveController>
         EventManager.Instance.MapUpdate.OnLateFinished += OnMapUpdateLateFinished;
         EventManager.Instance.OnGenerateMapFinished += OnMapGenerated;
         EventManager.Instance.OnForceToSetNodeByTransmit += OnForceToSetNodeByTransmit;
+        
         player = GetComponent<Player>();
-
     }
 
     private void FixedUpdate()
@@ -116,7 +116,7 @@ public class MoveController : Singleton<MoveController>
     #endregion
     
     #region Events
-
+    
     private void OnMapUpdateStart()
     {
         strategy.Clear();

@@ -11,8 +11,10 @@ public class MapRotateController : MonoBehaviour
 
     private void Awake()
     {
-        EventManager.Instance.MapUpdate.OnStart += () => Interrupted = true;
-        EventManager.Instance.MapUpdate.OnFinished += () => Interrupted = false;
+        EventManager.Instance.OnGameStart += EnableRotate;
+        EventManager.Instance.OnGameOver += DisableRotate;
+        EventManager.Instance.MapUpdate.OnStart += DisableRotate;
+        EventManager.Instance.MapUpdate.OnFinished += EnableRotate;
     }
 
     public void Rotate(float angle)
@@ -36,5 +38,15 @@ public class MapRotateController : MonoBehaviour
         {
             Rotate(-90);
         }
+    }
+
+    private void EnableRotate()
+    {
+        Interrupted = true;
+    }
+
+    private void DisableRotate()
+    {
+        Interrupted = false;
     }
 }
