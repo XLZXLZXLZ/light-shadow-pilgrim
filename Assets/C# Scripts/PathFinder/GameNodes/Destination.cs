@@ -17,6 +17,7 @@ public class Destination : MonoBehaviour, ITriggerable
         // 保留原来的角色通关动画
         player.EndAnim();
         DOTween.Sequence()
+            .AppendInterval(1f)
             .Append(cam.transform.DOMoveY(Consts.GameOverCamUpHeight, Consts.GameOverCamUpDuration))
             .Join(cam.DOOrthoSize(cam.orthographicSize / 2.5f, Consts.GameOverCamUpDuration)
                 .SetEase(Ease.InOutQuad))

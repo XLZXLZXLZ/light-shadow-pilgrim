@@ -108,7 +108,7 @@ public class UIManager : Singleton<UIManager>
         if (!isCanOperateUI) return;
         if (!panelOnShowing.ContainsKey(panelType) || 
             !typeof(PanelBase).IsAssignableFrom(panelType)) return;
-        Debug.Log("ClearPanelCache");
+
         PanelBase relevantPanel = panelOnShowing[panelType];
         int relevantPanelSortingLayer = relevantPanel.panelSortingLayer;
         

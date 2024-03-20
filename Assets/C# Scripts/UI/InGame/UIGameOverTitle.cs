@@ -13,23 +13,24 @@ public class UIGameOverTitle : PanelBase
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI exitTipText;
     private bool isHiding = false;
+    private string exitTip;
 
     public override void OnShow()
     {
         base.OnShow();
         
-        // titleText.color = Consts.TransparentColor;
-        // exitTipText.color = Consts.TransparentColor;
-        // titleText.DOColor(Color.white, Consts.UITitleFadeInOutDuration)
-        //     .OnComplete(() =>
-        //     {
-        //         if (isHiding) return;
-        //         exitTipText.DOColor(Color.white, Consts.UITitleFadeInOutDuration);
-        //     });
+        titleText.color = Consts.TransparentColor;
+        exitTipText.color = Consts.TransparentColor;
+        titleText.DOColor(Color.white, Consts.UITitleFadeInOutDuration)
+            .OnComplete(() =>
+            {
+                if (isHiding) return;
+                exitTipText.DOColor(Consts.ReturnTipColor, Consts.UITitleFadeInOutDuration);
+            });
         
         // titleText.color = Consts.TransparentColor;
         // exitTipText.color = Consts.TransparentColor;
-        // titleText.(Color.white, Consts.UITitleFadeInOutDuration)
+        // titleText.DOText(exitTip, Consts.UITitleFadeInOutDuration)
         //     .OnComplete(() =>
         //     {
         //         if (isHiding) return;
@@ -39,8 +40,10 @@ public class UIGameOverTitle : PanelBase
 
     public override void OnHide()
     {
-        titleText.DOColor(Color.white, Consts.UITitleFadeInOutDuration);
-        exitTipText.DOColor(Color.white, Consts.UITitleFadeInOutDuration);
+        DOTween.Sequence()
+            .Append(titleText.DOColor(Consts.TransparentColor, Consts.UITitleFadeInOutDuration))
+            .Join(exitTipText.DOColor(Color.clear, Consts.UITitleFadeInOutDuration))
+            .OnComplete(ClearSelfCache);
 
         Cover.Instance.ChangeScene("MainMenu", 2, 1);
     }
@@ -56,7 +59,7 @@ public class UIGameOverTitle : PanelBase
 
     public void SetTip(string title)
     {
-        titleText.text = title;
+        exitTip = title;
     }
 }
 

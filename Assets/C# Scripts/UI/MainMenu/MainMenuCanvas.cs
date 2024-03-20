@@ -9,7 +9,7 @@ public class MainMenuCanvas : MonoBehaviour
     private Animator anim;
     private bool isReady;
 
-    private void Awake()
+    private void Start()
     {
         anim = GetComponent<Animator>();  
         if(!firstEnter)

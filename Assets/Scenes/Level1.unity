@@ -8040,6 +8040,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5692105732116753919, guid: a3f1e3c49cd49ba4daf95b58de5ad195,
         type: 3}
+      propertyPath: gameOverTip
+      value: "\u6E38\u620F\u7ED3\u675F\u529B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692105732116753919, guid: a3f1e3c49cd49ba4daf95b58de5ad195,
+        type: 3}
+      propertyPath: gameStartTip
+      value: "\u829D\u58EB\u7B2C\u4E00\u5173"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692105732116753919, guid: a3f1e3c49cd49ba4daf95b58de5ad195,
+        type: 3}
       propertyPath: gameSceneConfig
       value: 
       objectReference: {fileID: 11400000, guid: c37146b3a6259534eb291a2ed59ff3d9,
