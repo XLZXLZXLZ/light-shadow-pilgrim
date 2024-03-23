@@ -42,11 +42,11 @@ public class MapRotateController : MonoBehaviour
 
     private void EnableRotate()
     {
-        Interrupted = true;
+        Interrupted = false;
     }
 
     private void DisableRotate()
     {
-        Interrupted = false;
+        Interrupted = true;
     }
 }

@@ -4,8 +4,10 @@ using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent (typeof (Player))]
-public class MoveController : Singleton<MoveController>
+public class MoveController : MonoSingleton<MoveController>
 {
+    protected override bool IsDontDestroyOnLoad => false;
+
     private Player player;
     private List<PathNode> strategy = new(); //当前移动策略
     public List<PathNode> Strategy
@@ -23,7 +25,7 @@ public class MoveController : Singleton<MoveController>
 
     #region Runtime
 
-    protected override void Awake()
+    public override void Awake()
     {
         base.Awake();
         

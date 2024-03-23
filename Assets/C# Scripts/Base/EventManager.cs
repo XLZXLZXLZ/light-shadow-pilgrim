@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class EventManager : Singleton<EventManager>
 {
-    // protected override bool IsDontDestroyOnLoad => true;
+    // protected override bool IsDontDestroyOnLoad => false;
 
     public InvokableAction OnGameStart = new();
 

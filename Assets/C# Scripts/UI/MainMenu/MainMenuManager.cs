@@ -6,8 +6,10 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 
-public class MainMenuManager : Singleton<MainMenuManager>
+public class MainMenuManager : MonoSingleton<MainMenuManager>
 {
+    protected override bool IsDontDestroyOnLoad => false;
+
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Transform globalLightTransform;
     [SerializeField] private Light globalLight;

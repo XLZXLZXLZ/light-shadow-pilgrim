@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UI
+  m_EditorClassIdentifier: 
+  m_GroupName: UI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8cab0032fdb9bc742b686f3dc0b1aca7
+  m_SerializeEntries:
+  - m_GUID: 96e2d06a760553e4c8525d7ba4c519ae
+    m_Address: TipWordPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 266d5eca627f0aa48bec5ba0ff6d07cb
+    m_Address: PausePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4f5fc7ce1f53ec846b1c21f96943bb93
+    m_Address: GameStartTitlePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c44a31444471f2748a571af5f3330487
+    m_Address: GameOverTitlePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 792483d15b2d8ca4f9fdab48a08e33e7, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 4a4b6a107ce93fa4f9cc926526888f3b, type: 2}
+    - {fileID: 11400000, guid: 95232981645d41b42a2335bfb7d10687, type: 2}

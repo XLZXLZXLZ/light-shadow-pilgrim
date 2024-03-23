@@ -4,8 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Singleton<Player>
+public class Player : MonoSingleton<Player>
 {
+    protected override bool IsDontDestroyOnLoad => false;
+
     [SerializeField]
     private float speed = 3;
     [SerializeField]
@@ -19,7 +21,7 @@ public class Player : Singleton<Player>
 
     #region Runtime
 
-    protected override void Awake()
+    public override void Awake()
     {
         base.Awake();
         particle = GetComponentInChildren<ParticleSystem>();

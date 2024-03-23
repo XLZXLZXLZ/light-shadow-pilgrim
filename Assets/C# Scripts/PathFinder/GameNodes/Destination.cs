@@ -18,10 +18,10 @@ public class Destination : MonoBehaviour, ITriggerable
         player.EndAnim();
         DOTween.Sequence()
             .AppendInterval(1f)
-            .Append(cam.transform.DOMoveY(Consts.GameOverCamUpHeight, Consts.GameOverCamUpDuration))
-            .Join(cam.DOOrthoSize(cam.orthographicSize / 2.5f, Consts.GameOverCamUpDuration)
-                .SetEase(Ease.InOutQuad))
-            .OnComplete(GameManager.Instance.ShowGameOverTip);
+            .Append(cam.transform.DOMoveY(Consts.GameOverCamUpHeight, Consts.GameOverCamUpDuration)
+                .SetEase(Ease.InQuad));
+        // .Join(cam.DOOrthoSize(cam.orthographicSize / 2.5f, Consts.GameOverCamUpDuration))
+        // .OnComplete(GameManager.Instance.ShowGameOverTip);
     }
 
     private void Complete() //通关动画(因为已经懒得做了所以极度面向结果编程的危险程序) *惊恐*
