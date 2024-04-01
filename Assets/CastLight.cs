@@ -153,7 +153,7 @@ public class CastLight : MonoBehaviour
                 {
                     Debug.Log("搜索到左结点");
                     int i = 0;
-                    while (i < lightStrength && pathNode != null)
+                    while (left&&i < lightStrength && pathNode != null)
                     {
                         i++;
                         if (pathNode == null)
@@ -175,7 +175,7 @@ public class CastLight : MonoBehaviour
                     //     lightRoads.Add(Instantiate(lightRoad,newPos,Quaternion.identity));
                     //       lightNode.LightState = LightState.LightCasted;
                 }
-                if (Vector3.Dot(dir, Vector3.right) >= 0.98f)
+                if (right&&Vector3.Dot(dir, Vector3.right) >= 0.98f)
                 {
                     Debug.Log("搜索到右结点");
                     int i = 0;
@@ -199,7 +199,7 @@ public class CastLight : MonoBehaviour
 
                     }
                 }
-                if (Vector3.Dot(dir, Vector3.forward) >= 0.98f)
+                if (forward&&Vector3.Dot(dir, Vector3.forward) >= 0.98f)
                 {
                     Debug.Log("搜索到前结点");
                     int i = 0;
@@ -221,7 +221,7 @@ public class CastLight : MonoBehaviour
                         pathNode = pathNode.Up;
                     }
                 }
-                if (Vector3.Dot(dir, Vector3.back) >= 0.98f)
+                if (back&&Vector3.Dot(dir, Vector3.back) >= 0.98f)
                 {
                     Debug.Log("搜索到后结点");
                     int i = 0;
