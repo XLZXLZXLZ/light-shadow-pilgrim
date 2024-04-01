@@ -9,7 +9,8 @@ public class TipNode :MonoBehaviour, ITriggerable
 
     public void OnTrigger()
     {
-        TipWord.Instance.UpdateTip(tipWord);
+        UIManager.Instance.GetPanelAsync<TipWordPanel>(
+            tipWordPanel => tipWordPanel.ShowTipWord(tipWord));
         Destroy(this);
     }
 

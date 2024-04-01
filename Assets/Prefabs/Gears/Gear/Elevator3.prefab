@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bfad96f6d4f9f4f9b798d750999f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IsAutoDetectLight>k__BackingField: 1
+  lightState: 0
+  isLightCasted: 0
 --- !u!114 &9038058257970795742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +66,8 @@ MonoBehaviour:
   right: {fileID: 0}
   up: {fileID: 0}
   down: {fileID: 0}
+  price: 1.1
+  alwaysReachable: 0
 --- !u!114 &4068367513105845636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bfad96f6d4f9f4f9b798d750999f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IsAutoDetectLight>k__BackingField: 1
+  lightState: 0
+  isLightCasted: 0
 --- !u!114 &5752173995666538245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +159,8 @@ MonoBehaviour:
   right: {fileID: 0}
   up: {fileID: 0}
   down: {fileID: 0}
+  price: 1.1
+  alwaysReachable: 0
 --- !u!114 &8883338944079748043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bfad96f6d4f9f4f9b798d750999f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IsAutoDetectLight>k__BackingField: 1
+  lightState: 0
+  isLightCasted: 0
 --- !u!114 &6787746349850558619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +339,8 @@ MonoBehaviour:
   right: {fileID: 0}
   up: {fileID: 0}
   down: {fileID: 0}
+  price: 1.1
+  alwaysReachable: 0
 --- !u!114 &5731636396348625780
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsAutoDetectLight>k__BackingField: 0
   lightState: 0
+  isLightCasted: 0
 --- !u!114 &7048632608100875808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +151,8 @@ MonoBehaviour:
   right: {fileID: 0}
   up: {fileID: 0}
   down: {fileID: 0}
+  price: 1.1
+  alwaysReachable: 1
 --- !u!114 &7048632608100875804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +293,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4c1d132dccf07b44a0558d653381ffb, type: 2}
+  - {fileID: 2100000, guid: 23b61206a67c38640b41674d04b9a22b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

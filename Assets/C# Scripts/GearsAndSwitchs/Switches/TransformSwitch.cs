@@ -6,7 +6,7 @@ using UnityEngine;
 /// 暗庭（给脚本取名字真麻烦）
 /// </summary>
 [RequireComponent(typeof(LightExtension))]
-public class TransformSwitch : Switch, ITriggerable
+public class TransformSwitch : Switch, ITriggerable , IRepeatTriggerable
 {
     private Animator anim;
     private LightExtension lightExtension;
@@ -20,7 +20,7 @@ public class TransformSwitch : Switch, ITriggerable
     public void OnTrigger()
     {
         SwitchOn();
-        anim.Play("SwitchOn");
+        //anim.Play("SwitchOn");
 
         LightState lightState = GameManager.Instance.CurrentPlayerState == LightState.Light
             ? LightState.Dark
@@ -32,7 +32,12 @@ public class TransformSwitch : Switch, ITriggerable
     public void OnTriggerOver()
     {
         SwitchOff();
-        anim.Play("SwitchOff");
+        //anim.Play("SwitchOff");
+    }
+
+    public void RepeatTrigger()
+    {
+        OnTrigger();
     }
 }
 

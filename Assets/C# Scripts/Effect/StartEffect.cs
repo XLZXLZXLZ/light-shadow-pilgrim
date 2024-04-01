@@ -15,7 +15,7 @@ public class StartEffect : MonoBehaviour
 
     private void Awake()
     {
-        EventManager.Instance.OnClickNode += UseClickEffect;
+        //EventManager.Instance.OnClickNode += UseClickEffect;
         if (backGround == null)
             backGround = transform.Find("BackGround");
     }
@@ -55,7 +55,7 @@ public class StartEffect : MonoBehaviour
                     Counter++;
 
                     Vector3 origin = t.position;
-                    t.position += Vector3.down * 30;
+                    t.position += Vector3.down * 45;
                     float delay = (t.position.z - t.position.x + 10) * 0.2f;
                     delay = Mathf.Max(0, delay);
 
@@ -71,7 +71,7 @@ public class StartEffect : MonoBehaviour
                 {
                     var t = child.GetChild(j);
                     Vector3 origin = t.position;
-                    t.position += Vector3.down * 30;
+                    t.position += Vector3.down * 45;
 
                     EventManager.Instance.OnGenerateMapFinished += () => {
                         DOTween.Sequence()
@@ -84,8 +84,10 @@ public class StartEffect : MonoBehaviour
 
     }
 
+    /*
     private void UseClickEffect(PathNode node)
     {
         var go = Instantiate(clickEffect,node.transform.position,clickEffect.transform.rotation);
     }
+    */
 }

@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class GlobalLight : Singleton<GlobalLight>
+public class GlobalLight : MonoSingleton<GlobalLight>
 {
-    private static float[] heightMap = { 18.434f, 26.565f, 45f, 56.310f, 63.435f ,90f}; //每级高度的arctan值，对应1/3,1/2,1,3/2,2,垂直
+    protected override bool IsDontDestroyOnLoad => false;
+
+    private static float[] heightMap = { 18.234f, 26.365f, 45f, 56.210f, 63.335f ,90f}; //每级高度的arctan值，对应1/3,1/2,1,3/2,2,垂直
 
     [SerializeField]
     private int defaultLevel = 2; //默认光线高度等级(45度)

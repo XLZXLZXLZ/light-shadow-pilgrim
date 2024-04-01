@@ -6,19 +6,23 @@ using UnityEngine;
 [RequireComponent(typeof(LightExtension))]
 public class PlatformNode : PathNode, IInteractable
 {
+    [SerializeField] private bool alwaysReachable = false;
+
     private float searchRadius = 1.1f;
     private LightExtension lightComponent;
     private LightState lightState => lightComponent.LightState;
 
+
     //可达性判定，当玩家尝试寻路时在此判断是否可达，尝试获取实现了额外接口的脚本，若存在则还要执行它的规则判定
     public override bool ReachAble(LightState inputState)
     {
-        return inputState == lightState;
+        return alwaysReachable || inputState == lightState;
     }
 
     //初始更新邻居结点状态
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         lightComponent = GetComponent<LightExtension>();
         UpdateNeighbors();
 

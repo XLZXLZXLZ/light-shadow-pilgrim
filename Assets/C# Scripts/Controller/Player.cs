@@ -4,8 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Singleton<Player>
+public class Player : MonoSingleton<Player>
 {
+    protected override bool IsDontDestroyOnLoad => false;
+
     [SerializeField]
     private float speed = 3;
     [SerializeField]
@@ -19,15 +21,28 @@ public class Player : Singleton<Player>
 
     #region Runtime
 
-    protected override void Awake()
+    public override void Awake()
     {
         base.Awake();
         particle = GetComponentInChildren<ParticleSystem>();
         startScale = transform.localScale;
+
+        EventManager.Instance.OnGameStart += OnGameStart;
+        EventManager.Instance.OnGameOver += OnGameOver;
         EventManager.Instance.MapUpdate.OnStart += OnMapUpdateStart;
         EventManager.Instance.MapUpdate.OnFinished += OnMapUpdateFinished;
         EventManager.Instance.Transmit.OnStart += OnTransmitStart;
         EventManager.Instance.Transmit.OnFinished += OnTransmitFinished;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.OnGameStart -= OnGameStart;
+        EventManager.Instance.OnGameOver -= OnGameOver;
+        EventManager.Instance.MapUpdate.OnStart -= OnMapUpdateStart;
+        EventManager.Instance.MapUpdate.OnFinished -= OnMapUpdateFinished;
+        EventManager.Instance.Transmit.OnStart -= OnTransmitStart;
+        EventManager.Instance.Transmit.OnFinished -= OnTransmitFinished;
     }
 
     // private void Update()
@@ -78,6 +93,16 @@ public class Player : Singleton<Player>
     #endregion
 
     #region Events
+
+    private void OnGameStart()
+    {
+        CanMove = true;
+    }
+
+    private void OnGameOver()
+    {
+        CanMove = false;
+    }
 
     private void OnMapUpdateStart()
     {

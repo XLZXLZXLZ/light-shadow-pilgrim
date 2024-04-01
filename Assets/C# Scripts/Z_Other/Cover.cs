@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Cover : Singleton<Cover>
+public class Cover : MonoSingleton<Cover>
 {
     Image i;
 
-    protected override void Awake() 
+    public override void Awake() 
     {
         base.Awake();
         GenerateCover();

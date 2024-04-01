@@ -11,8 +11,10 @@ public class MapRotateController : MonoBehaviour
 
     private void Awake()
     {
-        EventManager.Instance.MapUpdate.OnStart += () => Interrupted = false;
-        EventManager.Instance.MapUpdate.OnFinished += () => Interrupted = true;
+        EventManager.Instance.OnGameStart += EnableRotate;
+        EventManager.Instance.OnGameOver += DisableRotate;
+        EventManager.Instance.MapUpdate.OnStart += DisableRotate;
+        EventManager.Instance.MapUpdate.OnFinished += EnableRotate;
     }
 
     public void Rotate(float angle)
@@ -30,11 +32,21 @@ public class MapRotateController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            Rotate(-90);
+            Rotate(90);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Rotate(90);
+            Rotate(-90);
         }
+    }
+
+    private void EnableRotate()
+    {
+        Interrupted = false;
+    }
+
+    private void DisableRotate()
+    {
+        Interrupted = true;
     }
 }

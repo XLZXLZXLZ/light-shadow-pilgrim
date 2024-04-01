@@ -7,8 +7,10 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 
-public class VolumeManager : Singleton<VolumeManager>
+public class VolumeManager : MonoSingleton<VolumeManager>
 {
+    protected override bool IsDontDestroyOnLoad => false;
+
     [SerializeField] private Volume volume;
     private Vignette vignette;
     private bool isPlayerInDarkness = false;
@@ -18,9 +20,11 @@ public class VolumeManager : Singleton<VolumeManager>
         get => vignette.intensity.value;
         set => vignette.intensity.value = value;
     }
-    protected override void Awake()
+    public override void Awake()
     { 
         base.Awake();
+        if(volume == null)
+            volume = FindObjectOfType<Volume>();
         volume?.profile.TryGet(out vignette);
     }
 

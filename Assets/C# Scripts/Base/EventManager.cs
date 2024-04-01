@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class EventManager : Singleton<EventManager>
 {
-    // protected override bool IsDontDestroyOnLoad => true;
+    // protected override bool IsDontDestroyOnLoad => false;
 
     public InvokableAction OnGameStart = new();
 
@@ -28,6 +28,7 @@ public class EventManager : Singleton<EventManager>
 
     public InvokableAction<TransmitSwitch> OnForceToSetNodeByTransmit = new();  // 哥们不想暴露CurrentNode的接口，只能这样干了
 
+    
     
     public UnityAction<PathNode> OnClickNode; //选定某一结点时
     

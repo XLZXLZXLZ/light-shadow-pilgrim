@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent (typeof (Player))]
-public class MoveController : Singleton<MoveController>
+public class MoveController : MonoSingleton<MoveController>
 {
+    protected override bool IsDontDestroyOnLoad => false;
+
     private Player player;
     private List<PathNode> strategy = new(); //当前移动策略
     public List<PathNode> Strategy
@@ -24,7 +25,7 @@ public class MoveController : Singleton<MoveController>
 
     #region Runtime
 
-    protected override void Awake()
+    public override void Awake()
     {
         base.Awake();
         
@@ -34,11 +35,10 @@ public class MoveController : Singleton<MoveController>
         EventManager.Instance.Transmit.OnStart += OnTransmitStart;
         EventManager.Instance.Transmit.OnFinished += OnTransmitFinished;
         EventManager.Instance.MapUpdate.OnLateFinished += OnMapUpdateLateFinished;
+        EventManager.Instance.OnGenerateMapFinished += OnMapGenerated;
         EventManager.Instance.OnForceToSetNodeByTransmit += OnForceToSetNodeByTransmit;
         
-        
         player = GetComponent<Player>();
-
     }
 
     private void FixedUpdate()
@@ -85,8 +85,16 @@ public class MoveController : Singleton<MoveController>
     {
         if (!CanMove) //不可移动时直接退出
             return;
-        if(AStar.Instance.FindPath(currentNode,node,out var path))
-            strategy = path;
+        if (AStar.Instance.FindPath(currentNode, node, out var path, out var isOrigin))
+        {
+            if(isOrigin) //若玩家仅点击了脚下的结点，那么我们尝试重复触发脚下的机关
+            {
+                if(path[0].TryGetComponent<IRepeatTriggerable>(out var t))
+                    t.RepeatTrigger();
+            }
+            else //正常移动
+                strategy = path;
+        }
         else
             strategy.Clear();
     }
@@ -110,13 +118,18 @@ public class MoveController : Singleton<MoveController>
     #endregion
     
     #region Events
-
+    
     private void OnMapUpdateStart()
     {
         strategy.Clear();
     }
 
     private void OnMapUpdateFinished()
+    {
+        
+    }
+
+    private void OnMapGenerated()
     {
         TriggerNode();
     }
@@ -131,6 +144,7 @@ public class MoveController : Singleton<MoveController>
     {
         strategy.Clear();
         
+        /*
         Tween smaller = player.OnSmaller()
             .PushToTweenPool(EventManager.Instance.Transmit);
         smaller.onComplete += () =>
@@ -147,6 +161,7 @@ public class MoveController : Singleton<MoveController>
             .Append(bigger);
         
         Debug.Log("TransmitStart");
+        */
     }
 
     private void OnTransmitFinished()
@@ -157,6 +172,8 @@ public class MoveController : Singleton<MoveController>
     private void OnForceToSetNodeByTransmit(TransmitSwitch transmitSwitch)
     {
         currentNode = transmitSwitch.PlatformNode;
+        transform.position = currentNode.transform.position;
+        transform.parent = currentNode.transform;
     }
 
     #endregion
