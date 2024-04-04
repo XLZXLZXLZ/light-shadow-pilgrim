@@ -3124,6 +3124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 1
+  gameStartTip: 
+  gameOverTip: 
 --- !u!4 &922180333
 Transform:
   m_ObjectHideFlags: 0
@@ -5263,7 +5265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3af38e61ddfed4bb5fe501c95d3be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipWord: "\u8E0F\u5165\u9634\u5F71..."
+  tipWord: "\u73B0\u5728\uFF0C\u4F60\u6210\u4E3A\u4E86\u5F71\u5B50\u5F97\u4E00\u90E8\u5206..."
 --- !u!1001 &1585841973
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,7 +10,8 @@ public class PathNode : MonoBehaviour
     [SerializeField]
     protected PathNode left, right, up, down;
 
-    //寻路时到达该点的代价，默认为1，若在同等代价的路径上，希望优先选择该路径，可以将其略微降低，同理若希望尽量不选择该点，略微提高此值
+    //寻路时到达该点的代价，默认为1，若在同等代价(物理等长)的路径上，希望优先选择该路径，可以将其略微降低，同理若希望尽量不选择该点，略微提高此值
+    //这一设定通常用在某些踩上即触发的机关，将其设置为1.1可以使在两条等长的路径上避免选它，设置为100可以使除了不得不走它的其他情况尽量避开它
     [SerializeField]
     private float price = 1;
     public float Price => price;    
