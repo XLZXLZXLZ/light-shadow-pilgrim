@@ -48,7 +48,7 @@ MonoBehaviour:
     lightIntensity: 3
     darkIntensity: 1
     lightColor: {r: 1, g: 0.88235295, b: 0.7137255, a: 0}
-    darkColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 0}
+    darkColor: {r: 0.11764706, g: 0.105882354, b: 0.22745098, a: 0}
     lightAmbientColor: {r: 1, g: 1, b: 1, a: 0}
     darkAmbientColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0}
   clickEffect: {fileID: 1530537061137487976, guid: 81e0feb425dfa194fb58a5f3f6a5564c,
