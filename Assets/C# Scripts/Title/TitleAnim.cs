@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using UnityEngine.UIElements;
+using System;
 
 public class TitleAnim : MonoBehaviour
 {
+    public Action onComplete;
+
     [SerializeField]
     private Transform lightTitle;
 
@@ -57,7 +60,10 @@ public class TitleAnim : MonoBehaviour
         DOTween.Sequence()
             .AppendInterval(shadowInterval)
             .Append(transform.DOMove(transform.position, 0).OnComplete(() => blackTitle.gameObject.SetActive(true))) //神秘代码
-            .Append(blackTitle.DOScale(Vector3.one, shadowAppearTime))
-            .Join(globalLight.DORotate(new Vector3(45, 180, 0), shadowAppearTime));
+            .Append(blackTitle.DOScale(new Vector3(1, 1, 1.5f), shadowAppearTime))
+            .Join(globalLight.DORotate(new Vector3(45, 180, 0), shadowAppearTime))
+            .OnComplete(()=>onComplete?.Invoke());
     }
+
+
 }
