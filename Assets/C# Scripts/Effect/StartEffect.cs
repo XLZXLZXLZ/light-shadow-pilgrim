@@ -31,15 +31,20 @@ public class StartEffect : MonoBehaviour
         get => counter;
         set 
         { 
-            counter = value; 
-            if(counter == 0) 
+            counter = value;
+            if (counter == 0)
+            {
                 EventManager.Instance.OnGenerateMapFinished.Invoke();
+                EventManager.Instance.MapUpdate.FinishStageEvent();
+            }
+            
         }
     }
 
     protected virtual void Effect() //游戏开始时的效果，为所有节点播放自下而上的动画(由机关移动的方块除外)
     {
         EventManager.Instance.OnGenerateMapStart.Invoke();
+        EventManager.Instance.MapUpdate.StartStageEvent();
         
         for(int i = 0; i < transform.childCount; i++) 
         { 
