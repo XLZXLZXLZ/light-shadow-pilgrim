@@ -15,6 +15,8 @@ public class MoveAppearBlock : AppearBlock
     [SerializeField]
     [Tooltip("至少下降多少能到雾里")]
     private float hideHeight = 40;
+    [SerializeField]
+    private float shakeLevel; //是否引起相机震动
 
     #region 自动计算DOTWEEN所需数值，是托屎山
     private Vector3 appearPos; //出现时，应当处于哪个位置
@@ -43,6 +45,7 @@ public class MoveAppearBlock : AppearBlock
             .AppendInterval(delay)
             .Append(transform.DOMove(appearPos, duration))
             .Join(transform.DORotate(appearAngle, 2f))
+            .Join(Camera.main.DOShakePosition(duration, shakeLevel, 100))
             .PushToTweenPool(EventManager.Instance.MapUpdate);
 
     }
