@@ -7,6 +7,7 @@ public class LevelItemGroup
 {
     [field: SerializeField] public List<LevelItem> LevelItems { get; private set; } = new();
     [SerializeField] private Material highLightMat;
+    [SerializeField] private int chapter = 0;
     public LevelItem CurrentSelectedItem { get; private set; }
     public float RotateAngle => 360f / LevelItems.Count;
     
@@ -16,7 +17,7 @@ public class LevelItemGroup
         
         LevelItems.ForEach(levelItem =>
         {
-            if (StaticData.IsLevelCompleted(levelItem.LevelIndex))
+            if (StaticData.IsLevelCompleted(chapter * Consts.LevelCountEachChapter + levelItem.LevelIndex))
                 levelItem.SetMat(highLightMat);
 
             levelItem.onMouseEnter += OnMouseEnterLevelItem;

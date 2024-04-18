@@ -44,7 +44,7 @@ public class MainMenuManager : MonoSingleton<MainMenuManager>
     /// </summary>
     public void ChooseLevelItem(LevelItem levelItem)
     {
-        Cover.Instance.ChangeScene("Level" + levelItem.LevelIndex,2);
+        Cover.Instance.ChangeScene("Level" + levelItem.ChapterIndex + "-" + levelItem.LevelIndex,2);
     }
 
     /// <summary>
@@ -99,7 +99,7 @@ public class MainMenuManager : MonoSingleton<MainMenuManager>
     /// <param name="pos"></param>
     public Tween SetCameraPos(Vector3 pos, float duration)
     {
-        return cameraTransform.DOLocalMove(pos, duration);
+        return cameraTransform.DOLocalMove(pos, duration).SetEase(Ease.InOutQuad);
     }
 
     public void StartWork()

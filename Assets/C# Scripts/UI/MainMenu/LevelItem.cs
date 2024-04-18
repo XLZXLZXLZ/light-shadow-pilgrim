@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class LevelItem : MonoBehaviour
 {
+    [field: SerializeField] public int ChapterIndex { get; private set; }
     [field: SerializeField] public int LevelIndex { get; private set; }
     
     private List<MeshRenderer> renderers;

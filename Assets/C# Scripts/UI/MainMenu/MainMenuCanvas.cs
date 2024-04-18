@@ -11,12 +11,16 @@ public class MainMenuCanvas : MonoBehaviour
 
     private void Start()
     {
+        /*
         anim = GetComponent<Animator>();  
         if(!firstEnter)
         {
             EnterChooseLevel();
             Destroy(gameObject);
-        }    
+        }
+        */
+
+        EnterChooseLevel();
     }
 
     public void AnimationTrigger()

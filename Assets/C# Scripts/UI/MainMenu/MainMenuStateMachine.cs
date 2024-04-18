@@ -14,7 +14,7 @@ public class MainMenuStateMachine : StateMachine
         {
             { typeof(MainMenuChapter0State), mainMenuStates[0]},
             { typeof(MainMenuChapter1State), mainMenuStates[1]},
-            // { typeof(MainMenuChapter2State), mainMenuStates[2]},
+            { typeof(MainMenuChapter2State), mainMenuStates[2]}
         };
         
         mainMenuStates.ForEach(mainState =>

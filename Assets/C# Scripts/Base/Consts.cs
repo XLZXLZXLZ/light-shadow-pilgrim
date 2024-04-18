@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Consts
 {
+    public const int LevelCountEachChapter = 8;
     public const float MainMenuChapterDuration = 1.5f;
     public const float MainMenuTransformDuration = 0.3f;
     public const float MainMenuCommonLightIntensity = 2f;
