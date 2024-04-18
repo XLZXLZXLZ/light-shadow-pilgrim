@@ -12,5 +12,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7df2b979f5698c42a7c31d178c4b756, type: 3}
   m_Name: SoundEffectContainer
   m_EditorClassIdentifier: 
-  soundEffects:
-  - {fileID: 8300000, guid: d7ecfc90f9a86dc4e88b6e7ca3ddb163, type: 3}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 8300000, guid: 9f5e79602b12f5f4a973f3126047fe1d, type: 3}
+    - {fileID: 8300000, guid: 321ec5aef7ec3d44a8f7abed751c59ac, type: 3}
+    - {fileID: 8300000, guid: 6dd628fd7606c294e9d73183f282c142, type: 3}
+    - {fileID: 8300000, guid: d10c6bc4a4fee964bb84e3e8edde750c, type: 3}
+    - {fileID: 8300000, guid: e975777e06ede1c4ba73a2429079bc42, type: 3}
+    - {fileID: 8300000, guid: cb79f8b88aa9cb04093cff1ae9c38239, type: 3}
+    - {fileID: 8300000, guid: 400d789614f91354bb8a201930b4b597, type: 3}
+    - {fileID: 8300000, guid: 8e3ee7fb7c4ae5048a654f55f51ea7fc, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: soundEffects
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[AudioBlock, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 1|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|AudioBlockSequence, Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: Move
+    - Name: clips
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[UnityEngine.AudioClip, UnityEngine.AudioModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 7
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

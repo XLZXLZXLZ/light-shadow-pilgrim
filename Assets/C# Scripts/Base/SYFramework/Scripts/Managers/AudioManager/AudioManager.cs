@@ -133,7 +133,7 @@ public class AudioManager : ManagerBase<AudioManager>
             foreach (var se in soundEffectContainer.soundEffects)
             {
                 if(se == null) continue;
-                bgmDic.Add(se.GetName(), se);
+                seDic.Add(se.GetName(), se);
             }
         }
 #if UNITY_EDITOR

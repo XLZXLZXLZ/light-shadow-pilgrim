@@ -3261,6 +3261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SYRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 6265719315967814378, guid: f777e3a8c0a01314098595cdce0871f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6265719315967814383, guid: f777e3a8c0a01314098595cdce0871f6,
         type: 3}
       propertyPath: m_RootOrder

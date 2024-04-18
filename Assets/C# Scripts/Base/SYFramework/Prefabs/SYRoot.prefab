@@ -571,8 +571,10 @@ MonoBehaviour:
       Entry: 10
       Data: 0
   initModule:
-    bgmContainers: []
-    seContainers: []
+    bgmContainers:
+    - {fileID: 11400000, guid: 1c1919b783363464ebe1a70b286d5b35, type: 2}
+    seContainers:
+    - {fileID: 11400000, guid: 7ae59a42f0c52ab4898b361f0d59fea9, type: 2}
 --- !u!114 &6265719315967814377
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -142,6 +142,7 @@ public class PlatformNode : PathNode, IInteractable
 
         OnInteract();
         EventManager.Instance.OnPlayerMoveStart.Invoke();
+        AudioManager.Instance.PlaySe("Move");
     }
 
     private void OnDrawGizmos()
