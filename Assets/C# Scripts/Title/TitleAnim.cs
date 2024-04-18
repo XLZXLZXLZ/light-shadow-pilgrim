@@ -44,7 +44,7 @@ public class TitleAnim : MonoBehaviour
                 var t = child.GetChild(j);
 
                 Vector3 origin = t.position;
-                float delay = t.position.y * fallInterval + startInterval;
+                float delay = t.position.y * fallInterval + t.position.x * fallInterval + startInterval;
                 t.position += Vector3.up * 20;
                 delay = Mathf.Max(0, delay);
 
