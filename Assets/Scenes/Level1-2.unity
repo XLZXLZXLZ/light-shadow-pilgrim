@@ -1619,6 +1619,7 @@ MonoBehaviour:
   rotateAngle: 180
   ease: 0
   hideHeight: 30
+  shakeLevel: 0
 --- !u!4 &417014685 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 545637941173965063, guid: 7dccfebe49621234fb0ae9833300d9b4,
@@ -3713,6 +3714,11 @@ PrefabInstance:
       propertyPath: currentLevel
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5692105732116753919, guid: a3f1e3c49cd49ba4daf95b58de5ad195,
+        type: 3}
+      propertyPath: gameStartTip
+      value: "\u5F7C\u5CB8"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3f1e3c49cd49ba4daf95b58de5ad195, type: 3}
 --- !u!4 &1032586911 stripped
@@ -5164,6 +5170,7 @@ MonoBehaviour:
   rotateAngle: 180
   ease: 0
   hideHeight: 30
+  shakeLevel: 0
 --- !u!1001 &1582522744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5909,6 +5916,7 @@ MonoBehaviour:
   rotateAngle: 180
   ease: 0
   hideHeight: 30
+  shakeLevel: 0
 --- !u!1 &1806598481
 GameObject:
   m_ObjectHideFlags: 0

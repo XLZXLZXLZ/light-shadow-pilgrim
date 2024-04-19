@@ -2899,11 +2899,6 @@ PrefabInstance:
       propertyPath: targetSwitch.Array.data[0]
       value: 
       objectReference: {fileID: 1728956262}
-    - target: {fileID: 6467708467580102858, guid: 3d2f93f48fe7ed34d98da260a73c54ab,
-        type: 3}
-      propertyPath: lightStrength
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d2f93f48fe7ed34d98da260a73c54ab, type: 3}
 --- !u!4 &1184767391 stripped

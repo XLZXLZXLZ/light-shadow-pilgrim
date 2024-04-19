@@ -20,7 +20,7 @@ public class Consts
     public const float DarkStateIntensity = 0.4f;
 
     public const float PlayerScaleTransformDuration = 0.5f;
-    public const float GameOverCamUpHeight = 35f;
+    public const float GameOverCamUpHeight = 50f;
     public const float GameOverCamUpDuration = 5f;
 
     public const float LightSceneIntensity = 3f;

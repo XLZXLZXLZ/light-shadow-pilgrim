@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     protected virtual bool IsDontDestroyOnLoad => true;
