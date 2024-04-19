@@ -105,12 +105,15 @@ public class AudioManager : ManagerBase<AudioManager>
     /// <param name="soundEffectContainer"></param>
     public void LoadBgms(BgmContainer bgmContainer)
     {
-        if (bgmContainer != null && !bgmContainer.bgms.IsNullOrEmpty())
+        if (bgmContainer != null && !bgmContainer.bgmGroups.IsNullOrEmpty())
         {
-            foreach (var bgm in bgmContainer.bgms)
+            foreach (var bgmGroup in bgmContainer.bgmGroups)
             {
-                if(bgm == null) continue;
-                bgmDic.Add(bgm.GetName(), bgm);
+                if(bgmGroup == null) continue;
+                foreach (var bgm in bgmGroup.audios)
+                {
+                    bgmDic.Add(bgm.GetName(), bgm);
+                }
             }
         }
 #if UNITY_EDITOR
@@ -128,12 +131,15 @@ public class AudioManager : ManagerBase<AudioManager>
     /// <param name="soundEffectContainer"></param>
     public void LoadSes(SoundEffectContainer soundEffectContainer)
     {
-        if (soundEffectContainer != null && !soundEffectContainer.soundEffects.IsNullOrEmpty())
+        if (soundEffectContainer != null && !soundEffectContainer.soundEffectGroups.IsNullOrEmpty())
         {
-            foreach (var se in soundEffectContainer.soundEffects)
+            foreach (var seGroup in soundEffectContainer.soundEffectGroups)
             {
-                if(se == null) continue;
-                seDic.Add(se.GetName(), se);
+                if(seGroup == null) continue;
+                foreach (var se in seGroup.audios)
+                {
+                    seDic.Add(se.GetName(), se);
+                }
             }
         }
 #if UNITY_EDITOR
@@ -151,12 +157,16 @@ public class AudioManager : ManagerBase<AudioManager>
     /// <param name="soundEffectContainer"></param>
     public void UnloadBgms(BgmContainer bgmContainer)
     {
-        if (bgmContainer != null && !bgmContainer.bgms.IsNullOrEmpty())
+        if (bgmContainer != null && !bgmContainer.bgmGroups.IsNullOrEmpty())
         {
-            foreach (var bgm in bgmContainer.bgms)
+            foreach (var bgmGroup in bgmContainer.bgmGroups)
             {
-                if(bgm == null && !bgmDic.ContainsKey(bgm.GetName())) continue;
-                bgmDic.Remove(bgm.GetName());
+                if(bgmGroup == null) continue;
+                foreach (var bgm in bgmGroup.audios)
+                {
+                    if (!bgmDic.ContainsKey(bgm.GetName())) continue;
+                    bgmDic.Remove(bgm.GetName());
+                }
             }
         }
 #if UNITY_EDITOR
@@ -174,12 +184,16 @@ public class AudioManager : ManagerBase<AudioManager>
     /// <param name="soundEffectContainer"></param>
     public void UnloadSes(SoundEffectContainer soundEffectContainer)
     {
-        if (soundEffectContainer != null && !soundEffectContainer.soundEffects.IsNullOrEmpty())
+        if (soundEffectContainer != null && !soundEffectContainer.soundEffectGroups.IsNullOrEmpty())
         {
-            foreach (var se in soundEffectContainer.soundEffects)
+            foreach (var seGroup in soundEffectContainer.soundEffectGroups)
             {
-                if(se == null && !seDic.ContainsKey(se.GetName())) continue;
-                bgmDic.Remove(se.GetName());
+                if(seGroup == null) continue;
+                foreach (var se in seGroup.audios)
+                {
+                    if (!seDic.ContainsKey(se.GetName())) continue;
+                    seDic.Remove(se.GetName());
+                }
             }
         }
 #if UNITY_EDITOR

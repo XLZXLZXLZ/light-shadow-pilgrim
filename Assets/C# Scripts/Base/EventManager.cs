@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EventManager : Singleton<EventManager>
+public class EventManager : MonoSingleton<EventManager>
 {
-    // protected override bool IsDontDestroyOnLoad => false;
+    protected override bool IsDontDestroyOnLoad => false;
 
     public InvokableAction OnGameStart = new();
 

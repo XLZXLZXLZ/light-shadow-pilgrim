@@ -143,7 +143,8 @@ public class PlatformNode : PathNode, IInteractable
             return; //暂停时不执行
 
         OnInteract();
-
+        EventManager.Instance.OnPlayerMoveStart.Invoke();
+        AudioManager.Instance.PlaySe(AudioName.ClickNode);
     }
 
     private void OnDrawGizmos()

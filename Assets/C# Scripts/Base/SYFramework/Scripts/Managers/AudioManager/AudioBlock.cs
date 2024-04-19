@@ -8,6 +8,10 @@ public abstract class AudioBlock
 {
     public abstract string GetName();
     public abstract AudioClip GetAudioClip();
+    public static implicit operator AudioBlock(AudioClip clip)
+    {
+        return new AudioBlockSimple(clip);
+    }
 }
 
 [Serializable]
@@ -28,6 +32,11 @@ public class AudioBlockSimple : AudioBlock
     public AudioBlockSimple(AudioClip clip)
     {
         this.clip = clip;
+    }
+
+    public static implicit operator AudioBlockSimple(AudioClip clip)
+    {
+        return new AudioBlockSimple(clip);
     }
 }
 
@@ -66,3 +75,6 @@ public class AudioBlockRandom : AudioBlock
         return clips[Random.Range(0,clips.Count)];
     }
 }
+
+
+

@@ -16,47 +16,62 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 8300000, guid: 9f5e79602b12f5f4a973f3126047fe1d, type: 3}
-    - {fileID: 8300000, guid: 7822cc41ea8c2e146a62b1b367036830, type: 3}
-    - {fileID: 8300000, guid: 178d422071e321c488c98cb1a25f8ee8, type: 3}
-    - {fileID: 8300000, guid: 4268103d756fad8409f75fc5c58c2200, type: 3}
-    - {fileID: 8300000, guid: 6a7fc83cafc08ad4a86ed5fedc4f3753, type: 3}
-    - {fileID: 8300000, guid: 5ca799e8b176d7e4e9a2d7668114c83a, type: 3}
-    - {fileID: 8300000, guid: 7ee6f6a7f3b903c47b103cb360083818, type: 3}
-    - {fileID: 8300000, guid: 4820c4efa8a288142a41ea5c184affc7, type: 3}
+    - {fileID: 8300000, guid: ee3a35ee1f6be804d8f45b3e31a50aa9, type: 3}
+    - {fileID: 8300000, guid: 8cf56beaee4e7384cbce89cc03121ab0, type: 3}
+    - {fileID: 8300000, guid: 825cb29d651f66043b6fa5e0ceb9d295, type: 3}
+    - {fileID: 8300000, guid: 41347e5bed0f57344ad43063b0aab7fe, type: 3}
+    - {fileID: 8300000, guid: d64a6b1b2d19b984abf32353c7c631c0, type: 3}
+    - {fileID: 8300000, guid: 092eabe7f4e18864f86f19def18b53ca, type: 3}
+    - {fileID: 8300000, guid: 8488b515642850544bce15ced6cf0416, type: 3}
+    - {fileID: 8300000, guid: cf4e32e47b6b7b64496bda8e07f7fbf4, type: 3}
+    - {fileID: 8300000, guid: fbc8e9b7d8f612244a71142c0c486dda, type: 3}
+    - {fileID: 8300000, guid: 686a2e82cb5b9574fbe3f90a56885cd6, type: 3}
+    - {fileID: 8300000, guid: 1aa74fe4a2384fd499bc644ab0e60f05, type: 3}
+    - {fileID: 8300000, guid: 1280644e72ab2774d872af69b767f1ef, type: 3}
+    - {fileID: 8300000, guid: 5ed15c3f17dc43640bcc5f863d21afa3, type: 3}
+    - {fileID: 8300000, guid: 31dd30611b3451c4fb393810090c0846, type: 3}
+    - {fileID: 8300000, guid: a8659596e5a4c4d47837ed8dd96de44a, type: 3}
+    - {fileID: 8300000, guid: 6b3100bd0a52a6f4d8f96ff933c88d00, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: soundEffects
+    - Name: soundEffectGroups
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[AudioBlock, Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[AudioBlockGroup, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 2
     - Name: 
       Entry: 7
-      Data: 1|AudioBlockSimple, Assembly-CSharp
-    - Name: clip
-      Entry: 10
-      Data: 0
+      Data: 1|AudioBlockGroup, Assembly-CSharp
+    - Name: tag
+      Entry: 1
+      Data: PlayerMove
+    - Name: audios
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[AudioBlock, Assembly-CSharp]], mscorlib
     - Name: 
-      Entry: 8
-      Data: 
+      Entry: 12
+      Data: 2
     - Name: 
       Entry: 7
-      Data: 2|AudioBlockSequence, Assembly-CSharp
+      Data: 3|AudioBlockSequence, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: Move
     - Name: clips
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[UnityEngine.AudioClip, UnityEngine.AudioModule]],
+      Data: 4|System.Collections.Generic.List`1[[UnityEngine.AudioClip, UnityEngine.AudioModule]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 12
+    - Name: 
+      Entry: 10
+      Data: 0
     - Name: 
       Entry: 10
       Data: 1
@@ -77,12 +92,6 @@ MonoBehaviour:
       Data: 6
     - Name: 
       Entry: 10
-      Data: 7
-    - Name: 
-      Entry: 10
-      Data: 6
-    - Name: 
-      Entry: 10
       Data: 5
     - Name: 
       Entry: 10
@@ -93,6 +102,120 @@ MonoBehaviour:
     - Name: 
       Entry: 10
       Data: 2
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|AudioBlockGroup, Assembly-CSharp
+    - Name: tag
+      Entry: 1
+      Data: Rotate
+    - Name: audios
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[AudioBlock, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 8
+    - Name: 
+      Entry: 7
+      Data: 8|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 10|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 11|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 12|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 13|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 14|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 15|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 

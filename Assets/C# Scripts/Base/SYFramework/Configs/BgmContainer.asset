@@ -21,9 +21,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: bgms
+    - Name: bgmGroups
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[AudioBlock, Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[AudioBlockGroup, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
