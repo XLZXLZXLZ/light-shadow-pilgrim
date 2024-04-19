@@ -15,15 +15,18 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
             if (instance == null || instance.IsUnityNull())
                 instance = FindObjectOfType<T>();
             if (instance == null || instance.IsUnityNull())
-                instance = Instantiate(new GameObject(typeof(T).Name)).AddComponent<T>();
+                instance = new GameObject(typeof(T).Name).AddComponent<T>();
             return instance;
         }
         private set => instance = value;
     }
     public virtual void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
+        {
             Destroy(gameObject);
+            return;
+        }
         if(IsDontDestroyOnLoad)
             DontDestroyOnLoad(gameObject);
     }

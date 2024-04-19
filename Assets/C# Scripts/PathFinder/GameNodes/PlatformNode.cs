@@ -39,7 +39,8 @@ public class PlatformNode : PathNode, IInteractable
     {
         EventManager.Instance.OnClickNode?.Invoke(this);
         EventManager.Instance.OnPlayerMoveStart.Invoke();
-        AudioManager.Instance.PlaySe("Move");
+        AudioManager.Instance.PlaySe(AudioName.ClickNode);
+
     }
 
     //自动搜索附近的结点并尝试连接
@@ -144,7 +145,6 @@ public class PlatformNode : PathNode, IInteractable
 
         OnInteract();
         EventManager.Instance.OnPlayerMoveStart.Invoke();
-        AudioManager.Instance.PlaySe(AudioName.ClickNode);
     }
 
     private void OnDrawGizmos()
