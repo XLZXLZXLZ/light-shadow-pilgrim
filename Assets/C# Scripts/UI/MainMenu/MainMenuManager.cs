@@ -31,12 +31,17 @@ public class MainMenuManager : MonoSingleton<MainMenuManager>
         };
     }
 
+    //记录上一次的关卡，唉屎山
+    private static int lastChapter = -1;
+    public static int LastChapter => lastChapter;
+
     /// <summary>
     /// 切换选关界面
     /// </summary>
     public void SwitchChapter(int index)
     {
         stateMachine.SwitchState(stateDic[index]);
+        lastChapter = index;
     }
 
     /// <summary>
@@ -104,7 +109,28 @@ public class MainMenuManager : MonoSingleton<MainMenuManager>
 
     public void StartWork()
     {
-        stateMachine.Begin<MainMenuChapter0State>();
+        switch (lastChapter)
+        {
+            case -1:
+                lastChapter = 0;
+                DOTween.Sequence()
+                    .AppendInterval(1f)
+                    .OnComplete(() => stateMachine.Begin<MainMenuChapter0State>());
+                break;
+            case 0:
+                stateMachine.Begin<MainMenuChapter0State>();
+                break;
+
+            case 1:
+                stateMachine.Begin<MainMenuChapter1State>();
+                break;
+
+            case 2:
+                stateMachine.Begin<MainMenuChapter2State>();
+                break;
+        }
+
+        
     }
     
     // public void StartWork(bool withAnim)

@@ -3079,7 +3079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 17
-  gameStartTip: 
+  gameStartTip: "\u8E48\u5F71"
   gameOverTip: 
 --- !u!4 &922180333
 Transform:
@@ -3564,6 +3564,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1806598482}
     m_Modifications:
+    - target: {fileID: 1577794873, guid: 923b2d028f78bf0428b48c37424dbb00, type: 3}
+      propertyPath: tipWord
+      value: "\u5F71\u5B50\u7684\u4E00\u90E8\u5206"
+      objectReference: {fileID: 0}
     - target: {fileID: 7048632608534311438, guid: 923b2d028f78bf0428b48c37424dbb00,
         type: 3}
       propertyPath: m_RootOrder
@@ -3632,6 +3636,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1136088588}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1136088590 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7048632608100875811, guid: 923b2d028f78bf0428b48c37424dbb00,
+    type: 3}
+  m_PrefabInstance: {fileID: 1136088588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1136088591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136088590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3af38e61ddfed4bb5fe501c95d3be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipWord: "\u73B0\u5728\uFF0C\u4F60\u6210\u4E3A\u4E86\u5F71\u5B50\u7684\u4E00\u90E8\u5206..."
 --- !u!1001 &1195858814
 PrefabInstance:
   m_ObjectHideFlags: 0

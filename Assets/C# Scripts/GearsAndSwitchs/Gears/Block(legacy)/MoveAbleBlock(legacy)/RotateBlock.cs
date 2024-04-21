@@ -1,8 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Rendering;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class RotateBlock : Gear, IInteractable

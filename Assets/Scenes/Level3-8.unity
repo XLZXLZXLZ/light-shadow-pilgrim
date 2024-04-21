@@ -977,7 +977,7 @@ PrefabInstance:
     - target: {fileID: 7479265968509691720, guid: de4a590f89239cb4881639894e46bc60,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7479265968509691720, guid: de4a590f89239cb4881639894e46bc60,
         type: 3}
@@ -4018,7 +4018,7 @@ PrefabInstance:
     - target: {fileID: 1178714795118604497, guid: 1445977a2e96d6346971e252c3b93f57,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1178714795118604497, guid: 1445977a2e96d6346971e252c3b93f57,
         type: 3}
@@ -4033,7 +4033,7 @@ PrefabInstance:
     - target: {fileID: 1178714795118604497, guid: 1445977a2e96d6346971e252c3b93f57,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1178714795118604497, guid: 1445977a2e96d6346971e252c3b93f57,
         type: 3}
@@ -5257,21 +5257,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
         type: 3}
-      propertyPath: duration
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
-        type: 3}
-      propertyPath: shakeLevel
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
-        type: 3}
-      propertyPath: targetSwitch.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
-        type: 3}
       propertyPath: targetSwitch.Array.data[0]
       value: 
       objectReference: {fileID: 633142780}
@@ -5629,7 +5614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 24
-  gameStartTip: 
+  gameStartTip: "\u5FC3\u5319"
   gameOverTip: 
 --- !u!4 &922180333
 Transform:

@@ -6,7 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(LightExtension))]
 public class PlatformNode : PathNode, IInteractable
 {
-    [SerializeField] private bool alwaysReachable = false;
+    [SerializeField] 
+    private bool alwaysReachable = false;
+
+    //记录该点是否可点击，还是仅作为寻路的一部分，不可站上
+    [SerializeField]
+    private bool clickable = true;
 
     private float searchRadius = 1.1f;
     private LightExtension lightComponent;
@@ -37,6 +42,9 @@ public class PlatformNode : PathNode, IInteractable
     //交互时以该点为目标路径唤起事件
     public void OnInteract()
     {
+        if (!clickable)
+            return;
+
         EventManager.Instance.OnClickNode?.Invoke(this);
         EventManager.Instance.OnPlayerMoveStart.Invoke();
         AudioManager.Instance.PlaySe(AudioName.ClickNode);
@@ -163,7 +171,7 @@ public class PlatformNode : PathNode, IInteractable
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = clickable ? Color.green : Color.yellow;
         Gizmos.DrawWireSphere(transform.position, searchRadius);
 
     }

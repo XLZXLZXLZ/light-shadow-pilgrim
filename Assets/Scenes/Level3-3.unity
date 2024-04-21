@@ -5039,7 +5039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 19
-  gameStartTip: 
+  gameStartTip: "\u7834\u684E"
   gameOverTip: 
 --- !u!4 &922180333
 Transform:
@@ -6275,11 +6275,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1806598482}
     m_Modifications:
-    - target: {fileID: 7048632608100875808, guid: 923b2d028f78bf0428b48c37424dbb00,
-        type: 3}
-      propertyPath: price
-      value: 1.1
-      objectReference: {fileID: 0}
     - target: {fileID: 7048632608534311438, guid: 923b2d028f78bf0428b48c37424dbb00,
         type: 3}
       propertyPath: m_RootOrder
@@ -8926,6 +8921,11 @@ PrefabInstance:
       propertyPath: targetSwitch.Array.data[0]
       value: 
       objectReference: {fileID: 2113835065}
+    - target: {fileID: 7048632609183599514, guid: b8adddb423b79f44abcbf41d734aa175,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7479265968509691720, guid: b8adddb423b79f44abcbf41d734aa175,
         type: 3}
       propertyPath: m_RootOrder

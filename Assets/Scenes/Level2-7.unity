@@ -4419,7 +4419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 15
-  gameStartTip: 
+  gameStartTip: "\u949F\u8868"
   gameOverTip: 
 --- !u!4 &922180333
 Transform:

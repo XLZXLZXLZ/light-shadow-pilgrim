@@ -8,8 +8,11 @@ using UnityEngine.Serialization;
 public class GameManager : MonoSingleton<GameManager>
 {
     protected override bool IsDontDestroyOnLoad => false;
-    
+
+    [Header("关卡记录")]
     public int currentLevel;
+
+    [Header("关卡文字")]
     public string gameStartTip;
     public string gameOverTip;
     public string CurrentLevelString => $"{(currentLevel - 1) / 8 + 1} - {currentLevel % 8}";

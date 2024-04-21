@@ -14,7 +14,9 @@ public class PathNode : MonoBehaviour
     //这一设定通常用在某些踩上即触发的机关，将其设置为1.1可以使在两条等长的路径上避免选它，设置为100可以使除了不得不走它的其他情况尽量避开它
     [SerializeField]
     private float price = 1;
-    public float Price => price;    
+    public float Price => price;
+
+
 
     #region 属性
     public Vector3 pos => transform.position;
@@ -44,6 +46,8 @@ public class PathNode : MonoBehaviour
 
     private LightExtension lightExtension;
 
+    #endregion
+
     public virtual void Awake()
     {
         lightExtension = GetComponent<LightExtension>();
@@ -55,7 +59,6 @@ public class PathNode : MonoBehaviour
         EventManager.Instance.MapUpdate.OnEarlyStart -=   ClearLightRoad;
     }
 
-    #endregion
 
     public virtual bool ReachAble(LightState inputState)
     {

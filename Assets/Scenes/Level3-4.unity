@@ -2090,6 +2090,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1806598482}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 2542eed16795f2d40bc05f92f03cc6ee,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3566331003126359450, guid: 2542eed16795f2d40bc05f92f03cc6ee,
         type: 3}
       propertyPath: delay
@@ -3378,6 +3383,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2063600868}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 57ead329afc2df648b47a53a721db4af,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7479265968509691720, guid: 57ead329afc2df648b47a53a721db4af,
         type: 3}
       propertyPath: m_RootOrder
@@ -4101,6 +4111,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1806598482}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 2542eed16795f2d40bc05f92f03cc6ee,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3566331003126359450, guid: 2542eed16795f2d40bc05f92f03cc6ee,
         type: 3}
       propertyPath: delay
@@ -6024,6 +6039,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2063600868}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 57ead329afc2df648b47a53a721db4af,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7479265968509691720, guid: 57ead329afc2df648b47a53a721db4af,
         type: 3}
       propertyPath: m_RootOrder
@@ -6129,7 +6149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 20
-  gameStartTip: 
+  gameStartTip: "\u5173\u540D\u5F81\u96C6\u4E2D\u2014\u2014"
   gameOverTip: 
 --- !u!4 &922180333
 Transform:
@@ -6166,6 +6186,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1806598482}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 2542eed16795f2d40bc05f92f03cc6ee,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3566331003126359450, guid: 2542eed16795f2d40bc05f92f03cc6ee,
         type: 3}
       propertyPath: delay
@@ -8870,6 +8895,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2063600868}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 57ead329afc2df648b47a53a721db4af,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7479265968509691720, guid: 57ead329afc2df648b47a53a721db4af,
         type: 3}
       propertyPath: m_RootOrder
@@ -9020,6 +9050,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2063600868}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 57ead329afc2df648b47a53a721db4af,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7479265968509691720, guid: 57ead329afc2df648b47a53a721db4af,
         type: 3}
       propertyPath: m_RootOrder
@@ -9259,6 +9294,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2063600868}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 57ead329afc2df648b47a53a721db4af,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7479265968509691720, guid: 57ead329afc2df648b47a53a721db4af,
         type: 3}
       propertyPath: m_RootOrder
@@ -9334,6 +9374,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1806598482}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 2542eed16795f2d40bc05f92f03cc6ee,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3566331003126359450, guid: 2542eed16795f2d40bc05f92f03cc6ee,
         type: 3}
       propertyPath: delay
@@ -10079,6 +10124,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2063600868}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 57ead329afc2df648b47a53a721db4af,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7479265968509691720, guid: 57ead329afc2df648b47a53a721db4af,
         type: 3}
       propertyPath: m_RootOrder
@@ -10404,6 +10454,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1806598482}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 2542eed16795f2d40bc05f92f03cc6ee,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3566331003126359450, guid: 2542eed16795f2d40bc05f92f03cc6ee,
         type: 3}
       propertyPath: delay
@@ -12141,6 +12196,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1806598482}
     m_Modifications:
+    - target: {fileID: 551755708014661011, guid: 2542eed16795f2d40bc05f92f03cc6ee,
+        type: 3}
+      propertyPath: clickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3566331003126359450, guid: 2542eed16795f2d40bc05f92f03cc6ee,
         type: 3}
       propertyPath: delay

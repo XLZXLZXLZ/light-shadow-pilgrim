@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 21
-  gameStartTip: 
+  gameStartTip: "\u660E\u706F"
   gameOverTip: 
 --- !u!4 &922180333
 Transform:
