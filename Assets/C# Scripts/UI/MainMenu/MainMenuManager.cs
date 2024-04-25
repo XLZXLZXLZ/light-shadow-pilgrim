@@ -13,6 +13,7 @@ public class MainMenuManager : MonoSingleton<MainMenuManager>
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Transform globalLightTransform;
     [SerializeField] private Light globalLight;
+    [SerializeField] private MeshRenderer backgroundMeshRenderer;
     [SerializeField] private MainMenuStateMachine stateMachine;
 
     public StageEvent anim = new();
@@ -88,14 +89,21 @@ public class MainMenuManager : MonoSingleton<MainMenuManager>
     /// <summary>
     /// 设置环境光照颜色
     /// </summary>
-    /// <param name="lightColor"></param>
     public Tween SetEnvironmentLightColor(Color32 lightColor, float duration)
     {
-        return  DOTween.To(
+        return DOTween.To(
             () => RenderSettings.ambientSkyColor,
             color => RenderSettings.ambientSkyColor = color,
             lightColor,
             duration);
+    }
+
+    /// <summary>
+    /// 设置背景颜色
+    /// </summary>
+    public Tween SetBackgroundColor(Color32 backgroundColor, float duration)
+    {
+        return backgroundMeshRenderer.materials[0].DOColor(backgroundColor, duration);
     }
     
     /// <summary>

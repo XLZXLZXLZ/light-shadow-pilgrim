@@ -13,6 +13,7 @@ public abstract class MainMenuStateBase : IState
     [OdinSerialize] protected Vector3 startLightDirection;          // 入场时光照方向
     [OdinSerialize] protected float startGlobalLightIntensity;      // 入场时全局光照强度
     [OdinSerialize] protected Color32 startEnvironmentLightColor;   // 入场时环境光照强度
+    [OdinSerialize] protected Color32 startBackgroundColor;
     
     // protected bool IsStartAnim { get; private set; }
     // protected bool IsMoveAnim { get; private set; }
@@ -45,8 +46,9 @@ public abstract class MainMenuStateBase : IState
             MainMenuManager.Instance.SetCameraPos(startCameraPos, Consts.MainMenuChapterDuration),
             MainMenuManager.Instance.SetLightDirection(startLightDirection, Consts.MainMenuChapterDuration),
             MainMenuManager.Instance.SetGlobalLightIntensity(startGlobalLightIntensity, Consts.MainMenuChapterDuration),
-            MainMenuManager.Instance.SetEnvironmentLightColor(startEnvironmentLightColor, Consts.MainMenuChapterDuration) }
-            .PushToTweenPool(MainMenuManager.Instance.anim);
+            MainMenuManager.Instance.SetEnvironmentLightColor(startEnvironmentLightColor, Consts.MainMenuChapterDuration),
+            MainMenuManager.Instance.SetBackgroundColor(startBackgroundColor,Consts.MainMenuChapterDuration)
+        }.PushToTweenPool(MainMenuManager.Instance.anim);
     }
     
     public virtual void PhysicsUpdate(){}

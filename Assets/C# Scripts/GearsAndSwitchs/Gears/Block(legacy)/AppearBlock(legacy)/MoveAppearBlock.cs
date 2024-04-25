@@ -39,7 +39,6 @@ public class MoveAppearBlock : AppearBlock
     protected override void SwitchOn()
     {
         base.SwitchOn();
-
         
         DOTween.Sequence()
             .AppendInterval(delay)

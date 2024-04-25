@@ -6,7 +6,7 @@ using UnityEngine;
 public class ScaleAppearBlock : AppearBlock
 {
     private Vector3 startScale;
-
+    
     private void Start()
     {
         startScale = transform.localScale;
