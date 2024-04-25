@@ -27,6 +27,8 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        instance = this as T;
         if(IsDontDestroyOnLoad)
             DontDestroyOnLoad(gameObject);
     }

@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class InGameGlobalParticle : MonoSingleton<InGameGlobalParticle>
 {
-    
+    protected override bool IsDontDestroyOnLoad => false;
+
     void Start()
     {
         var canvas = GetComponent<Canvas>();
