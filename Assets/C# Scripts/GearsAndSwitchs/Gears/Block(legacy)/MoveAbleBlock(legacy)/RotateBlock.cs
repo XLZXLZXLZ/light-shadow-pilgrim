@@ -56,6 +56,8 @@ public class RotateBlock : Gear, IInteractable
             .DORotate(rotateAxis * angle * currentIndex, 0.5f)
             .SetEase(Ease.OutQuad)
             .PushToTweenPool(EventManager.Instance.MapUpdate);
+        
+        AudioManager.Instance.PlaySe(AudioName.ClickNode);
     }
 
     private void OnMouseDown()

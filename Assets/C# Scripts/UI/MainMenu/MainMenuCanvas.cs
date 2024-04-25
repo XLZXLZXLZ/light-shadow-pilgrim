@@ -40,7 +40,7 @@ public class MainMenuCanvas : MonoBehaviour
     {
         isReady = false;
         MainMenuManager.Instance.StartWork();
-        anim.Play("DisappearAnim");
+        // anim.Play("DisappearAnim");
         firstEnter = false;
     }
 }

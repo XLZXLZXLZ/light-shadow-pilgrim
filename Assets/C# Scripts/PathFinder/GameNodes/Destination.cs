@@ -19,7 +19,10 @@ public class Destination : MonoBehaviour, ITriggerable
         DOTween.Sequence()
             .AppendInterval(1f)
             .Append(cam.transform.DOMoveY(Consts.GameOverCamUpHeight, Consts.GameOverCamUpDuration)
-                .SetEase(Ease.InQuad));
+                .SetEase(Ease.InQuad))
+        // 芝士直接返回菜单的新增逻辑
+            .AppendCallback(() => Cover.Instance.ChangeScene(Consts.MainMenuSceneName, 2, 1));
+
         // .Join(cam.DOOrthoSize(cam.orthographicSize / 2.5f, Consts.GameOverCamUpDuration))
         // .OnComplete(GameManager.Instance.ShowGameOverTip);
     }

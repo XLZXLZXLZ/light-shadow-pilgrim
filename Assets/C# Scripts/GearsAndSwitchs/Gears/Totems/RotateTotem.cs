@@ -18,6 +18,8 @@ public class RotateTotem : Totem
 
         canMove = false;
         sliderTransform.DOMove(transform.position + sliderPos[currentIndex], 0.6f).OnComplete(() => canMove = true);
+        
+        AudioManager.Instance.PlaySe(AudioName.ClickNode);
     }
     #endregion
 

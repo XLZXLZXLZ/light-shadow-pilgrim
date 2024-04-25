@@ -21,7 +21,7 @@ public class StepSwitch : Switch, ITriggerable
         SwitchOn();
         anim.Play("SwitchOn");
         
-        AudioManager.Instance.PlaySe(AudioName.PlayerOverStepSwitch);
+        // AudioManager.Instance.PlaySe(AudioName.PlayerOverStepSwitch);
     }
 
     public void OnTriggerOver()

@@ -58,6 +58,8 @@ public class ControllerableMoveBlock : Gear
             .DOBlendableLocalMoveBy(moveAxis * offset * stepLength, duration)
             .SetEase(Ease.OutQuad)
             .PushToTweenPool(EventManager.Instance.MapUpdate);
+        
+        AudioManager.Instance.PlaySe(AudioName.ClickNode);
     }
     
 }

@@ -32,6 +32,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 31dd30611b3451c4fb393810090c0846, type: 3}
     - {fileID: 8300000, guid: a8659596e5a4c4d47837ed8dd96de44a, type: 3}
     - {fileID: 8300000, guid: 6b3100bd0a52a6f4d8f96ff933c88d00, type: 3}
+    - {fileID: 8300000, guid: 6852fb7b315d0274c8b71044d7225a6f, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -43,7 +44,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 1|AudioBlockGroup, Assembly-CSharp
@@ -213,6 +214,37 @@ MonoBehaviour:
     - Name: clip
       Entry: 10
       Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 16|AudioBlockGroup, Assembly-CSharp
+    - Name: tag
+      Entry: 1
+      Data: Gears
+    - Name: audios
+      Entry: 7
+      Data: 17|System.Collections.Generic.List`1[[AudioBlock, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 18|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 16
     - Name: 
       Entry: 8
       Data: 

@@ -46,12 +46,14 @@ public class GameManager : MonoSingleton<GameManager>
     {
         UIManager.Instance.SetPanelCanControlByKeyCode<PausePanel>(false);
         // UIManager.Instance.ShowPanel<GameOverTitlePanel>().SetTip(gameOverTip);
-        UIManager.Instance.GetPanelAsync<GameOverTitlePanel>(
-            panel =>
-            {
-                panel.SetTip(gameOverTip);
-                UIManager.Instance.ShowPanel<GameOverTitlePanel>();
-            });
+        
+        // 芝士原来按任意键返回菜单的逻辑
+        // UIManager.Instance.GetPanelAsync<GameOverTitlePanel>(
+        //     panel =>
+        //     {
+        //         panel.SetTip(gameOverTip);
+        //         UIManager.Instance.ShowPanel<GameOverTitlePanel>();
+        //     });
     }
     
     private void OnPlayerLightStateChanged(LightState lightState)

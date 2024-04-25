@@ -41,6 +41,8 @@ public class Elevator : MonoBehaviour
         isWorking = true;
         isReady = false;
         
+        AudioManager.Instance.PlaySe(AudioName.ElevatorMove);
+        
         return true;
     }
 

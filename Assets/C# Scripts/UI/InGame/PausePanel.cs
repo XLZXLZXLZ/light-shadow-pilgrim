@@ -87,14 +87,16 @@ public class PausePanel : PanelBase
     
     private void OnClickBackToMainMenuButton()
     {
-        AudioManager.Instance.PlaySe("PausePanelClick");
+        // AudioManager.Instance.PlaySe("PausePanelClick");
         Cover.Instance.ChangeScene("MainMenu",1f,2f);
         HideSelf();
+        
+        UIManager.Instance.SetPanelCanControlByKeyCode<PausePanel>(false);
     }
     
     private void OnClickExitGameButton()
     {
-        AudioManager.Instance.PlaySe("PausePanelClick");
+        // AudioManager.Instance.PlaySe("PausePanelClick");
         Application.Quit();
     }
 }

@@ -25,6 +25,8 @@ public class Consts
 
     public const float LightSceneIntensity = 3f;
     public const float DarkSceneIntensity = 1f;
+    
+    public const string MainMenuSceneName = "MainMenu";
 
     public static Color PlayerLightStateColor = new();
     public static Color PlayerDarkStateColor = new();
