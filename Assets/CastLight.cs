@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class CastLight : MonoBehaviour
@@ -8,6 +9,10 @@ public class CastLight : MonoBehaviour
     [Header("投射方向")] 
 
     [SerializeField] private bool left,right,forward,back;
+
+    [SerializeField] private bool bottom;
+    [Header("向下投射位移")]
+    [SerializeField] private Vector3 bottomPos;
     [Header("检测位置偏移")]
     [SerializeField] private Vector3 offset;
     [Header("光强")]
@@ -15,6 +20,7 @@ public class CastLight : MonoBehaviour
     [Header("光路")]
     public GameObject lightRoadEnd;
     public GameObject lightRoadMid;
+    public GameObject lightRoadSingle;
     private List<GameObject> lightRoads = new();
     //检测是否撞到物体
     private void Awake()
@@ -44,7 +50,6 @@ public class CastLight : MonoBehaviour
 
         foreach (var node in nodes)
         {
-            Debug.Log("开始摧毁全方位光路");
 
             var pathNode = node.GetComponent<PathNode>();
             var dir = (transform.position + offset) - node.transform.position;
@@ -53,7 +58,6 @@ public class CastLight : MonoBehaviour
 
                 if (Vector3.Dot(dir, Vector3.left) >= 0.98f)
                 {
-                    Debug.Log("搜索到左结点");
                     int i = 0;
                     while (i < lightStrength&& pathNode != null)
                     {
@@ -69,7 +73,6 @@ public class CastLight : MonoBehaviour
 
                 if (Vector3.Dot(dir, Vector3.right) >= 0.98f)
                 {
-                    Debug.Log("搜索到右结点");
                     int i = 0;
                     while (i < lightStrength&& pathNode != null)
                     {
@@ -83,7 +86,6 @@ public class CastLight : MonoBehaviour
 
                 if (Vector3.Dot(dir, Vector3.forward) >= 0.98f)
                 {
-                    Debug.Log("搜索到前结点");
                     int i = 0;
                     while (i < lightStrength && pathNode != null)
                     {
@@ -96,7 +98,6 @@ public class CastLight : MonoBehaviour
 
                 if (Vector3.Dot(dir, Vector3.back) >= 0.98f)
                 {
-                    Debug.Log("搜索到后结点");
                     int i = 0;
                     while (i < lightStrength && pathNode != null)
                     {
@@ -111,6 +112,20 @@ public class CastLight : MonoBehaviour
         }
     }
     
+    public void  CastSingle(Vector3 _offset)
+    {
+        Vector3 newPos = offset + transform.position + _offset;
+        var nodes = Physics.OverlapSphere(newPos, 0.2f, LayerMask.GetMask("Node"));
+        foreach (var node in nodes)
+        {
+            Debug.Log("检测到结点" );
+            var pathNode = node.GetComponent<PathNode>();
+            pathNode.UpdateLightRoad(lightRoadEnd, Quaternion.identity);
+        }
+
+
+    }
+
     // public void CastDir(Vector3 lightDir)
     // {
     //     //检索周围点
@@ -248,6 +263,12 @@ public class CastLight : MonoBehaviour
            
             
         }
+
+
+        if(bottom)
+        {
+            CastSingle(bottomPos);
+        }
     }
     
     
@@ -265,6 +286,13 @@ public class CastLight : MonoBehaviour
         }
 
         Gizmos.DrawWireSphere(transform.position, 0.1f);
+
+        Gizmos.color = Color.white;
+        if(bottom)
+        {
+            Gizmos.DrawLine(transform.position + offset, transform.position + offset + bottomPos);
+            Gizmos.DrawWireSphere(transform.position + offset + bottomPos, 0.2f);
+        }
     }
 
     private void OnDrawGizmosSelected()
