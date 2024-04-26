@@ -763,6 +763,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PathNode1x1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7479265969351611470, guid: de4a590f89239cb4881639894e46bc60,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0601c0e239886ec4ab4eb4e8592cf534, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de4a590f89239cb4881639894e46bc60, type: 3}
 --- !u!4 &217868024 stripped
@@ -4704,6 +4709,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1714143083030870911, guid: 79f8365d951f42941bad110a2d38c0e4,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714143083030870911, guid: 79f8365d951f42941bad110a2d38c0e4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0601c0e239886ec4ab4eb4e8592cf534, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79f8365d951f42941bad110a2d38c0e4, type: 3}
 --- !u!1001 &1188410190
@@ -5194,6 +5209,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PathNode1x1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7479265969351611470, guid: de4a590f89239cb4881639894e46bc60,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0601c0e239886ec4ab4eb4e8592cf534, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de4a590f89239cb4881639894e46bc60, type: 3}
 --- !u!4 &1401294112 stripped
@@ -5699,16 +5719,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2063600868}
     m_Modifications:
-    - target: {fileID: 551755708014661011, guid: de4a590f89239cb4881639894e46bc60,
-        type: 3}
-      propertyPath: down
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 551755708014661011, guid: de4a590f89239cb4881639894e46bc60,
-        type: 3}
-      propertyPath: left
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7479265968509691720, guid: de4a590f89239cb4881639894e46bc60,
         type: 3}
       propertyPath: m_RootOrder
@@ -6581,16 +6591,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2063600868}
     m_Modifications:
-    - target: {fileID: 551755708014661011, guid: de4a590f89239cb4881639894e46bc60,
-        type: 3}
-      propertyPath: down
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 551755708014661011, guid: de4a590f89239cb4881639894e46bc60,
-        type: 3}
-      propertyPath: left
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7479265968509691720, guid: de4a590f89239cb4881639894e46bc60,
         type: 3}
       propertyPath: m_RootOrder
@@ -6993,6 +6993,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PathNode1x1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7479265969351611470, guid: de4a590f89239cb4881639894e46bc60,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0601c0e239886ec4ab4eb4e8592cf534, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de4a590f89239cb4881639894e46bc60, type: 3}
 --- !u!4 &2087921943 stripped
@@ -7153,6 +7158,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PathNode1x1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7479265969351611470, guid: de4a590f89239cb4881639894e46bc60,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0601c0e239886ec4ab4eb4e8592cf534, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de4a590f89239cb4881639894e46bc60, type: 3}
 --- !u!4 &2125580752 stripped
