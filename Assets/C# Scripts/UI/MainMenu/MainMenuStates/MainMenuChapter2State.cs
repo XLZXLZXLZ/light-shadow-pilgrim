@@ -48,7 +48,7 @@ public class MainMenuChapter2State : MainMenuStateBase
     protected override void OnSelectLevelItem(LevelItem levelItem)
     {
         base.OnSelectLevelItem(levelItem);
-        MainMenuManager.Instance.SetGlobalLightIntensity(Consts.MainMenuCommonLightIntensity, Consts.MainMenuTransformDuration);
+        //MainMenuManager.Instance.SetGlobalLightIntensity(Consts.MainMenuCommonLightIntensity, Consts.MainMenuTransformDuration);
     }
 }
 

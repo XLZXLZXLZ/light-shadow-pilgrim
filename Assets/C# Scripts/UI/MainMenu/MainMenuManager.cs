@@ -15,6 +15,7 @@ public class MainMenuManager : MonoSingleton<MainMenuManager>
     [SerializeField] private Light globalLight;
     [SerializeField] private MeshRenderer backgroundMeshRenderer;
     [SerializeField] private MainMenuStateMachine stateMachine;
+    [SerializeField] private Color[] mainColorOfChapter;
 
     public StageEvent anim = new();
     
@@ -50,7 +51,7 @@ public class MainMenuManager : MonoSingleton<MainMenuManager>
     /// </summary>
     public void ChooseLevelItem(LevelItem levelItem)
     {
-        Cover.Instance.ChangeScene("Level" + levelItem.ChapterIndex + "-" + levelItem.LevelIndex,2);
+        Cover.Instance.ChangeScene("Level" + levelItem.ChapterIndex + "-" + levelItem.LevelIndex, mainColorOfChapter[levelItem.ChapterIndex - 1], 2, 0.5f);
     }
 
     /// <summary>

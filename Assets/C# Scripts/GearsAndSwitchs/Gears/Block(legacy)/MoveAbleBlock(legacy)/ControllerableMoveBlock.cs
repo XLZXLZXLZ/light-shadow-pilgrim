@@ -22,12 +22,15 @@ public class ControllerableMoveBlock : Gear
     protected Renderer tipColor;
     [SerializeField]
     protected Color onColor, offColor;
+    [SerializeField]
+    private Renderer line;
 
     private int currentIndex = 0;
 
     #region 机关表现
     private void Start()
     {
+        EventManager.Instance.OnGameOver += OnGameEnd;
         tipColor.material = new Material(tipColor.material); //创建临时材质，避免直接替换文件
         tipColor.material.color = IsOn ? onColor : offColor;
     }
@@ -60,6 +63,12 @@ public class ControllerableMoveBlock : Gear
             .PushToTweenPool(EventManager.Instance.MapUpdate);
         
         AudioManager.Instance.PlaySe(AudioName.ClickNode);
+    }
+
+    private void OnGameEnd()
+    {
+        DOTween.Sequence().AppendInterval(1f)
+            .Append(line.material.DOColor(line.material.color.GetTransparent(), 3f));
     }
     
 }

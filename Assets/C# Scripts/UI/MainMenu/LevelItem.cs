@@ -57,8 +57,7 @@ public class LevelItem : MonoBehaviour
     {
         onMouseUp?.Invoke(this);
     }
-
     #endregion
-    
+
 }
 

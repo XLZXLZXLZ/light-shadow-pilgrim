@@ -1258,6 +1258,7 @@ MonoBehaviour:
   tipColor: {fileID: 1165161221246384200}
   onColor: {r: 0.21568628, g: 0.7294118, b: 1, a: 0}
   offColor: {r: 1, g: 0.31764707, b: 0.31764707, a: 0}
+  line: {fileID: 5633907194116046974}
 --- !u!65 &1132951451184891223
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -42,6 +42,7 @@ public class EffectManager : MonoBehaviour
         EventManager.Instance.OnPlayerLightStateChanged += LightStateChange;
         EventManager.Instance.OnClickNode += UseClickEffect;
         gameLight = GlobalLight.Instance.GetComponent<Light>();
+        backGroundInfo.lightColor = Camera.main.backgroundColor;
     }
 
     private void LightStateChange(LightState state)

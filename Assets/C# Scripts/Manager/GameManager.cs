@@ -15,7 +15,7 @@ public class GameManager : MonoSingleton<GameManager>
     [Header("关卡文字")]
     public string gameStartTip;
     public string gameOverTip;
-    public string CurrentLevelString => $"{(currentLevel - 1) / 8 + 1} - {currentLevel % 8}";
+    public string CurrentLevelString => $"{(currentLevel - 1) / 8 + 1} - {(currentLevel - 1) % 8 + 1}";
     public LightState CurrentPlayerState { get; private set; } = LightState.Light;
 
     public override void Awake()

@@ -36,7 +36,14 @@ public class Cover : MonoSingleton<Cover>
     }
     public void ChangeScene(string sceneName,float time)
     {
-         ChangeScene(sceneName,time/2,0);
+         ChangeScene(sceneName,time,0);
+    }
+    public void ChangeScene(string sceneName, Color color, float time = 2, float holdTime = 0)
+    {
+        if (isChanging)
+            return;
+        i.color = color;
+        ChangeScene(sceneName, time, holdTime);
     }
     public void ChangeScene(string sceneName, float time,float holdTime)
     {
@@ -44,7 +51,7 @@ public class Cover : MonoSingleton<Cover>
             return;
         StartCoroutine(ChangingScene(sceneName, time / 2, holdTime));
     }
-
+  
 
     private bool isChanging;
 

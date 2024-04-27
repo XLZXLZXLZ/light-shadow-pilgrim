@@ -40,7 +40,7 @@ public class LevelRecord
 }
 public static class StaticData
 {
-    private static LevelRecord levelRecord = new(24);
+    private static LevelRecord levelRecord = new(50);
     public static bool[] LevelCompleted => levelRecord.LevelCompleted;
 
     public static void CompleteLevel(int index)

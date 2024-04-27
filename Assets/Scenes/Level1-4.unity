@@ -2844,7 +2844,7 @@ PrefabInstance:
     - target: {fileID: 5692105732116753919, guid: a3f1e3c49cd49ba4daf95b58de5ad195,
         type: 3}
       propertyPath: gameStartTip
-      value: "\u5173\u540D\u5F81\u96C6\u4E2D\u2014\u2014"
+      value: "\u957F\u6865"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3f1e3c49cd49ba4daf95b58de5ad195, type: 3}
