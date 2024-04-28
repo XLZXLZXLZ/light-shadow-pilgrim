@@ -33,6 +33,10 @@ MonoBehaviour:
     m_Address: GameOverTitlePanel
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7623f15e1b01d494390e654d94d110d7
+    m_Address: GamePanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 792483d15b2d8ca4f9fdab48a08e33e7, type: 2}
   m_SchemaSet:

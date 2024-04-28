@@ -92,6 +92,7 @@ public class PausePanel : PanelBase
         HideSelf();
         
         UIManager.Instance.SetPanelCanControlByKeyCode<PausePanel>(false);
+        UIManager.Instance.HidePanel<GamePanel>();
     }
     
     private void OnClickExitGameButton()

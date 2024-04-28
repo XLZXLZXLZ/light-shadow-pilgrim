@@ -14,6 +14,7 @@ public class Consts
     public const float TipWordFadeInoutDuration = 1f;
     public const float TipWordExitDuration = 3f;
     public const float ButtonFadeInOutDuration = 0.25f;
+    public const float UIGamePanelAppearDuration = 1f;
     
     public const float VolumeFadeDuration = 0.3f;
     public const float LightStateIntensity = 0f;

@@ -39,12 +39,13 @@ public class GameManager : MonoSingleton<GameManager>
             {
                 panel.SetTitle(gameStartTip,CurrentLevelString);
                 UIManager.Instance.ShowPanel<GameStartTitlePanel>();
-            });
+            });  
     }
 
     private void OnGameOver()
     {
         UIManager.Instance.SetPanelCanControlByKeyCode<PausePanel>(false);
+        UIManager.Instance.HidePanel<GamePanel>();
         // UIManager.Instance.ShowPanel<GameOverTitlePanel>().SetTip(gameOverTip);
         
         // 芝士原来按任意键返回菜单的逻辑
@@ -64,5 +65,6 @@ public class GameManager : MonoSingleton<GameManager>
     private void OnMapGenerateFinished()
     {
         UIManager.Instance.SetPanelCanControlByKeyCode<PausePanel>(true);
+        UIManager.Instance.ShowPanel<GamePanel>();
     }
 }
