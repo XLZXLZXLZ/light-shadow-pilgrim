@@ -10,7 +10,7 @@ public class Destination : MonoBehaviour, ITriggerable
     {
         EventManager.Instance.OnGameOver.Invoke();
         StaticData.CompleteLevel(GameManager.Instance.currentLevel);
-        
+
         var player = Player.Instance;
         var cam = Camera.main;
 
