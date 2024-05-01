@@ -7,8 +7,9 @@ using UnityEngine.UI;
 [PanelConfig(
     typeof(GamePanel),
     nameof(GamePanel),
-    0,
-    false)]
+    3,
+    false,
+    true)]
 public class GamePanel : PanelBase
 {
     [SerializeField] private Button pauseButton;
@@ -16,6 +17,7 @@ public class GamePanel : PanelBase
     
     private Vector2 startPos;
     private Vector2 upCenterPos;
+    private bool isInit;
     protected override void OnInit()
     {
         pauseButton.onClick.AddListener(OnClickPauseButton);
@@ -33,8 +35,12 @@ public class GamePanel : PanelBase
 
     protected override void ShowAnim()
     {
-        startPos = pauseButton.transform.position;
-        upCenterPos = startPos + pauseButtonOffset;
+        if (!isInit)
+        {
+            startPos = pauseButton.transform.position;
+            upCenterPos = startPos + pauseButtonOffset;
+            isInit = true;
+        }
         
         pauseButton.transform.position = upCenterPos;
         pauseButton.transform.DOMove(startPos, Consts.UIGamePanelAppearDuration)

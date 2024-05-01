@@ -79,7 +79,8 @@ public class SYSettingsEditor : OdinEditor
                                     attribute.type,
                                     attribute.assetPath,
                                     attribute.layerIndex,
-                                    attribute.isHideDirectly,
+                                    attribute.isShowAndHideDirectly,
+                                    attribute.isControlledByLayer,
                                     attribute.showKeyCode,
                                     attribute.hideKeyCode));
                         }

@@ -10,6 +10,7 @@ using UnityEngine.UI;
     nameof(PausePanel),
     4,
     false,
+    true,
     KeyCode.Escape,
     KeyCode.Escape)]
 public class PausePanel : PanelBase

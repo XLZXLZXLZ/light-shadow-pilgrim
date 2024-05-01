@@ -8,8 +8,9 @@ using UnityEngine.Serialization;
 [PanelConfig(
     typeof(GameOverTitlePanel),
     nameof(GameOverTitlePanel),
-    3,
-    true)]
+    1,
+    true,
+    false)]
 public class GameOverTitlePanel : PanelBase
 {
     [SerializeField] private TextMeshProUGUI titleText;

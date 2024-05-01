@@ -10,6 +10,7 @@ public class AudioName
     public const string RotateMapNi = "RotateNi_";
     public const string ElevatorMove = "ElevatorMove";
     public const string Complete = "Complete";
+    public const string Destination = "Destination";
 
     public const string MainMenuMouseOver = "MouseOver";
     public const string MainMenuChoose = "Choose";

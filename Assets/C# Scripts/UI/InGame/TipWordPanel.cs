@@ -8,8 +8,9 @@ using UnityEngine;
 [PanelConfig(
     typeof(TipWordPanel),
     nameof(TipWordPanel),
-    1,
-    true)]
+    0,
+    true,
+    false)]
 public class TipWordPanel : PanelBase
 {
     [SerializeField] private TextMeshProUGUI tmp;

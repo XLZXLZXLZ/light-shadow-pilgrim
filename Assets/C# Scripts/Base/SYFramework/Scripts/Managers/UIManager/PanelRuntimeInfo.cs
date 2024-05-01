@@ -13,13 +13,14 @@ public enum PanelRuntimeState
 public class PanelRuntimeInfo
 {
     public PanelCacheInfo CacheInfo { get; private set; }
-    public bool IsCanControl => IsCanControlInternal; // 先这么写，增加拓展性
+    public bool IsCanControl => IsCanControlInternal;
     public bool IsCanControlByKeyCode => IsCanControlByKeyCodeInternal && IsCanControl;
     private bool IsCanControlInternal { get; set; } = true;
-    private bool IsCanControlByKeyCodeInternal { get; set; }
+    private bool IsCanControlByKeyCodeInternal { get; set; } = false;
     public PanelConfigInfo ConfigInfo => CacheInfo.ConfigInfo;
     public PanelBase PanelCache => CacheInfo.PanelCache;
     public int LayerIndex => ConfigInfo.layerIndex;
+    public bool IsControlledByLayer => ConfigInfo.isControlledByLayer;
     
     public PanelRuntimeState RuntimeState
     {

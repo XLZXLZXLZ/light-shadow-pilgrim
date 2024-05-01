@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class PanelConfigInfo
@@ -8,7 +9,8 @@ public class PanelConfigInfo
     public Type panelType;
     public string assetPath;
     public int layerIndex;
-    public bool isHideDirectly;
+    public bool isShowAndHideDirectly;
+    public bool isControlledByLayer;
     public KeyCode showKeyCode;
     public KeyCode hideKeyCode;
 
@@ -19,14 +21,16 @@ public class PanelConfigInfo
         Type type,
         string assetPath,
         int layerIndex,
-        bool isHideDirectly,
+        bool isShowAndHideDirectly,
+        bool isControlledByLayer,
         KeyCode showKeyCode,
         KeyCode hideKeyCode)
     {
         this.panelType = type;
         this.assetPath = assetPath;
         this.layerIndex = layerIndex;
-        this.isHideDirectly = isHideDirectly;
+        this.isShowAndHideDirectly = isShowAndHideDirectly;
+        this.isControlledByLayer = isControlledByLayer;
         this.showKeyCode = showKeyCode;
         this.hideKeyCode = hideKeyCode;
     }

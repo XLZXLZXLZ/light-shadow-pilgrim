@@ -5,6 +5,24 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// 该UI架构使用规则：
+/// 1. 每个UI面板需要挂载继承自PanelBase的脚本，该类还需要标记PanelConfig的特性（特性有什么作用去PanelConfigAttribute看）
+/// 2. UI面板做成预制体，交给Addressables管理，特性中设置的地址必须和Addressables中加载的地址一致
+/// 3. 使用时可能会用到的API有（有异步版本最好用异步版本）
+///     # ShowPanel，HidePanel，ShowPanelAsync 打开和关闭UI面板
+///     # GetPanel，GetPanelAsync 获取Panel，如果没加载好会自动加载好
+///     # SetPanelCanControlByKeyCode 设置该UI面板是否可以被键位控制，即使事先没加载好也会自动加载
+///     # init，show，hide等时期的回调函数
+///     # ShowSelf，HideSelf的懒狗方法
+///
+/// 该UI架构使用注意事项：
+/// 1. UI有多少个层级可以自己按需要控制，该预制体就好
+/// 2. 正常来说，每个UI面板占用一个层级，当该层级上存在其他UI面板或者上层存在UI面板时是不允许操作该层级UI的
+/// 3. UI面板设置中提供了isControlledByLayer（是否受到层级限制），如果设置为false，则不会受到上层UI的影响，但每个层级还是只允许存在一个Panel
+/// 4. 如果PanelConfig中isShowAndHideDirectly设置为false，则在面板进入和面板退出的动画结束后调用ShowAnimFinished和HideAnimFinished
+/// </summary>
+
 public class UIManager : ManagerBase<UIManager>
 {    
     /// <summary>
@@ -113,7 +131,8 @@ public class UIManager : ManagerBase<UIManager>
     /// </summary>
     private bool IsCanOperatePanel(Type type, out PanelRuntimeInfo runtimeInfo)
     {
-        return IsContainPanelConfigInfo(type,out runtimeInfo) && !IsCanContainUpPanel(runtimeInfo);
+        if (!IsContainPanelConfigInfo(type, out runtimeInfo)) return false;
+        return !runtimeInfo.IsControlledByLayer || !IsContainUpPanel(runtimeInfo);
     }
 
     /// <summary>
@@ -140,13 +159,13 @@ public class UIManager : ManagerBase<UIManager>
     /// </summary>
     /// <param name="cacheInfo"></param>
     /// <returns></returns>
-    private bool IsCanContainUpPanel(PanelRuntimeInfo runtimeInfo)
+    private bool IsContainUpPanel(PanelRuntimeInfo runtimeInfo)
     {
         if (PanelOnShowing.Count != 0 &&
             PanelOnShowing.Peek().ControllerLayerIndex > runtimeInfo.LayerIndex)
         {
 #if UNITY_EDITOR
-            SYLog.LogWarning("UIManager：奶奶滴，存在上层UI时不能操作下层UI！");
+            SYLog.LogWarning("UIManager：奶奶滴，存在上层UI时不能操作下层UI！如果有需要，请考虑设置该Panel的isControlledByLayer为false");
 #endif
             return true;
         }
@@ -313,7 +332,7 @@ public class UIManager : ManagerBase<UIManager>
     /// <summary>
     /// 异步获取Panel的引用，如果还没加载就自动加载好
     /// </summary>
-    public void GetPanelAsync<T>(Action<T> onLoadCompleted = null) where T : PanelBase
+    public void GetPanelAsync<T>(Action<T> onLoadCompleted) where T : PanelBase
     {
         if (!IsContainPanelConfigInfo(typeof(T), out PanelRuntimeInfo runtimeInfo)) return;
 
@@ -348,6 +367,18 @@ public class UIManager : ManagerBase<UIManager>
         
         return runtimeInfo.CacheInfo.PanelCache;
     }
+
+    public void ShowPanelAsync<T>(Action<T> onComplete) where T : PanelBase
+    {
+        if (!IsCanOperateUI) return;
+
+        if (!IsCanOperatePanel(typeof(T),out PanelRuntimeInfo runtimeInfo)) return;
+
+        if (runtimeInfo.RuntimeState == PanelRuntimeState.ShowingOrHiding) return;
+        
+        PanelLayerController controller = panelLayerControllers[runtimeInfo.ConfigInfo.layerIndex];
+        controller.ShowPanelAsync<T>(runtimeInfo,onComplete);
+    }
     
     /// <summary>
     /// 隐藏一个Panel，如果isHideDirectly为false需要手动保存或清理缓存
@@ -369,13 +400,6 @@ public class UIManager : ManagerBase<UIManager>
         if (runtimeInfo.RuntimeState == PanelRuntimeState.ShowingOrHiding) return;
         
         PanelLayerController controller = panelLayerControllers[runtimeInfo.LayerIndex];
-        if (PanelOnShowing.Count == 0 || PanelOnShowing.Peek() != controller)
-        {
-#if UNITY_EDITOR
-            SYLog.LogWarning("UIManager：不应该出现的情况，我的问题QWQ");
-            return;
-#endif
-        }
         
         if (!runtimeInfo.CacheInfo.IsCache || !controller.IsShowing)
         {
@@ -390,18 +414,14 @@ public class UIManager : ManagerBase<UIManager>
 
     private void OnControllerShowPanel(PanelLayerController controller)
     {
-        PanelOnShowing.Push(controller);
+        if(controller.CurrentPanelConfigInfo.isControlledByLayer)
+            PanelOnShowing.Push(controller);
     }
 
     private void OnControllerHidePanel(PanelLayerController controller)
     {
-        if (PanelOnShowing.Count == 0 || PanelOnShowing.Peek() != controller)
-        {
-#if UNITY_EDITOR
-            SYLog.LogError("UIManager：这啥情况，这不对吧");
-#endif
-        }
-        PanelOnShowing.Pop();
+        if(controller.CurrentPanelConfigInfo.isControlledByLayer)
+            PanelOnShowing.Pop();
     }
     
     public void SetPanelCanControlByKeyCode<T>(bool isCanControlByKeyCode) where T : PanelBase
