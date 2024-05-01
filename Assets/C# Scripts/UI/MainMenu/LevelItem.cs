@@ -28,6 +28,7 @@ public class LevelItem : MonoBehaviour
     public void MoveUp()
     {
         transform.DOLocalMove(startPos + Vector3.up * 0.5f, 0.25f);
+        AudioManager.Instance.PlaySe(AudioName.MainMenuMouseOver);
     }
 
     public void MoveDown()

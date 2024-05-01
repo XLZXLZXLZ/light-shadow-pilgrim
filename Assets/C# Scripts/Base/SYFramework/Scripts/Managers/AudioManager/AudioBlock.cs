@@ -21,6 +21,7 @@ public class AudioBlockSimple : AudioBlock
     
     public override string GetName()
     {
+        if (clip == null) return "";
         return clip.name;
     }
 

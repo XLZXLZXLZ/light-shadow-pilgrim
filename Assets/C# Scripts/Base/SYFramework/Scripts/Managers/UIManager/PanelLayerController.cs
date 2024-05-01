@@ -32,14 +32,14 @@ public class PanelLayerController : MonoBehaviour
     /// 2. 如果当前有Panel正在显示，则不能继续显示
     /// 3. 如果当前的Layer不能操作或者传入的Panel不能操作，则返回
     /// </summary>
-    public void ShowPanel(PanelRuntimeInfo panelRuntimeInfo)
+    private bool ShowPanelCheck(PanelRuntimeInfo panelRuntimeInfo)
     {
         if (panelRuntimeInfo == null)
         {
 #if UNITY_EDITOR
             SYLog.LogError($"PanelLayerController：尝试显示一个空的Panel");
 #endif
-            return;
+            return false;
         }
         
         if (IsShowing)
@@ -47,13 +47,46 @@ public class PanelLayerController : MonoBehaviour
 #if UNITY_EDITOR
             SYLog.LogWarning($"PanelLayerController：{PanelLayerIndex}上已经有Panel在显示");
 #endif
-            return;
+            return false;
         }
         
         if (!IsCanOperateThisLayer || 
             !panelRuntimeInfo.IsCanControl || 
             panelRuntimeInfo.RuntimeState == PanelRuntimeState.ShowingOrHiding) 
-            return;
+            return false;
+        
+        return true;
+    }
+    
+    public void ShowPanel(PanelRuntimeInfo panelRuntimeInfo)
+    {
+        if (!ShowPanelCheck(panelRuntimeInfo)) return;
+        
+        CurrentPanelRuntimeInfo = panelRuntimeInfo;
+        if (!panelRuntimeInfo.CacheInfo.IsCache)
+        {
+            panelRuntimeInfo.CacheInfo.LoadCacheAsync(true, mask.transform).WaitForCompletion();
+            if (CurrentPanelCacheInfo.PanelCache == null)
+#if UNITY_EDITOR
+            {
+                SYLog.LogError($"PanelLayerController：将要生成的Panel为空，是否加载的路径出错？");
+                return;
+            }
+#endif
+        }
+        panelRuntimeInfo.CacheInfo.PanelCache.gameObject.SetActive(true);
+        CurrentPanelCacheInfo.PanelCache.Show(CurrentPanelConfigInfo.isShowAndHideDirectly);
+
+        onShowPanel?.Invoke(this);
+        mask.raycastTarget = true;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void ShowPanelAsync<T>(PanelRuntimeInfo panelRuntimeInfo, Action<T> onComplete) where T : PanelBase
+    {
+        if (!ShowPanelCheck(panelRuntimeInfo)) return;
         
         CurrentPanelRuntimeInfo = panelRuntimeInfo;
         if (!panelRuntimeInfo.CacheInfo.IsCache)
@@ -68,14 +101,16 @@ public class PanelLayerController : MonoBehaviour
                     return;
                 }
 #endif
-                CurrentPanelCacheInfo.PanelCache.gameObject.SetActive(true);
-                CurrentPanelCacheInfo.PanelCache.Show(CurrentPanelConfigInfo.isHideDirectly);
+                panelRuntimeInfo.CacheInfo.PanelCache.gameObject.SetActive(true);
+                CurrentPanelCacheInfo.PanelCache.Show(CurrentPanelConfigInfo.isShowAndHideDirectly);
+                onComplete?.Invoke(CurrentPanelCacheInfo.PanelCache as T);
             };
         }
         else
         {
             panelRuntimeInfo.CacheInfo.PanelCache.gameObject.SetActive(true);
-            CurrentPanelCacheInfo.PanelCache.Show(CurrentPanelConfigInfo.isHideDirectly);
+            CurrentPanelCacheInfo.PanelCache.Show(CurrentPanelConfigInfo.isShowAndHideDirectly);
+            onComplete?.Invoke(CurrentPanelCacheInfo.PanelCache as T);
         }
         
         onShowPanel?.Invoke(this);
@@ -101,12 +136,12 @@ public class PanelLayerController : MonoBehaviour
             !CurrentPanelRuntimeInfo.IsCanControl)
             return;
         
-        CurrentPanelCacheInfo.PanelCache.Hide(CurrentPanelCacheInfo.ConfigInfo.isHideDirectly);
-        if(CurrentPanelCacheInfo.ConfigInfo.isHideDirectly)
+        CurrentPanelCacheInfo.PanelCache.Hide(CurrentPanelCacheInfo.ConfigInfo.isShowAndHideDirectly);
+        if(CurrentPanelCacheInfo.ConfigInfo.isShowAndHideDirectly)
             CurrentPanelCacheInfo.SaveCache();
-        CurrentPanelRuntimeInfo = null;
         
         onHidePanel?.Invoke(this);
+        CurrentPanelRuntimeInfo = null;
         mask.raycastTarget = false;
     }
 }

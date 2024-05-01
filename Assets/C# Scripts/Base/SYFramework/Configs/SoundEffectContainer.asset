@@ -33,6 +33,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a8659596e5a4c4d47837ed8dd96de44a, type: 3}
     - {fileID: 8300000, guid: 6b3100bd0a52a6f4d8f96ff933c88d00, type: 3}
     - {fileID: 8300000, guid: 6852fb7b315d0274c8b71044d7225a6f, type: 3}
+    - {fileID: 8300000, guid: f3f0f108c0a60f04db8215f5f7f3ae1a, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -44,7 +45,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 5
     - Name: 
       Entry: 7
       Data: 1|AudioBlockGroup, Assembly-CSharp
@@ -245,6 +246,68 @@ MonoBehaviour:
     - Name: clip
       Entry: 10
       Data: 16
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 19|AudioBlockGroup, Assembly-CSharp
+    - Name: tag
+      Entry: 1
+      Data: MainMenu
+    - Name: audios
+      Entry: 7
+      Data: 20|MS.Internal.Xml.XPath.ClonableStack`1[[AudioBlock, Assembly-CSharp]],
+        System.Xml
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 21|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 22|AudioBlockGroup, Assembly-CSharp
+    - Name: tag
+      Entry: 1
+      Data: Destination
+    - Name: audios
+      Entry: 7
+      Data: 23|System.Collections.Generic.List`1[[AudioBlock, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 24|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 

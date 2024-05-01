@@ -6,10 +6,11 @@ using UnityEngine;
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
 public class PanelConfigAttribute : Attribute
 {
-    public Type type;
-    public string assetPath;
-    public int layerIndex;
-    public bool isHideDirectly;
+    public Type type;                   // 该Panel的类型（继承PanelBase的类型）
+    public string assetPath;            // 加载该Panel的路径
+    public int layerIndex;              // 
+    public bool isShowAndHideDirectly;
+    public bool isControlledByLayer;
     public KeyCode showKeyCode;
     public KeyCode hideKeyCode;
     
@@ -17,14 +18,16 @@ public class PanelConfigAttribute : Attribute
         Type panelType,
         string panelAssetPath,
         int panelLayerIndex,
-        bool isHideDirectly,
+        bool isShowAndHideDirectly,
+        bool isControlledByLayer,
         KeyCode showKeyCode,
         KeyCode hideKeyCode)
     {
         this.type = panelType;
         this.assetPath = panelAssetPath;
         this.layerIndex = Mathf.Clamp(panelLayerIndex,0, SYConstants.UILayerMaxCount);
-        this.isHideDirectly = isHideDirectly;
+        this.isShowAndHideDirectly = isShowAndHideDirectly;
+        this.isControlledByLayer = isControlledByLayer;
         this.showKeyCode = showKeyCode;
         this.hideKeyCode = hideKeyCode;
     }
@@ -33,24 +36,16 @@ public class PanelConfigAttribute : Attribute
         Type panelType,
         string panelAssetPath,
         int panelLayerIndex,
-        bool isHideDirectly)
+        bool isShowAndHideDirectly,
+        bool isControlledByLayer)
     {
         this.type = panelType;
         this.assetPath = panelAssetPath;
         this.layerIndex = Mathf.Clamp(panelLayerIndex,0, SYConstants.UILayerMaxCount);
-        this.isHideDirectly = isHideDirectly;
+        this.isShowAndHideDirectly = isShowAndHideDirectly;
+        this.isControlledByLayer = isControlledByLayer;
         this.showKeyCode = KeyCode.None;
         this.hideKeyCode = KeyCode.None;
-    }
-    
-    public PanelConfigAttribute(Type panelType,int panelLayerIndex)
-    {
-        this.type = panelType;
-        this.assetPath = panelType.FullName;
-        this.layerIndex = Mathf.Clamp(panelLayerIndex,0, SYConstants.UILayerMaxCount);
-        isHideDirectly = false;
-        showKeyCode = KeyCode.None;
-        showKeyCode = KeyCode.None;
     }
 }
 

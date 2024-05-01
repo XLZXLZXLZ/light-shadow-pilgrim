@@ -7,8 +7,9 @@ using UnityEngine;
 [PanelConfig(
     typeof(GameStartTitlePanel),
     nameof(GameStartTitlePanel),
-    3,
-    true)]
+    1,
+    true,
+    false)]
 public class GameStartTitlePanel : PanelBase
 {
     [SerializeField] private TextMeshProUGUI levelTitleText;

@@ -3817,7 +3817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3af38e61ddfed4bb5fe501c95d3be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipWord: "\u4F7F\u7528Q/E\u65CB\u8F6C\u89C6\u89D2"
+  tipWord: "\u5DE6/\u53F3\u6ED1\u52A8\u65CB\u8F6C\u89C6\u89D2"
 --- !u!1001 &647291441
 PrefabInstance:
   m_ObjectHideFlags: 0
