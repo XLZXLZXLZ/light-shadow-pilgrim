@@ -65,7 +65,7 @@ MonoBehaviour:
   dustDistanceAttenuation: 10
   dustAutoToggle: 0
   dustDistanceDeactivation: 70
-  enableShadows: 0
+  enableShadows: 1
   shadowIntensity: 0.7
   shadowTranslucency: 0
   shadowTranslucencyIntensity: 1
