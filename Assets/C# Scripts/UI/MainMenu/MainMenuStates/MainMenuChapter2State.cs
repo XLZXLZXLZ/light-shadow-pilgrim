@@ -21,6 +21,8 @@ public class MainMenuChapter2State : MainMenuStateBase
             intensity => areaLight.intensity = intensity,
             areaLightIntensity,
             Consts.MainMenuChapterDuration);
+        
+        AudioManager.Instance.PlayBgm(AudioName.Chapter2BGM);
     }
 
     public override void Exit()

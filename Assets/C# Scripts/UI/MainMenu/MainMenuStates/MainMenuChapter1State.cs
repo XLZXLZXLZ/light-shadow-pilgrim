@@ -10,7 +10,12 @@ public class MainMenuChapter1State : MainMenuStateBase
     [OdinSerialize] private float startRotateAngleX;
     [OdinSerialize] private Transform arrow;
 
-
+    public override void Enter()
+    {
+        base.Enter();
+        AudioManager.Instance.PlayBgm(AudioName.Chapter1BGM);
+    }
+    
     protected override void MouseEnterLevelItem(LevelItem levelItem)
     {
         Vector3 endValue = new(startRotateAngleX, levelItem.LevelIndex * levelItemGroup.RotateAngle, 0);

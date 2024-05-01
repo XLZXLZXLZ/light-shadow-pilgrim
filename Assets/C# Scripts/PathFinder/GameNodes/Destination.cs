@@ -23,7 +23,7 @@ public class Destination : MonoBehaviour, ITriggerable
         // 芝士直接返回菜单的新增逻辑
             .AppendCallback(() => Cover.Instance.ChangeScene(Consts.MainMenuSceneName, Camera.main.backgroundColor, 3f, 2f));
 
-        AudioManager.Instance.PlaySe(AudioName.Destination);
+        AudioManager.Instance.PlaySe(AudioName.Complete);
         // .Join(cam.DOOrthoSize(cam.orthographicSize / 2.5f, Consts.GameOverCamUpDuration))
         // .OnComplete(GameManager.Instance.ShowGameOverTip);
     }

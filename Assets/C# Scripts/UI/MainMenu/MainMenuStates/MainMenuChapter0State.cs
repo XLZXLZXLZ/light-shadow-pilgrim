@@ -8,6 +8,12 @@ public class MainMenuChapter0State : MainMenuStateBase
 {
     [Header("Chapter0")] 
     [OdinSerialize] private float startRotateAngleX;
+
+    public override void Enter()
+    {
+        base.Enter();
+        AudioManager.Instance.PlayBgm(AudioName.Chapter0BGM);
+    }
     
     protected override void MouseEnterLevelItem(LevelItem levelItem)
     {

@@ -276,13 +276,15 @@ public class AudioManager : ManagerBase<AudioManager>
 
     public void PlayBgm(AudioClip clip, bool isFadeInOut = true)
     {
-        if (clip != null)
+        if (clip == null)
         {
 #if UNITY_EDITOR
-            SYLog.LogWarning("AudioManager：请求播放的音效为空！");
+            SYLog.LogWarning("AudioManager：请求播放的音乐为空！");
 #endif
             return;
         }
+
+        if (bgmComponent.clip == clip) return;
 
         if (isFadeInOut)
         {
