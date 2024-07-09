@@ -34,9 +34,31 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 6b3100bd0a52a6f4d8f96ff933c88d00, type: 3}
     - {fileID: 8300000, guid: 6852fb7b315d0274c8b71044d7225a6f, type: 3}
     - {fileID: 8300000, guid: f3f0f108c0a60f04db8215f5f7f3ae1a, type: 3}
+    - {fileID: 8300000, guid: 1d725aa61ead2924f8e5550829c035ba, type: 3}
+    - {fileID: 8300000, guid: 8402a49b766df934495af59099f180f9, type: 3}
     - {fileID: 8300000, guid: 35f49101f205aad49850ec3ad04b9241, type: 3}
     - {fileID: 8300000, guid: 41be99dfa40463541bfb4ace03993a47, type: 3}
-    - {fileID: 8300000, guid: 3282a28d1c6411249bb4d8af04034d42, type: 3}
+    - {fileID: 8300000, guid: 321ec5aef7ec3d44a8f7abed751c59ac, type: 3}
+    - {fileID: 8300000, guid: 6dd628fd7606c294e9d73183f282c142, type: 3}
+    - {fileID: 8300000, guid: d10c6bc4a4fee964bb84e3e8edde750c, type: 3}
+    - {fileID: 8300000, guid: e975777e06ede1c4ba73a2429079bc42, type: 3}
+    - {fileID: 8300000, guid: cb79f8b88aa9cb04093cff1ae9c38239, type: 3}
+    - {fileID: 8300000, guid: 400d789614f91354bb8a201930b4b597, type: 3}
+    - {fileID: 8300000, guid: 8e3ee7fb7c4ae5048a654f55f51ea7fc, type: 3}
+    - {fileID: 8300000, guid: baa49c4291dc9db4f80462f7fb79c900, type: 3}
+    - {fileID: 8300000, guid: 92a1ff4b28a688148a79720669b7596e, type: 3}
+    - {fileID: 8300000, guid: 662a1973aae1ccc44b699f2bd5ed4b83, type: 3}
+    - {fileID: 8300000, guid: 1c5d2681f517e6048989748f73442018, type: 3}
+    - {fileID: 8300000, guid: 7822cc41ea8c2e146a62b1b367036830, type: 3}
+    - {fileID: 8300000, guid: 178d422071e321c488c98cb1a25f8ee8, type: 3}
+    - {fileID: 8300000, guid: 4268103d756fad8409f75fc5c58c2200, type: 3}
+    - {fileID: 8300000, guid: 6a7fc83cafc08ad4a86ed5fedc4f3753, type: 3}
+    - {fileID: 8300000, guid: 5ca799e8b176d7e4e9a2d7668114c83a, type: 3}
+    - {fileID: 8300000, guid: 7ee6f6a7f3b903c47b103cb360083818, type: 3}
+    - {fileID: 8300000, guid: 4820c4efa8a288142a41ea5c184affc7, type: 3}
+    - {fileID: 8300000, guid: 5adfe13c3e4efb5449d28d5716cdf007, type: 3}
+    - {fileID: 8300000, guid: b240b12ac0bd874408e251a82e78f9ed, type: 3}
+    - {fileID: 8300000, guid: 2d6e41cdb28d51748885e22cdc4958e3, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -48,7 +70,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 6
     - Name: 
       Entry: 7
       Data: 1|AudioBlockGroup, Assembly-CSharp
@@ -273,13 +295,31 @@ MonoBehaviour:
         System.Xml
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 7
       Data: 21|AudioBlockSimple, Assembly-CSharp
     - Name: clip
       Entry: 10
       Data: 17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 22|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 18
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 23|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 19
     - Name: 
       Entry: 8
       Data: 
@@ -294,41 +334,148 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 22|AudioBlockGroup, Assembly-CSharp
+      Data: 24|AudioBlockGroup, Assembly-CSharp
     - Name: tag
       Entry: 1
       Data: FinishLevel
     - Name: audios
       Entry: 7
-      Data: 23|System.Collections.Generic.List`1[[AudioBlock, Assembly-CSharp]],
+      Data: 25|System.Collections.Generic.List`1[[AudioBlock, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 3
     - Name: 
       Entry: 7
-      Data: 24|AudioBlockSimple, Assembly-CSharp
-    - Name: clip
-      Entry: 10
-      Data: 18
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 25|AudioBlockSimple, Assembly-CSharp
-    - Name: clip
-      Entry: 10
-      Data: 19
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
       Data: 26|AudioBlockSimple, Assembly-CSharp
     - Name: clip
       Entry: 10
       Data: 20
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 27|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 10
+      Data: 21
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 28|AudioBlockSimple, Assembly-CSharp
+    - Name: clip
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 29|AudioBlockGroup, Assembly-CSharp
+    - Name: tag
+      Entry: 1
+      Data: Piano
+    - Name: audios
+      Entry: 7
+      Data: 30|System.Collections.Generic.List`1[[AudioBlock, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 31|AudioBlockSequence, Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: Piano
+    - Name: clips
+      Entry: 7
+      Data: 32|System.Collections.Generic.List`1[[UnityEngine.AudioClip, UnityEngine.AudioModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 21
+    - Name: 
+      Entry: 10
+      Data: 22
+    - Name: 
+      Entry: 10
+      Data: 23
+    - Name: 
+      Entry: 10
+      Data: 24
+    - Name: 
+      Entry: 10
+      Data: 25
+    - Name: 
+      Entry: 10
+      Data: 26
+    - Name: 
+      Entry: 10
+      Data: 27
+    - Name: 
+      Entry: 10
+      Data: 28
+    - Name: 
+      Entry: 10
+      Data: 29
+    - Name: 
+      Entry: 10
+      Data: 30
+    - Name: 
+      Entry: 10
+      Data: 31
+    - Name: 
+      Entry: 10
+      Data: 32
+    - Name: 
+      Entry: 10
+      Data: 33
+    - Name: 
+      Entry: 10
+      Data: 34
+    - Name: 
+      Entry: 10
+      Data: 35
+    - Name: 
+      Entry: 10
+      Data: 36
+    - Name: 
+      Entry: 10
+      Data: 37
+    - Name: 
+      Entry: 10
+      Data: 38
+    - Name: 
+      Entry: 10
+      Data: 39
+    - Name: 
+      Entry: 10
+      Data: 40
+    - Name: 
+      Entry: 10
+      Data: 41
+    - Name: 
+      Entry: 10
+      Data: 42
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 

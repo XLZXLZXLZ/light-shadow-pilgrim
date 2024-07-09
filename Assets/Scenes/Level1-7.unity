@@ -425,7 +425,7 @@ MonoBehaviour:
   - {fileID: 787102972}
   - {fileID: 813742093}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -957,7 +957,7 @@ MonoBehaviour:
   - {fileID: 787102972}
   - {fileID: 813742093}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -1901,7 +1901,7 @@ MonoBehaviour:
   - {fileID: 797773082}
   - {fileID: 813742093}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -1934,7 +1934,7 @@ MonoBehaviour:
   - {fileID: 787102972}
   - {fileID: 1964702664}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -2692,7 +2692,7 @@ MonoBehaviour:
   - {fileID: 787102972}
   - {fileID: 1964702664}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -3485,7 +3485,7 @@ MonoBehaviour:
   - {fileID: 797773082}
   - {fileID: 1964702664}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -3518,7 +3518,7 @@ MonoBehaviour:
   - {fileID: 787102972}
   - {fileID: 1964702664}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -3729,7 +3729,7 @@ MonoBehaviour:
   - {fileID: 787102972}
   - {fileID: 1964702664}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -4597,7 +4597,7 @@ MonoBehaviour:
   - {fileID: 797773082}
   - {fileID: 813742093}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -4728,7 +4728,7 @@ MonoBehaviour:
   - {fileID: 787102972}
   - {fileID: 813742093}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -5079,7 +5079,7 @@ MonoBehaviour:
   - {fileID: 797773082}
   - {fileID: 813742093}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -5650,7 +5650,7 @@ MonoBehaviour:
   - {fileID: 787102972}
   - {fileID: 813742093}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -6155,7 +6155,7 @@ MonoBehaviour:
   - {fileID: 797773082}
   - {fileID: 813742093}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -7084,7 +7084,7 @@ MonoBehaviour:
   - {fileID: 797773082}
   - {fileID: 1964702664}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -7191,7 +7191,7 @@ MonoBehaviour:
   - {fileID: 787102972}
   - {fileID: 1964702664}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -7230,7 +7230,7 @@ MonoBehaviour:
   - {fileID: 797773082}
   - {fileID: 1964702664}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -7343,7 +7343,7 @@ MonoBehaviour:
   - {fileID: 797773082}
   - {fileID: 1964702664}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -7467,7 +7467,7 @@ MonoBehaviour:
   targetSwitch:
   - {fileID: 1964702664}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -7735,7 +7735,7 @@ MonoBehaviour:
   - {fileID: 787102972}
   - {fileID: 813742093}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -7768,7 +7768,7 @@ MonoBehaviour:
   - {fileID: 797773082}
   - {fileID: 1964702664}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30
@@ -7808,6 +7808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d89c0827cb0a9a4da9ce86849b2e5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSwipeDistance: 50
 --- !u!4 &1690040988
 Transform:
   m_ObjectHideFlags: 0
@@ -8812,7 +8813,7 @@ MonoBehaviour:
   - {fileID: 797773082}
   - {fileID: 813742093}
   delay: 0
-  duration: 0.75
+  duration: 1.5
   rotateAngle: 0
   ease: 27
   hideHeight: 30

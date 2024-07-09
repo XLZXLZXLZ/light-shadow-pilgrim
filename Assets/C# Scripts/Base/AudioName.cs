@@ -14,9 +14,13 @@ public class AudioName
 
     public const string MainMenuMouseOver = "MouseOver";
     public const string MainMenuChoose = "Choose";
+    public const string BlockFall = "BlockFall";
+    public const string ShowShadow = "ShowShadow";
 
     public const string Chapter0BGM = "Chapter0";
     public const string Chapter1BGM = "Chapter1";
     public const string Chapter2BGM = "Chapter2";
+
+    public const string Piano = "Piano";
 }
 

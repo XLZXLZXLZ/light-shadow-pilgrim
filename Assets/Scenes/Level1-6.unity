@@ -1149,6 +1149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d89c0827cb0a9a4da9ce86849b2e5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSwipeDistance: 50
 --- !u!4 &307325807
 Transform:
   m_ObjectHideFlags: 0
@@ -3624,7 +3625,12 @@ PrefabInstance:
     - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
         type: 3}
       propertyPath: delay
-      value: 0.3
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
+        type: 3}
+      propertyPath: duration
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
         type: 3}
@@ -4936,6 +4942,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
         type: 3}
+      propertyPath: duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
+        type: 3}
       propertyPath: shakeLevel
       value: 0
       objectReference: {fileID: 0}
@@ -5393,7 +5404,12 @@ PrefabInstance:
     - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
         type: 3}
       propertyPath: delay
-      value: 0.6
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
+        type: 3}
+      propertyPath: duration
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1511443651841256168, guid: b8adddb423b79f44abcbf41d734aa175,
         type: 3}

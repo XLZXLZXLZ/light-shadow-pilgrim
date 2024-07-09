@@ -35,5 +35,7 @@ public class Consts
     public static Color DarkSceneColor = new Color(56f/225f,48f/225f,37f/225f,225f/225f);
     public static Color TransparentColor = new Color(1f,1f,1f,0);
     public static Color ReturnTipColor = new Color32(165,165,165,255);
+
+    public static Color[] ChapterColor = { new Color(209f/255,195f/255,168f/255), new Color(184f/255,209f/255,185f/255), new Color(171f/255,206f/255,208f/255) };
 }
 

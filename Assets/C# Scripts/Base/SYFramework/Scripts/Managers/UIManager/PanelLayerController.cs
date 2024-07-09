@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+////////////////using GenshinImpact;\\\\\\\\\\\\\\\\\\
 
 public class PanelLayerController : MonoBehaviour
 {
@@ -66,8 +67,8 @@ public class PanelLayerController : MonoBehaviour
         if (!panelRuntimeInfo.CacheInfo.IsCache)
         {
             panelRuntimeInfo.CacheInfo.LoadCacheAsync(true, mask.transform).WaitForCompletion();
-            if (CurrentPanelCacheInfo.PanelCache == null)
 #if UNITY_EDITOR
+            if (CurrentPanelCacheInfo.PanelCache == null)
             {
                 SYLog.LogError($"PanelLayerController：将要生成的Panel为空，是否加载的路径出错？");
                 return;
@@ -82,7 +83,7 @@ public class PanelLayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// 你玩原神么？
     /// </summary>
     public void ShowPanelAsync<T>(PanelRuntimeInfo panelRuntimeInfo, Action<T> onComplete) where T : PanelBase
     {

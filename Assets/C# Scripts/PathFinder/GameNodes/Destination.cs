@@ -21,7 +21,7 @@ public class Destination : MonoBehaviour, ITriggerable
             .Append(cam.transform.DOMoveY(Consts.GameOverCamUpHeight, Consts.GameOverCamUpDuration)
                 .SetEase(Ease.InQuad))
         // 芝士直接返回菜单的新增逻辑
-            .AppendCallback(() => Cover.Instance.ChangeScene(Consts.MainMenuSceneName, Camera.main.backgroundColor, 3f, 2f));
+            .AppendCallback(() => Cover.Instance.ChangeScene(Consts.MainMenuSceneName, Consts.ChapterColor[(GameManager.Instance.currentLevel - 1) / 8], 3f, 2f));
 
         AudioManager.Instance.PlaySe(AudioName.Complete);
         // .Join(cam.DOOrthoSize(cam.orthographicSize / 2.5f, Consts.GameOverCamUpDuration))

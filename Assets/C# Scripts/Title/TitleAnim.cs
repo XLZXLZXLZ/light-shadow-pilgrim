@@ -58,11 +58,19 @@ public class TitleAnim : MonoBehaviour
 
         DOTween.Sequence()
             .AppendInterval(shadowInterval)
-            .Append(transform.DOMove(transform.position, 0).OnComplete(() => blackTitle.gameObject.SetActive(true))) //神秘代码
+            .Append(transform.DOMove(transform.position, 0).OnComplete(() => { blackTitle.gameObject.SetActive(true); AudioManager.Instance.PlaySe(AudioName.ShowShadow); })) //神秘代码
             .Append(blackTitle.DOScale(new Vector3(1, 1, 1.5f), shadowAppearTime))
             .Join(globalLight.DORotate(new Vector3(45, 180, 0), shadowAppearTime))
             .OnComplete(()=>onComplete?.Invoke());
+
+        DOTween.Sequence()
+            .AppendInterval(startInterval)
+            .OnComplete(() => PlaySe());
     }
 
 
+    private void PlaySe() //神秘屎山
+    {
+        AudioManager.Instance.PlaySe(AudioName.BlockFall);
+    }
 }

@@ -294,8 +294,12 @@ public class AudioManager : ManagerBase<AudioManager>
             {
                 sequence
                     .Append(lastBgmComponent.DOFade(0, fadeInOutDuration).OnComplete(() => Destroy(lastBgmComponent)));
+
                 bgmComponent = audioRoot.AddComponent<AudioSource>();
+                bgmComponent.loop = lastBgmComponent.loop;
             }
+
+            bgmComponent.volume = 0;
             sequence
                 .Append(bgmComponent.DOFade(BgmVolume, fadeInOutDuration))
                 .OnComplete(() =>
