@@ -81,7 +81,10 @@ public class PathNode : MonoBehaviour
         //if(lightRoads)
         foreach (var lightRoad in lightRoads)
         {
-            Destroy(lightRoad);
+            var roadCtrl = lightRoad.GetComponent<Road>();
+            if (roadCtrl) {
+                roadCtrl.FadeOutAndDestroy();
+            }
         }
         lightRoads.Clear();
 
