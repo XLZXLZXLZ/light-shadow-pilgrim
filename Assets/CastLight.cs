@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,55 +22,72 @@ public class CastLight : MonoBehaviour
     public GameObject lightRoadMid;
     public GameObject lightRoadSingle;
     private List<GameObject> lightRoads = new();
+   // public Material material;
+
 
     [Header("父物体跟随旋转挂载")]
     public Transform parentTransform;
 
-    private Vector3 TargetLeft
+    private bool TargetLeft
     {
         get { 
             if(parentTransform)
             {
-                return parentTransform.localRotation*(-transform.right);
+                return JudgeDir(Vector3.left);
             }
-            return -transform.right; 
+            return left; 
         }
     }
-    private Vector3 TargetRight
-    {
-        get
-        {
-            if(parentTransform)
-            {
-                return parentTransform.localRotation*parentTransform.right;
-            }
-            return transform.right;
-        }
-    }
-    private Vector3 TargetForward
+    private bool TargetRight
     {
         get
         {
             if (parentTransform)
             {
-                return parentTransform.localRotation * (parentTransform.forward);
+                return JudgeDir(Vector3.right);
             }
-            return transform.forward;
+            return right;
         }
     }
-    private Vector3 TargetBack
+    private bool TargetForward
     {
         get
-        { 
+        {
             if (parentTransform)
             {
-                return parentTransform.localRotation *(- parentTransform.forward);
+                return JudgeDir(Vector3.forward);
             }
-            return transform.forward;
+            return forward;
+        }
+    }
+    private bool TargetBack
+    {
+        get
+        {
+            if (parentTransform)
+            {
+                return JudgeDir(Vector3.back);
+            }
+            return back;
         }
 
     }
     
+    private bool JudgeDir(Vector3 vector)
+    {
+        if (left && Vector3.Dot((parentTransform.rotation * Vector3.left), vector) > 0.98f)
+            return true;
+        if (right && Vector3.Dot((parentTransform.rotation * Vector3.right), vector) > 0.98f)
+            return true;
+        if (forward && Vector3.Dot((parentTransform.rotation * Vector3.forward), vector) > 0.98f)
+            return true;
+        if (back && Vector3.Dot((parentTransform.rotation * Vector3.back), vector) > 0.98f)
+            return true;
+        return false;
+
+    }
+
+
     //检测是否撞到物体
     private void Awake()
     {
@@ -77,139 +95,51 @@ public class CastLight : MonoBehaviour
 
     }
 
-    private void OnDisable()
+
+    private void OnDestroy()
     {
+ //       EventManager.Instance.MapUpdate.OnEarlyStart -= FadeOut;
     }
     private void Start()
     {
-       // Invoke(nameof(Cast), 20f);
-      // Invoke(nameof(lightClear), 40f);
+   //     EventManager.Instance.MapUpdate.OnEarlyStart += FadeOut;
     }
     
-    public void AddCastEvent()=>EventManager.Instance.MapUpdate.OnFinished+=Cast;
-    public void DeleteCastEvent() => EventManager.Instance.MapUpdate.OnFinished -= Cast;    
-    /// <summary>
-    /// 暂时废弃
-    /// </summary>
-    public void lightClear()
-    {
-   //检索周围点
-        var nodes = Physics.OverlapSphere(transform.position+offset, 1, LayerMask.GetMask("Node"));
+    public void AddCastEvent()=>EventManager.Instance.MapUpdate.OnEarlyFinished+=Cast;
+    public void DeleteCastEvent() => EventManager.Instance.MapUpdate.OnEarlyFinished -= Cast;
 
-        foreach (var node in nodes)
-        {
-
-            var pathNode = node.GetComponent<PathNode>();
-            var dir = (transform.position + offset) - node.transform.position;
-            dir.Normalize();
-
-            Debug.Log(TargetRight);
-                Debug.Log(transform.right);
-            if(parentTransform)
-            {
-                Debug.Log(parentTransform.right);
-            }
-                if (Vector3.Dot(dir, TargetLeft) >= 0.98f)
-                {
-                    int i = 0;
-                    while (i < lightStrength&& pathNode != null)
-                    {
-                        pathNode.ClearLightRoad();
-                        pathNode = pathNode.Left;
-
-                        i++;
-                    }
-                    //Vector3 newPos = new Vector3(node.transform.position.x, Mathf.Ceil(node.transform.position.y)-0.5f, node.transform.position.z);
-                    //     lightRoads.Add(Instantiate(lightRoad,newPos,Quaternion.identity));
-                    //       lightNode.LightState = LightState.LightCasted;
-                }
-
-                if (Vector3.Dot(dir, TargetRight) >= 0.98f)
-                {
-                    int i = 0;
-                    while (i < lightStrength&& pathNode != null)
-                    {
-  
-                        pathNode.ClearLightRoad();
-                        pathNode = pathNode.Right;
-
-                        i++;
-                    }
-                }
-
-                if (Vector3.Dot(dir, TargetForward) >= 0.98f)
-                {
-                    int i = 0;
-                    while (i < lightStrength && pathNode != null)
-                    {
-                        Debug.Log(pathNode.pos);
-                        pathNode.ClearLightRoad();
-                        pathNode = pathNode.Up;
-                        i++;
-                    }
-                }
-
-                if (Vector3.Dot(dir, TargetBack) >= 0.98f)
-                {
-                    int i = 0;
-                    while (i < lightStrength && pathNode != null)
-                    {
-                        pathNode.ClearLightRoad();
-                        Debug.Log(pathNode);
-                        pathNode = pathNode.Down;
-
-                        i++;
-                    }
-                }
-            
-        }
-    }
-    
-    public void  CastSingle(Vector3 _offset)
+    public void CastSingle(Vector3 _offset)
     {
         Vector3 newPos = offset + transform.position + _offset;
         var nodes = Physics.OverlapSphere(newPos, 0.2f, LayerMask.GetMask("Node"));
         foreach (var node in nodes)
         {
-            Debug.Log("检测到结点" );
+            Debug.Log("检测到结点");
             var pathNode = node.GetComponent<PathNode>();
             pathNode.UpdateLightRoad(lightRoadEnd, Quaternion.identity);
         }
 
 
     }
-
-    // public void CastDir(Vector3 lightDir)
-    // {
-    //     //检索周围点
-    //     var nodes = Physics.OverlapSphere(transform.position+offset, 1, LayerMask.GetMask("Node"));
-    //     
-    //     foreach (var node in nodes)
-    //     {
-    //         Debug.Log("开始建立光路"); 
-    //         var lightNode = node.GetComponent<LightExtension>();
-    //         if (lightNode == this || lightNode == null) continue;
-    //
-    //         var dir = transform.position+offset - node.transform.position;
-    //         dir.Normalize();
-    //
-    //         if (Vector3.Dot(dir, lightDir) >= 0.98f)
-    //         {
-    //             Vector3 newPos = new Vector3(node.transform.position.x, Mathf.Ceil(node.transform.position.y)-0.5f, node.transform.position.z);
-    //             lightRoads.Add(Instantiate(lightRoad,newPos,Quaternion.identity));
-    //             lightNode.LightState = LightState.LightCasted;
-    //         }
-    //     }
-    // }
-    //
-
-
+/*
+    public void FadeOut()
+    {
+        if(material)
+        material.DOFade(0, 1f);
+    }
+    public void FadeIn()
+    {
+        if(material)
+        material.DOFade(1, 1f);
+    }
+*/
 
     /// <summary>
     /// 单独负责光线投射的代码
     /// </summary>
     public void Cast()
     {
+       // FadeIn();
         //检索周围点
         var nodes = Physics.OverlapSphere(transform.position+offset, 1, LayerMask.GetMask("Node"));
         
@@ -229,11 +159,11 @@ public class CastLight : MonoBehaviour
                 {
                     Debug.Log(parentTransform.right);
                 }
-                if (Vector3.Dot(dir, TargetLeft) >= 0.98f)
+                if (Vector3.Dot(dir, Vector3.left) >= 0.98f)
                 {
                     Debug.Log("搜索到左结点");
                     int i = 0;
-                    while (left&&i < lightStrength && pathNode != null)
+                    while (TargetLeft&&i < lightStrength && pathNode != null)
                     {
                         i++;
                         if (pathNode == null)
@@ -255,7 +185,7 @@ public class CastLight : MonoBehaviour
                     //     lightRoads.Add(Instantiate(lightRoad,newPos,Quaternion.identity));
                     //       lightNode.LightState = LightState.LightCasted;
                 }
-                if (right&&Vector3.Dot(dir, TargetRight) >= 0.98f)
+                if (TargetRight&&Vector3.Dot(dir, Vector3.right) >= 0.98f)
                 {
                     Debug.Log("搜索到右结点");
                     int i = 0;
@@ -279,7 +209,7 @@ public class CastLight : MonoBehaviour
 
                     }
                 }
-                if (forward&&Vector3.Dot(dir, TargetForward) >= 0.98f)
+                if (TargetForward&&Vector3.Dot(dir, Vector3.forward) >= 0.98f)
                 {
                     Debug.Log("搜索到前结点");
                     int i = 0;
@@ -301,7 +231,7 @@ public class CastLight : MonoBehaviour
                         pathNode = pathNode.Up;
                     }
                 }
-                if (back&&Vector3.Dot(dir, TargetBack) >= 0.98f)
+                if (TargetBack&&Vector3.Dot(dir, Vector3.back) >= 0.98f)
                 {
                     Debug.Log("搜索到后结点");
                     int i = 0;

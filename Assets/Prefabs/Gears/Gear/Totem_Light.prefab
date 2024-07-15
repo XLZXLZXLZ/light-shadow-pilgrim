@@ -488,12 +488,16 @@ MonoBehaviour:
   right: 1
   forward: 1
   back: 1
+  bottom: 0
+  bottomPos: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: -2, z: 0}
   lightStrength: 4
   lightRoadEnd: {fileID: 4983460815053627344, guid: 7f8413e29754d574a80714a80f31a74e,
     type: 3}
   lightRoadMid: {fileID: 4983460815053627344, guid: 4e151fa4941aab746a7dac6f923b8744,
     type: 3}
+  lightRoadSingle: {fileID: 0}
+  parentTransform: {fileID: 0}
 --- !u!1001 &4510211381355566671
 PrefabInstance:
   m_ObjectHideFlags: 0

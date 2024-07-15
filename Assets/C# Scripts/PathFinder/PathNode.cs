@@ -28,6 +28,8 @@ public class PathNode : MonoBehaviour
 
     //创建的光路
     private List<GameObject> lightRoads = new();
+
+    public Transform blockTransform;
     public LightState LightState
     {
         get
@@ -70,10 +72,16 @@ public class PathNode : MonoBehaviour
         //更新光照信息
         lightExtension.isLightCasted = true;
         Vector3 newPos = new Vector3(transform.position.x, Mathf.Ceil(transform.position.y)-0.5f, transform.position.z);
-        lightRoads.Add(Instantiate(road, newPos, rot,transform)) ;
+
+        if(blockTransform)
+            lightRoads.Add(Instantiate(road, newPos, rot, blockTransform));
+        else
+            lightRoads.Add(Instantiate(road, newPos, rot,transform)) ;
     }
 
     
+
+
     public void ClearLightRoad()
     {
         //Debug.Log("加载地图更新方法");
