@@ -70,7 +70,7 @@ public class PathNode : MonoBehaviour
         //更新光照信息
         lightExtension.isLightCasted = true;
         Vector3 newPos = new Vector3(transform.position.x, Mathf.Ceil(transform.position.y)-0.5f, transform.position.z);
-        lightRoads.Add(Instantiate(road, newPos, rot)) ;
+        lightRoads.Add(Instantiate(road, newPos, rot,transform)) ;
     }
 
     

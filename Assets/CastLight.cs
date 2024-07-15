@@ -21,17 +21,64 @@ public class CastLight : MonoBehaviour
     public GameObject lightRoadMid;
     public GameObject lightRoadSingle;
     private List<GameObject> lightRoads = new();
+
+    [Header("父物体跟随旋转挂载")]
+    public Transform parentTransform;
+
+    private Vector3 TargetLeft
+    {
+        get { 
+            if(parentTransform)
+            {
+                return parentTransform.localRotation*(-transform.right);
+            }
+            return -transform.right; 
+        }
+    }
+    private Vector3 TargetRight
+    {
+        get
+        {
+            if(parentTransform)
+            {
+                return parentTransform.localRotation*parentTransform.right;
+            }
+            return transform.right;
+        }
+    }
+    private Vector3 TargetForward
+    {
+        get
+        {
+            if (parentTransform)
+            {
+                return parentTransform.localRotation * (parentTransform.forward);
+            }
+            return transform.forward;
+        }
+    }
+    private Vector3 TargetBack
+    {
+        get
+        { 
+            if (parentTransform)
+            {
+                return parentTransform.localRotation *(- parentTransform.forward);
+            }
+            return transform.forward;
+        }
+
+    }
+    
     //检测是否撞到物体
     private void Awake()
     {
-         //EventManager.Instance.MapUpdate.OnEarlyStart += lightClear;
+
 
     }
 
     private void OnDisable()
     {
-
-        EventManager.Instance.MapUpdate.OnStart-=Cast;
     }
     private void Start()
     {
@@ -39,9 +86,11 @@ public class CastLight : MonoBehaviour
       // Invoke(nameof(lightClear), 40f);
     }
     
-    public void AddCastEvent()=>EventManager.Instance.MapUpdate.OnStart+=Cast;
-    public void DeleteCastEvent() => EventManager.Instance.MapUpdate.OnStart -= Cast;
-
+    public void AddCastEvent()=>EventManager.Instance.MapUpdate.OnFinished+=Cast;
+    public void DeleteCastEvent() => EventManager.Instance.MapUpdate.OnFinished -= Cast;    
+    /// <summary>
+    /// 暂时废弃
+    /// </summary>
     public void lightClear()
     {
    //检索周围点
@@ -54,8 +103,13 @@ public class CastLight : MonoBehaviour
             var dir = (transform.position + offset) - node.transform.position;
             dir.Normalize();
 
-
-                if (Vector3.Dot(dir, Vector3.left) >= 0.98f)
+            Debug.Log(TargetRight);
+                Debug.Log(transform.right);
+            if(parentTransform)
+            {
+                Debug.Log(parentTransform.right);
+            }
+                if (Vector3.Dot(dir, TargetLeft) >= 0.98f)
                 {
                     int i = 0;
                     while (i < lightStrength&& pathNode != null)
@@ -70,7 +124,7 @@ public class CastLight : MonoBehaviour
                     //       lightNode.LightState = LightState.LightCasted;
                 }
 
-                if (Vector3.Dot(dir, Vector3.right) >= 0.98f)
+                if (Vector3.Dot(dir, TargetRight) >= 0.98f)
                 {
                     int i = 0;
                     while (i < lightStrength&& pathNode != null)
@@ -83,7 +137,7 @@ public class CastLight : MonoBehaviour
                     }
                 }
 
-                if (Vector3.Dot(dir, Vector3.forward) >= 0.98f)
+                if (Vector3.Dot(dir, TargetForward) >= 0.98f)
                 {
                     int i = 0;
                     while (i < lightStrength && pathNode != null)
@@ -95,7 +149,7 @@ public class CastLight : MonoBehaviour
                     }
                 }
 
-                if (Vector3.Dot(dir, Vector3.back) >= 0.98f)
+                if (Vector3.Dot(dir, TargetBack) >= 0.98f)
                 {
                     int i = 0;
                     while (i < lightStrength && pathNode != null)
@@ -148,6 +202,12 @@ public class CastLight : MonoBehaviour
     //     }
     // }
     //
+
+
+
+    /// <summary>
+    /// 单独负责光线投射的代码
+    /// </summary>
     public void Cast()
     {
         //检索周围点
@@ -163,7 +223,13 @@ public class CastLight : MonoBehaviour
 
             if (pathNode != null)
             {
-                 if (Vector3.Dot(dir, Vector3.left) >= 0.98f)
+                Debug.Log(TargetRight);
+                Debug.Log(transform.right);
+                if (parentTransform)
+                {
+                    Debug.Log(parentTransform.right);
+                }
+                if (Vector3.Dot(dir, TargetLeft) >= 0.98f)
                 {
                     Debug.Log("搜索到左结点");
                     int i = 0;
@@ -189,7 +255,7 @@ public class CastLight : MonoBehaviour
                     //     lightRoads.Add(Instantiate(lightRoad,newPos,Quaternion.identity));
                     //       lightNode.LightState = LightState.LightCasted;
                 }
-                if (right&&Vector3.Dot(dir, Vector3.right) >= 0.98f)
+                if (right&&Vector3.Dot(dir, TargetRight) >= 0.98f)
                 {
                     Debug.Log("搜索到右结点");
                     int i = 0;
@@ -213,7 +279,7 @@ public class CastLight : MonoBehaviour
 
                     }
                 }
-                if (forward&&Vector3.Dot(dir, Vector3.forward) >= 0.98f)
+                if (forward&&Vector3.Dot(dir, TargetForward) >= 0.98f)
                 {
                     Debug.Log("搜索到前结点");
                     int i = 0;
@@ -235,7 +301,7 @@ public class CastLight : MonoBehaviour
                         pathNode = pathNode.Up;
                     }
                 }
-                if (back&&Vector3.Dot(dir, Vector3.back) >= 0.98f)
+                if (back&&Vector3.Dot(dir, TargetBack) >= 0.98f)
                 {
                     Debug.Log("搜索到后结点");
                     int i = 0;

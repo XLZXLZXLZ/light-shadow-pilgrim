@@ -55,6 +55,7 @@ public class Road : MonoBehaviour
         {
             particleSystems[i].loop = false;
         }
+        //Destroy(gameObject);
         material.DOFade(0, 1f).OnComplete(() => Destroy(gameObject)); 
     }
 }
