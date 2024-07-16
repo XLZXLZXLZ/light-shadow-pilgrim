@@ -32,8 +32,8 @@ public class PathNode : MonoBehaviour
 
     public Transform blockTransform;
 
-    [Header("其他材质")]
-    public List<Material> materials;
+    [Header("需要光照变化的物体")]
+    public List<GameObject> castedObjects;
 
     public LightState LightState
     {
@@ -108,16 +108,18 @@ public class PathNode : MonoBehaviour
 
     private void FadeIn()
     {
-        foreach (var material in materials)
+        foreach (var castedObject in castedObjects)
         {
+            var material = castedObject.GetComponent<MeshRenderer>().materials[1];
             material.DOFade(1, 1f);
         }
     }
 
     private void FadeOut()
     {
-        foreach (var material in materials)
+        foreach (var castedObject in castedObjects)
         {
+            var material = castedObject.GetComponent<MeshRenderer>().materials[1];
             material.DOFade(0, 1f);
         }
     }

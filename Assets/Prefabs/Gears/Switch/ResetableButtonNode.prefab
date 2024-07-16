@@ -103,8 +103,8 @@ MonoBehaviour:
   down: {fileID: 0}
   price: 1
   blockTransform: {fileID: 1714143083030870881}
-  materials:
-  - {fileID: 0}
+  castedObjects:
+  - {fileID: 7662333410808584693}
   alwaysReachable: 0
   clickable: 1
 --- !u!114 &1178714795267915006
@@ -432,6 +432,12 @@ PrefabInstance:
 --- !u!4 &2058154853347720086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c439b21c88dfbe44596136c6b284fadf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1953068630119029885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7662333410808584693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: c439b21c88dfbe44596136c6b284fadf,
     type: 3}
   m_PrefabInstance: {fileID: 1953068630119029885}
   m_PrefabAsset: {fileID: 0}
