@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,10 @@ public class PathNode : MonoBehaviour
     private List<GameObject> lightRoads = new();
 
     public Transform blockTransform;
+
+    [Header("其他材质")]
+    public List<Material> materials;
+
     public LightState LightState
     {
         get
@@ -71,6 +76,7 @@ public class PathNode : MonoBehaviour
     {
         //更新光照信息
         lightExtension.isLightCasted = true;
+        FadeIn();
         Vector3 newPos = new Vector3(transform.position.x, Mathf.Ceil(transform.position.y)-0.5f, transform.position.z);
 
         if(blockTransform)
@@ -86,6 +92,7 @@ public class PathNode : MonoBehaviour
     {
         //Debug.Log("加载地图更新方法");
         lightExtension.isLightCasted = false;
+        FadeOut();
         //if(lightRoads)
         foreach (var lightRoad in lightRoads)
         {
@@ -96,5 +103,22 @@ public class PathNode : MonoBehaviour
         }
         lightRoads.Clear();
 
+    }
+
+
+    private void FadeIn()
+    {
+        foreach (var material in materials)
+        {
+            material.DOFade(1, 1f);
+        }
+    }
+
+    private void FadeOut()
+    {
+        foreach (var material in materials)
+        {
+            material.DOFade(0, 1f);
+        }
     }
 }
