@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 [RequireComponent(typeof(LightExtension))]
 public class PlatformNode : PathNode, IInteractable
@@ -13,7 +14,7 @@ public class PlatformNode : PathNode, IInteractable
     [SerializeField]
     private bool clickable = true;
 
-    private float searchRadius = 1.1f;
+    private float searchRadius = 0.6f;
     private LightExtension lightComponent;
     private LightState lightState => lightComponent.LightState;
 
@@ -61,7 +62,7 @@ public class PlatformNode : PathNode, IInteractable
     private void UpdatePlatform()
     {
         var nodes = Physics.OverlapSphere(transform.position, searchRadius, LayerMask.GetMask("Node"));
-
+        Profiler.EndSample();
         foreach (var node in nodes)
         {
             var n = node.GetComponent<PlatformNode>();
@@ -88,13 +89,13 @@ public class PlatformNode : PathNode, IInteractable
             }
         }
 
-        if (left != null && Vector3.Distance(pos, left.pos) > searchRadius)
+        if (left != null && Vector3.Distance(pos, left.pos) > searchRadius * 2)
             left = null;
-        if (right != null && Vector3.Distance(pos, right.pos) > searchRadius)
+        if (right != null && Vector3.Distance(pos, right.pos) > searchRadius * 2)
             right = null;
-        if (up != null && Vector3.Distance(pos, up.pos) > searchRadius)
+        if (up != null && Vector3.Distance(pos, up.pos) > searchRadius * 2)
             up = null;
-        if (down != null && Vector3.Distance(pos, down.pos) > searchRadius)
+        if (down != null && Vector3.Distance(pos, down.pos) > searchRadius * 2)
             down = null;
     }
 
