@@ -24,6 +24,13 @@ public class BindableProperty<T>
     private Action<T> onValueChanged;
     
     //所有方法都重新指向T类型
+    
+    public override bool Equals(object obj)
+    {
+        if (obj == null || GetType() != obj.GetType()) return false;
+        BindableProperty<T> target = (BindableProperty<T>)obj;
+        return this == target;
+    }
     public override string ToString() => value?.ToString();
     public override int GetHashCode() => value.GetHashCode();
     public static Func<T, T, bool> ValueComparer { get; private set; } = (a, b) => a.Equals(b);

@@ -62,7 +62,7 @@ public class PlatformNode : PathNode, IInteractable
     private void UpdatePlatform()
     {
         var nodes = Physics.OverlapSphere(transform.position, searchRadius, LayerMask.GetMask("Node"));
-        Profiler.EndSample();
+        
         foreach (var node in nodes)
         {
             var n = node.GetComponent<PlatformNode>();
@@ -147,7 +147,7 @@ public class PlatformNode : PathNode, IInteractable
     */
 
     #region debug
-    private void OnMouseDown()
+    private void OnMouseUpAsButton()
     {
         if (Time.timeScale == 0)
             return; //暂停时不执行

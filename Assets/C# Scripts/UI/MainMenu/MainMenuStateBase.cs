@@ -24,11 +24,6 @@ public abstract class MainMenuStateBase : IState
 
     public virtual void Init()
     {
-        levelItemGroup.Init();
-        levelItemGroup.onMouseEnterLevelItem += OnMouseEnterLevelItem;
-        levelItemGroup.onMouseExitLevelItem += OnMouseExitLevelItem;
-        levelItemGroup.onSelectedLevelItem += OnSelectLevelItem;
-
         MainMenuManager.Instance.anim.OnStart += OnAnimStart;
         MainMenuManager.Instance.anim.OnFinished += OnAnimFinished;
         // // MainMenuManager.Instance.anim.OnStart += OnStartAnimStart;
@@ -107,6 +102,11 @@ public abstract class MainMenuStateBase : IState
     private void OnAnimFinished()
     {
         IsAnim = false;
+        
+        levelItemGroup.Init();
+        levelItemGroup.onMouseEnterLevelItem += OnMouseEnterLevelItem;
+        levelItemGroup.onMouseExitLevelItem += OnMouseExitLevelItem;
+        levelItemGroup.onSelectedLevelItem += OnSelectLevelItem;
     }
     
     // private void OnStartAnimStart()
