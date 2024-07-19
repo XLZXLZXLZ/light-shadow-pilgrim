@@ -54,7 +54,7 @@ public class LevelItem : MonoBehaviour
         onMouseExit?.Invoke(this);
     }
 
-    private void OnMouseUp()
+    private void OnMouseUpAsButton()
     {
         onMouseUp?.Invoke(this);
     }

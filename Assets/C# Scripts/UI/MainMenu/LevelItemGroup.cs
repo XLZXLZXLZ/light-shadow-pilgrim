@@ -38,7 +38,7 @@ public class LevelItemGroup
             CurrentSelectedItem.MoveDown();
         CurrentSelectedItem = levelItem;
         CurrentSelectedItem.MoveUp();
-        
+ 
         onMouseEnterLevelItem?.Invoke(levelItem);
     }
 
@@ -54,6 +54,8 @@ public class LevelItemGroup
     private void OnMouseUpLevelItem(LevelItem levelItem)
     {
         onSelectedLevelItem?.Invoke(levelItem);
+
+        Debug.Log(levelItem.gameObject.name);
     }
 
     #endregion
