@@ -40,9 +40,9 @@ public class LevelItem : MonoBehaviour
 
     #region Events
 
-    public event Action<LevelItem> onMouseEnter;
-    public event Action<LevelItem> onMouseExit;
-    public event Action<LevelItem> onMouseUp;
+    public Action<LevelItem> onMouseEnter;
+    public Action<LevelItem> onMouseExit;
+    public Action<LevelItem> onMouseUp;
     
     private void OnMouseEnter()
     {

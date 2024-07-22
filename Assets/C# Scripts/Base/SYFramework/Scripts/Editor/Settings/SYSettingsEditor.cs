@@ -88,9 +88,9 @@ public class SYSettingsEditor : OdinEditor
                     }
                 }
             }
-            
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e);
                 continue;
             }
         }

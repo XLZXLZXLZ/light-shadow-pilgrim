@@ -49,8 +49,12 @@ public abstract class MainMenuStateBase : IState
     public virtual void PhysicsUpdate(){}
     
     public virtual void LogicUpdate(){}
-    
-    public virtual void Exit(){}
+
+    public virtual void Exit()
+    {
+        // MainMenuManager.Instance.anim.OnStart -= OnAnimStart;
+        // MainMenuManager.Instance.anim.OnFinished -= OnAnimFinished;
+    }
 
     #endregion
 
@@ -97,16 +101,17 @@ public abstract class MainMenuStateBase : IState
     private void OnAnimStart()
     {
         IsAnim = true;
+        
+        levelItemGroup.Init();
     }
     
     private void OnAnimFinished()
     {
         IsAnim = false;
         
-        levelItemGroup.Init();
-        levelItemGroup.onMouseEnterLevelItem += OnMouseEnterLevelItem;
-        levelItemGroup.onMouseExitLevelItem += OnMouseExitLevelItem;
-        levelItemGroup.onSelectedLevelItem += OnSelectLevelItem;
+        levelItemGroup.onMouseEnterLevelItem = OnMouseEnterLevelItem;
+        levelItemGroup.onMouseExitLevelItem = OnMouseExitLevelItem;
+        levelItemGroup.onSelectedLevelItem = OnSelectLevelItem;
     }
     
     // private void OnStartAnimStart()

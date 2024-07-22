@@ -20,17 +20,18 @@ public class LevelItemGroup
             if (StaticData.IsLevelCompleted(chapter * Consts.LevelCountEachChapter + levelItem.LevelIndex))
                 levelItem.SetMat(highLightMat);
 
-            levelItem.onMouseEnter += OnMouseEnterLevelItem;
-            levelItem.onMouseExit += OnMouseExitLevelItem;
-            levelItem.onMouseUp += OnMouseUpLevelItem;
+            levelItem.onMouseEnter = OnMouseEnterLevelItem;
+            levelItem.onMouseExit = OnMouseExitLevelItem;
+            levelItem.onMouseUp = OnMouseUpLevelItem;
         });
+        
     }
 
     #region Events
     
-    public event Action<LevelItem> onMouseEnterLevelItem;
-    public event Action<LevelItem> onMouseExitLevelItem;
-    public event Action<LevelItem> onSelectedLevelItem;
+    public Action<LevelItem> onMouseEnterLevelItem;
+    public Action<LevelItem> onMouseExitLevelItem;
+    public Action<LevelItem> onSelectedLevelItem;
 
     private void OnMouseEnterLevelItem(LevelItem levelItem)
     {
@@ -48,14 +49,12 @@ public class LevelItemGroup
             CurrentSelectedItem.MoveDown();
         CurrentSelectedItem = null;
         
-        onMouseExitLevelItem?.Invoke(levelItem);
+        onMouseExitLevelItem?.Invoke(CurrentSelectedItem);
     }
     
     private void OnMouseUpLevelItem(LevelItem levelItem)
     {
         onSelectedLevelItem?.Invoke(levelItem);
-
-        Debug.Log(levelItem.gameObject.name);
     }
 
     #endregion
